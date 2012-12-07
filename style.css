@@ -24,16 +24,266 @@
 /* Prepare theme for plugins */
 @import url('../thematic/library/styles/plugins.css');
 
+div.hfeed {
+   background-color: #e7e7e7;
+}
+
+#header {
+   z-index: 2;
+   width: 960px;
+   margin: 0 auto;
+   background-color: white;
+   height: 127px;
+   padding-top: 0px;
+}
+
+#branding {
+   padding: 31px 0 44px 0;
+   padding-left: 60px;
+}
+
+#main {
+   width: 960px;
+   margin: 0 auto;
+   overflow: hidden;
+   position: relative;
+   background-color: white;
+}
+
+#content {
+   margin: 0 0 0 14px;
+   width: 622px;
+   overflow: hidden;
+   padding-left: 8px;
+}
+
+#container {
+   width: 651px;
+   float: left;
+   padding-left: 8px;
+}
+
+
+.hentry {
+   padding: 0 0 0px 0;
+   height: 285px;
+   border-top: 1px solid #CCC;
+}
+
+
+#content .entry-title a {
+   color: #666;
+   text-decoration: none;
+   padding-left: 302px;
+   padding-top: 0px;
+   position: relative;
+   top: 0px;
+   font-family: Myriad-Pro;
+   font-size: 26px;
+   font-weight: bold;
+   float: left;
+}
+
+.entry-content {
+   padding: 5px 0 0 0;
+}
+
+div.entry-content {
+   margin-top: 0px;
+   position: relative;
+   bottom: 0px;
+}
+
+div.entry-content p {
+   color: #666;
+   font-family: Myriad Pro;
+   font-size: 14px;
+}
+
+#content span.entry-date {
+    position: relative;
+    margin-left: 297px;
+    top: -80px;
+}
+
+
+
+img.attachment-260x260.wp-post-image {
+   float: left;
+   margin-top: -28px;
+   margin-right: 13px;
+}
+
+.entry-content .wp-post-image {
+   border: 1px solid #CCC;
+   margin: 0 0 13px 17px;
+   padding: 0px;
+   position: relative;
+   top: -67px;
+}
+
+.entry-meta {
+   color: #666;
+   font-size: 13px;
+   font-style: italic;
+   line-height: 18px;
+}
+
+div.entry-utility {
+   display: none;
+}
+
+div.entry-meta span.cat-list {
+   float: right;
+   top: -80px;
+   position: relative;
+}
+
+div.entry-meta { 
+   padding-top: 0px;
+}
+
+#access {
+   border: none;
+   height: 32px;
+   font-size: 13px;
+   overflow: visible;
+   z-index: 1;
+}
+
+
+.sf-menu {
+   float: left;
+   margin-left: 51px;
+}
+
+#menu-open-state-website li {
+    border-left: 1px solid #CCC;
+}
+
+.sf-menu li  {
+   background: white;
+   border-right: 1px solid #CCC;
+}
+
+.sf-menu ul li + li {
+   border-right: 1px solid #CCC;
+}
+
+.sf-menu ul li + li + li {
+border-right: 1px solid #CCC;
+}
+
+.sf-menu ul li  {
+  border-top: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  border-left: 1px solid #CCC;
+  }
+
+.sf-menu ul {
+   border-left: 1px solid #CCC;
+}
+
+
+.sf-menu a, .sf-menu a:visited {
+color: #076776;
+background-color:white;
+}
+
+#menu-open-state-website .sub-menu a:hover {
+    color: #666;
+    background-color: white;
+}
+
+#menu-open-state-website .sub-menu {
+   background: white;
+   color: #83b3bb
+}
+
+
+.sf-menu a:hover {
+    background-color: #CCC;
+    border-bottom: none;
+    color: white;
+        
+}
+
+.sf-menu .current-menu-item a {
+   color: #83b3bb;   
+   border: none;
+   color: white;
+   background-color: #CCC;
+}
+
+.sf-menu .current-menu-item .sub-menu a {
+    background: white;
+    color: #83b3bb;
+}
+    
+
+.sf-menu ul a:hover {
+background: white;
+border-bottom: none;
+}
+
+.sf-menu ul a {
+background: white;
+border-bottom: none;
+}
+
+.sf-menu ul a:active {
+background: white;
+border-bottom: none;
+}
+
+.sf-menu a {
+
+border-width: 0px;
+border-style: solid;
+border-color: white;
+}
+
+#menu-open-state-website .sub-menu a {
+
+border-width: 0px;
+border-style: solid;
+border-color: white;
+}
+
+#blog-title a {
+   background: url("/wp-content/uploads/logo_openstate.png") no-repeat scroll;
+   color: transparent;
+   float: left;
+   text-decoration: none;
+   width: 150px;
+   heigth: 203px;
+   height: 96px;
+}
+
+#blog-title a:active {
+   color: transparent;
+}
+
+#blog-title a:hover {
+color: transparent;
+}
+
+
+#blog-description {
+    color: #666666;
+    font-size: 13px;
+    font-style: italic;
+    display: none;
+}
+
 /*
 	Announcement slides container
 	Important:
 	Set the width of your slides container
 	Set to display none, prevents content flash
 */
-#announcements .slides_container {
-	width:260px;
-	display:none;
-}
+
+
 
 /*
 	Each slide
@@ -42,52 +292,513 @@
 	If height not specified height will be set by the slide content
 	Set to display block
 */
+
 #announcements .slides_container div {
 	width:260px;
 	height:90px;
 	display:block;
 }
 
-/*
-	Statements slides container
-	Important:
-	Set the width of your slides container
-	Set to display none, prevents content flash
-*/
-.statements .slides_container {
-	width:977px;
-	display:none;
-}
 
-/*
-	Each slide
-	Important:
-	Set the width of your slides
-	If height not specified height will be set by the slide content
-	Set to display block
-*/
-.statements .slides_container div {
-	width:977px;
-	height:310px;
-	display:block;
-}
 		
 /*
 	Optional:
 	Reset list default style
 */
-#announcements .pagination,
-.statements .pagination {
-	list-style:none;
-	margin:0;
-	padding:0;
-}
+
 
 /*
 	Optional:
 	Show the current slide in the pagination
 */
-#announcements .pagination .current a,
-.statements .pagination .current a, {
-	color:red;
+
+
+div.slides_control {
+   position: relative;
+   width: 960px;
+   height: 310px;
+   left: -960px;
+}
+
+div.slides_container {
+   background-color: #e8f8fc;
+   overflow: hidden;
+   position: relative;
+   display: block;
+   width: 960px;
+   margin: 0 auto;
+   height: 310px;   
+   margin-bottom: -116px;
+   z-index: 1;
+}
+    
+
+.aside, .aside input {
+   font-size: 13px;
+   line-height: 18px;
+   margin-bottom: 47px;
+}
+
+
+
+
+#announcements .slides_container {
+
+  background-color: #90DCF0;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  width: 275px;
+  height: 310px;
+  margin: 0 auto;
+  height: 253px;
+  z-index: 2;
+  left: -5px;
+  
+}
+
+.main-aside ul ul {
+   margin-top: -17px;
+   z-index: 10;
+   position: relative;
+   margin-left: 121px;
+}
+
+#announcements .pagination li a {
+   background-image: url("/wp-content/themes/thematic-openstate/images/pagination.png");
+   background-position: 0 0;
+   height: 0;
+   overflow: hidden;
+   padding-top: 13px;
+   width: 10px;
+}
+
+#announcements .pagination li.current a {
+   background-position: 0 -12px;
+   padding-left: 4px;
+}
+
+        
+#announcements .pagination a:active {
+        color: transparant;
+        display: inline;
+        
+}
+
+#announcements .pagination li {
+     background-image: url("/wp-content/themes/thematic-openstate/images/pagination.png");
+     background-position: 0 0;
+     display: block;
+     float: left;
+     height: 0;
+     overflow: hidden;
+     padding-top: 12px;
+     width: 12px;
+}
+
+
+#announcements h3.widgettitle {
+   color: #666;
+   background-color: white;
+   background: url("/wp-content/uploads/calendar_icon.png") no-repeat scroll top left;
+   font-size: 15px;
+   font-style: normal;
+   line-height: 22px;
+   padding-left: 31px;
+   padding-bottom: 9px;
+   margin-bottom: 17px;
+   border-bottom: 1px #CCC solid;
+   width: 243px;
+}
+
+h4.announcement-title {
+   color: white;
+   font-size: 24px;
+   padding-left: 19px;
+   padding-top: 18px;
+   font-family: Myriad-Pro;
+   font-size: 26px;
+}
+
+.aside p, .aside ul, .aside ol, .aside dd, .aside pre {
+   margin-bottom: 18px;
+   color: white;
+   padding-left: 27px;
+   padding-right: 0px;
+}
+
+div.statements {
+   height: 310px;
+   width: 960px;
+   margin: 0 auto;
+}
+
+div.statements img.attachment-full {
+    padding-right: 300px;
+}
+
+div.statements .pagination li.current a {
+   background-position: 0 -12px;
+   padding-left: 4px;
+}
+
+div.statements .pagination li.current {
+   background-image: url("/wp-content/themes/thematic-openstate/images/pagination.png");
+   background-position: 0 0;
+   display: block;
+   float: left;
+   height: 0;
+   overflow: hidden;
+   padding-top: 12px;
+   width: 12px;
+}
+
+div.statements .pagination li {
+  background-image: url("/wp-content/themes/thematic-openstate/images/pagination.png");
+   background-position: 0 0;
+   display: block;
+  float: left;
+   height: 0;
+   overflow: hidden;
+   padding-top: 12px;
+   width: 12px;
+}
+
+
+div.statements .pagination li a {
+   background-image: url("/wp-content/themes/thematic-openstate/images/pagination.png");
+   background-position: 0 0;
+   height: 0;
+   overflow: hidden;
+   padding-top: 15px;
+   width: 10px;
+   padding-right: 4px;
+}
+
+div.statements ul.pagination {
+   height: 25px;
+   position: relative;
+   width: 100px;
+   z-index: 2;
+   padding-top: 68px;
+   float: right;
+   padding-right: 80px;
+}
+
+
+div.statements ul.pagination li {
+   position: relative;
+   float: left;
+   margin: 4px;
+   }
+
+div.slides_container h3.statement-title {
+   margin-top: 100px;
+   float: right;
+   margin-left: 696px;
+   width: 240px;
+   font-size: 26px;
+   padding-bottom: 17px;
+   color: #076776;
+   font-family: Myriad Pro;
+}
+
+div.slides_container p {
+   margin-top: -382px;
+   margin-left: 698px;
+   width: 240px;
+   color: #076776;
+   font-family: Myriad Pro;
+   font-size: 14px;
+}
+
+#announcements div.slides_container p {
+   margin-left: 2px;
+   width: 184px;
+   margin-top: 23px;
+}
+
+
+#footer {
+    background-color: #90dcf0;
+    height: 100%;
+    margin: 0 auto;
+    width: 960px;
+    position: relative;
+    top: 0px;
+    margin-top: 0px;
+}
+
+#subsidiary {
+   padding: 0px 0 0 0;
+   padding-bottom: 0px;
+   margin-top: 20px;
+   margin-bottom: -68px;
+}
+
+#subsidiary h3.widgettitle {
+    color: white;
+    font-size: 15px;
+    border: none;
+}
+
+#subsidiary a {
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+#subsidiary .aside {
+    float: left;
+}
+
+#subsidiary div.aside.sub-aside {
+   width: 300px;
+}
+
+
+li.widgetcontainer.widget_categories {
+  height: 200px;
+   float: left;
+   position: relative;
+   width: 157px;
+   padding-left: 5px;
+   border-right: 1px dotted white;
+}
+
+#wp_category_post_list_itg-2 {
+   height: 200px;
+   float: left;
+   position: relative;
+   width: 116px;
+   width: 109px;
+   border-right: 1px dotted white;
+}
+
+#wp_category_post_list_itg-4 {
+   height: 200px;
+   float: left;
+   position: relative;
+   width: 142px;
+   padding-left: 2px;
+   border-right: 1px dotted white;
+}
+
+ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg li {
+    list-style-image: url("/wp-content/themes/thematic-openstate/images/arrow_icon.png");
+    position: relative;
+    padding-left: 7px;
+    margin-left: -22px;
+}
+
+li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
+  background: none !important;
+  float: none !important;
+  padding: 3px 5px !important;
+  margin: 2px 0 !important;
+  overflow: visible !important;
+}
+
+
+#nav_menu-4 {
+   float: left;
+  width: 162px;
+  position: relative;
+  height: 183px;
+  left: -165px;
+  border-right: 1px dotted white;
+}
+
+#nav_menu-4 li {
+   list-style-image: url("/wp-content/themes/thematic-openstate/images/arrow_icon.png");
+    position: relative;
+    padding-left: 7px;
+    margin-left: -22px;
+}
+
+#nav_menu-3 {
+   float: left;
+   width: 131px;
+   position: relative;
+   height: 183px;
+   margin-left: -145px;
+   border-right: 1px dotted white;
+}
+
+#nav_menu-3 li { 
+   list-style-image: url("/wp-content/themes/thematic-openstate/images/arrow_icon.png");
+    position: relative;
+    padding-left: 7px;
+    margin-left: -22px;
+}
+
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+
+ul.xoxo li.widgetcontainer.widget_categories li {
+    list-style-image: url("/wp-content/themes/thematic-openstate/images/arrow_icon.png");
+    position: relative;
+    padding-left: 7px;
+    margin-left: -22px;
+}
+
+ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg ul li {
+    background: url("/wp-content/themes/thematic-openstate/images/arrow_icon.png");
+    
+}
+
+
+/* Mailchimp */
+
+ul.xoxo li.widgetcontainer.widget_mailchimpsf_widget {
+    margin-top: 58px;
+}
+
+ul.xoxo li.widgetcontainer.widget_mailchimpsf_widget h3.widgettitle {
+   color: #666;
+   margin-bottom: 174px;
+   font-style: normal;
+   background: url("/wp-content/themes/thematic-openstate/images/envelope_icon.png") no-repeat scroll left;
+   margin-right: 10px;
+   padding-left: 32px;
+   height: 29px;
+   padding-top: 6px;
+   border-bottom: 1px solid #CCC;
+   width: 237px;
+}
+
+#mc-indicates-required {
+  width: 100%;
+  display: none;
+}
+
+div.mergeRow {
+   display: none;
+}
+ 
+#primary {
+   border: none;
+   padding: 0px 0 0 0;
+   margin-bottom: 22px;
+}
+
+#mc_signup {
+   border-bottom: 1px solid #076776;
+   width: 270px;
+}
+
+.mc_merge_var {
+   padding: 0;
+   margin: 0;
+   margin-top: -135px;
+   background-color: none;
+   width: 248px;
+   padding-left: 20px;
+   padding-top: 10px;
+}
+
+.mc_signup_submit input.button {
+   text-align: center;
+   background: url("/wp-content/themes/thematic-openstate/images/submit_button.png") no-repeat scroll center;
+   height: 46px;
+   width: 47px;
+   color: transparent;
+   border: none;
+   cursor: pointer;
+   float: right;
+   margin-top: -61px;
+   margin-right: 4px;
+}
+
+#mc_signup_form .mc_var_label {
+   display: none;
+}
+
+#mc_signup_form {
+padding: 1px;
+border-width: 0px;
+border-style: solid;
+border-color: none;
+color: #555;
+background-color: #E8F8FC;
+height: 49px;
+width: 268px;
+margin-top: -163px;
+padding-top: 30px;
+margin-bottom: 0px;
+}
+
+#mc_signup_form .mc_input {
+   margin-top: 108px;
+  position: relative;
+  margin-bottom: 22px;
+  border: none;
+  border-top: 1px solid #076776;
+}
+
+.mc_error_msg {
+   color: #666;
+   position: absolute;
+   margin-top: 200px;
+}
+
+/* Twitter widget */
+
+li.widgetcontainer.widget_twitter-profile-tracker {
+   margin-left: -60px;
+}
+
+li.widgetcontainer.widget_twitter-profile-tracker h3.widgettitle {
+   font-style: normal;
+   color: #666;
+   background: url("/wp-content/themes/thematic-openstate/images/twitter_icon.png") no-repeat scroll top left;
+   margin-left: 56px;
+   padding-bottom: 5px;
+   padding-left: 32px;
+}
+
+li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid {
+   list-style: none;
+   background-color: #E8F8FC;
+   color: #076776;
+   width: 270px;
+   margin-top: -18px;
+}
+
+li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a {
+   color: #076776;
+   text-decoration: none;
+}
+
+li.widgetcontainer.widget_twitter-profile-tracker ol.tweets {
+   width: 269px;
+   border-top: 1px solid #CCC;
+   padding-top: 27px;
+}
+
+div.avatar {
+   float: left;
+   padding-right: 5px;
+   padding-bottom: 35px;
+   background: white;
+   padding-bottom: 98px;
+   margin-bottom: -17px;
+   margin-right: -53px;
+}
+
+div.info {
+   display: none;
+}
+   
+span.twit {
+   padding-left: 0px;
+}
+
+div.msg {
+  width: 206px;
+  padding-left: 10px;
+  margin-left: 53px;
+  padding-top: 5px;
+  border-bottom: 1px solid #076776;
+  padding-bottom: 15px;
+  height: 121px;
 }

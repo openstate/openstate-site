@@ -1,0 +1,93 @@
+/*   
+  Theme Name: Open State Foundation
+  Theme URI: http://github.com/openstate/thematic-openstate
+  Author: Dirk Geurs
+  Template: thematic
+*/
+
+/* Reset browser defaults */
+@import url('../thematic/library/styles/reset.css');
+
+/* Apply basic typography styles */
+@import url('../thematic/library/styles/typography.css');
+
+/* Apply a basic layout */
+@import url('../thematic/library/layouts/2c-r-fixed.css');
+
+/* Apply basic image styles */
+@import url('../thematic/library/styles/images.css');
+
+/* Apply default theme styles and colors */
+/* It's better to actually copy over default.css into this file (or link to a copy in your child theme) if you're going to do anything outrageous */
+@import url('../thematic/library/styles/default.css');
+
+/* Prepare theme for plugins */
+@import url('../thematic/library/styles/plugins.css');
+
+/*
+	Announcement slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+#announcements .slides_container {
+	width:260px;
+	display:none;
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+#announcements .slides_container div {
+	width:260px;
+	height:90px;
+	display:block;
+}
+
+/*
+	Statements slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+.statements .slides_container {
+	width:977px;
+	display:none;
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+.statements .slides_container div {
+	width:977px;
+	height:310px;
+	display:block;
+}
+		
+/*
+	Optional:
+	Reset list default style
+*/
+#announcements .pagination,
+.statements .pagination {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+/*
+	Optional:
+	Show the current slide in the pagination
+*/
+#announcements .pagination .current a,
+.statements .pagination .current a, {
+	color:red;
+}

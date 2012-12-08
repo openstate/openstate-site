@@ -236,4 +236,16 @@
   }
   add_filter('thematic_postheader_posttitle','openstate_thematic_postheader_posttitle');
   
+  function openstate_singlecomment_text() {
+      $content = sprintf( _x( '%1$sOne%2$s Thought' , 'One Thought, where %$1s and %$2s are <span> tags', 'thematic' ), '<span>' , '</span>' );
+      return apply_filters( 'openstate_singlecomment_text', $content );
+  }
+  add_filter('thematic_singlecomment_text','openstate_singlecomment_text');
+  
+  function openstate_multiplecomments_text() {
+      $content = '<span>%d</span> ' . __('Thoughts', 'thematic');
+      return apply_filters( 'openstate_multiplecomments_text', $content );
+  }
+  add_filter('thematic_multiplecomments_text','openstate_multiplecomments_text');
+  
 ?>

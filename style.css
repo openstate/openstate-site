@@ -24,9 +24,20 @@
 /* Prepare theme for plugins */
 @import url('../thematic/library/styles/plugins.css');
 
+
+body {
+font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+
+@font-face { 
+   font-family: Avenir;
+   src: url ("avenirltstdheavy.ttf");    
+}
+
 div.hfeed {
    background-color: #e7e7e7;
 }
+
 
 #header {
    z-index: 2;
@@ -68,6 +79,7 @@ div.hfeed {
    padding: 0 0 0px 0;
    height: 285px;
    border-top: 1px solid #CCC;
+    clear: both;
 }
 
 
@@ -77,10 +89,9 @@ div.hfeed {
    padding-left: 302px;
    padding-top: 0px;
    position: relative;
-   top: 0px;
-   font-family: Myriad-Pro;
+   top: 40px;
    font-size: 26px;
-   font-weight: bold;
+   font-weight: normal;
    float: left;
 }
 
@@ -96,14 +107,15 @@ div.entry-content {
 
 div.entry-content p {
    color: #666;
-   font-family: Myriad Pro;
-   font-size: 14px;
+   font-family: helvetica;
+   font-size: 13px;
+   line-height: 17px;
 }
 
 #content span.entry-date {
     position: relative;
     margin-left: 297px;
-    top: -80px;
+    top: -70px;
 }
 
 
@@ -112,6 +124,7 @@ img.attachment-260x260.wp-post-image {
    float: left;
    margin-top: -28px;
    margin-right: 13px;
+   margin-bottom: -68px;
 }
 
 .entry-content .wp-post-image {
@@ -135,12 +148,12 @@ div.entry-utility {
 
 div.entry-meta span.cat-list {
    float: right;
-   top: -80px;
+   top: -70px;
    position: relative;
 }
 
-div.entry-meta { 
-   padding-top: 0px;
+div.entry-meta {
+    padding-top: 72px;
 }
 
 #access {
@@ -333,14 +346,18 @@ div.slides_container {
 }
     
 
-.aside, .aside input {
+.aside input {
    font-size: 13px;
    line-height: 18px;
    margin-bottom: 47px;
 }
 
 
-
+.aside {
+   font-size: 13px;
+   line-height: 18px;
+   margin-bottom: 24px;
+}
 
 #announcements .slides_container {
 
@@ -493,29 +510,31 @@ div.statements ul.pagination li {
    }
 
 div.slides_container h3.statement-title {
-   margin-top: 100px;
-   float: right;
-   margin-left: 696px;
-   width: 240px;
-   font-size: 26px;
-   padding-bottom: 17px;
-   color: #076776;
-   font-family: Myriad Pro;
+    margin-top: 114px;
+    float: right;
+    margin-left: 672px;
+    width: 265px;
+    font-size: 26px;
+    padding-bottom: 17px;
+    color: #076776;
 }
 
 div.slides_container p {
-   margin-top: -382px;
-   margin-left: 698px;
-   width: 240px;
+   margin-top: -397px;
+   margin-left: 685px;
+   width: 263px;
    color: #076776;
-   font-family: Myriad Pro;
-   font-size: 14px;
+   font-family: helvetica;
+   font-size: 13px;
+   line-height: 17px;
 }
 
 #announcements div.slides_container p {
-   margin-left: 2px;
-   width: 184px;
-   margin-top: 23px;
+    margin-left: -8px;
+    width: 184px;
+    margin-top: 23px;
+    color: white;
+    font-size: 14px;
 }
 
 
@@ -538,13 +557,15 @@ div.slides_container p {
 
 #subsidiary h3.widgettitle {
     color: white;
-    font-size: 15px;
+    font-size: 13px;
     border: none;
+    font-style: normal;
+    font-weight: bold;
 }
 
 #subsidiary a {
     color: white;
-    font-size: 15px;
+    font-size: 13px;
     text-decoration: none;
 }
 
@@ -650,7 +671,7 @@ ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg ul li {
 /* Mailchimp */
 
 ul.xoxo li.widgetcontainer.widget_mailchimpsf_widget {
-    margin-top: 58px;
+    margin-top: 27px;
 }
 
 ul.xoxo li.widgetcontainer.widget_mailchimpsf_widget h3.widgettitle {
@@ -744,14 +765,14 @@ margin-bottom: 0px;
 /* Twitter widget */
 
 li.widgetcontainer.widget_twitter-profile-tracker {
-   margin-left: -60px;
+   margin-left: -32px;
 }
 
 li.widgetcontainer.widget_twitter-profile-tracker h3.widgettitle {
    font-style: normal;
    color: #666;
    background: url("images/twitter_icon.png") no-repeat scroll top left;
-   margin-left: 56px;
+   margin-left: 34px;
    padding-bottom: 5px;
    padding-left: 32px;
 }
@@ -764,15 +785,25 @@ li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid {
    margin-top: -18px;
 }
 
-li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a {
+li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid {
+   list-style: none;
    color: #076776;
-   text-decoration: none;
+   font-size: 11px;
+   font-style: italic;
 }
 
+li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a {
+    color: #076776;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
 li.widgetcontainer.widget_twitter-profile-tracker ol.tweets {
-   width: 269px;
+   width: 267px;
    border-top: 1px solid #CCC;
    padding-top: 27px;
+   padding-left: 0px;
 }
 
 div.avatar {
@@ -802,3 +833,12 @@ div.msg {
   padding-bottom: 15px;
   height: 121px;
 }
+
+/* Round image borders */
+
+.attachment-260x260,
+div.avatar img,
+img.avatar {
+  border-radius: 100%;
+}
+

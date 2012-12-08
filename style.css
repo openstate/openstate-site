@@ -806,6 +806,12 @@ li.widgetcontainer.widget_twitter-profile-tracker ol.tweets {
    padding-left: 0px;
 }
 
+.twitter_btn {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}
+
 div.avatar {
    float: left;
    padding-right: 5px;

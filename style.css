@@ -77,7 +77,7 @@ div.hfeed {
 
 .hentry {
    padding: 0 0 0px 0;
-   height: 285px;
+   height: 277px;
    border-top: 1px solid #CCC;
     clear: both;
 }
@@ -138,8 +138,20 @@ img.attachment-260x260.wp-post-image {
 .entry-meta {
    color: #666;
    font-size: 13px;
-   font-style: italic;
    line-height: 18px;
+}
+
+.entry-meta a {
+   color: #666;
+   text-decoration: none;
+   font-style: normal;
+   text-transform: uppercase;
+   font-size: 11px;
+}
+
+.entry-meta a:hover {
+   color: #666;
+   text-decoration: underline;
 }
 
 div.entry-utility {
@@ -172,6 +184,15 @@ div.entry-meta {
 
 #menu-open-state-website li {
     border-left: 1px solid #CCC;
+}
+
+
+#menu-open-state-website .has-sub-menu {
+     background-image: url("images/pagination.png");
+     background-repeat: no-repeat;
+     padding-right: 14px;
+     margin-left: 0px;
+     background-position: right;
 }
 
 .sf-menu li  {
@@ -352,6 +373,11 @@ div.slides_container {
    margin-bottom: 47px;
 }
 
+.aside ul ul {
+   list-style: disc;
+   margin: 0 0 20px 13px;
+}
+
 
 .aside {
    font-size: 13px;
@@ -369,7 +395,7 @@ div.slides_container {
   height: 310px;
   margin: 0 auto;
   height: 253px;
-  z-index: 2;
+  z-index: 1;
   left: -5px;
   
 }
@@ -425,8 +451,10 @@ div.slides_container {
    padding-bottom: 9px;
    margin-bottom: 17px;
    border-bottom: 1px #CCC solid;
-   width: 243px;
+   width: 244px;
+   margin-left: -6px;
 }
+
 
 h4.announcement-title {
    color: white;
@@ -546,6 +574,7 @@ div.slides_container p {
     position: relative;
     top: 0px;
     margin-top: 0px;
+    border-top: 1px solid #076776;
 }
 
 #subsidiary {
@@ -567,6 +596,7 @@ div.slides_container p {
     color: white;
     font-size: 13px;
     text-decoration: none;
+    margin-left: -10px;
 }
 
 #subsidiary .aside {
@@ -583,8 +613,7 @@ li.widgetcontainer.widget_categories {
    float: left;
    position: relative;
    width: 157px;
-   padding-left: 5px;
-   border-right: 1px dotted white;
+   padding-left: 5px; 
 }
 
 #wp_category_post_list_itg-2 {
@@ -593,7 +622,6 @@ li.widgetcontainer.widget_categories {
    position: relative;
    width: 116px;
    width: 109px;
-   border-right: 1px dotted white;
 }
 
 #wp_category_post_list_itg-4 {
@@ -601,8 +629,12 @@ li.widgetcontainer.widget_categories {
    float: left;
    position: relative;
    width: 142px;
-   padding-left: 2px;
-   border-right: 1px dotted white;
+   margin-left: -22px;
+}
+
+#wp_category_post_list_itg-4 h3.widgettitle {
+   position: relative;
+   margin-left: -17px;
 }
 
 ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg li {
@@ -627,7 +659,7 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
   position: relative;
   height: 183px;
   left: -165px;
-  border-right: 1px dotted white;
+  margin-left: -26px;
 }
 
 #nav_menu-4 li {
@@ -643,7 +675,6 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
    position: relative;
    height: 183px;
    margin-left: -145px;
-   border-right: 1px dotted white;
 }
 
 #nav_menu-3 li { 

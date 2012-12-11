@@ -54,7 +54,7 @@
     <div class="aside main-aside">
   		<ul class="xoxo">
   			<li id="announcements" class="widgetcontainer widget_announcement">
-          <h3 class="widgettitle">Announcements</h3>
+          <span id="announcement_icon"></span><span class="widgettitle">Announcements</span></br>
           <div class="slides_container">
             <?php 
               while ( $loop->have_posts() ) : $loop->the_post();

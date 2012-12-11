@@ -1,5 +1,11 @@
 <?php
 
+  // Unhook default Thematic functions
+  function unhook_thematic_functions() {
+    remove_action('thematic_navigation_below', 'thematic_nav_below', 2);
+  }
+  add_action('init','unhook_thematic_functions');
+
   function openstate_enqueue_scripts() {
       wp_enqueue_script(
         'slidejs',
@@ -247,5 +253,74 @@
       return apply_filters( 'openstate_multiplecomments_text', $content );
   }
   add_filter('thematic_multiplecomments_text','openstate_multiplecomments_text');
+  
+  function openstate_next_post_link_args() {
+		$args = array ( 
+			'format'              => '%link',
+			'link'                => '<span class="meta-nav">Next >></span>',
+			'in_same_cat'         => FALSE,
+			'excluded_categories' => ''
+		);
+    return $args;
+  }
+  add_filter('thematic_next_post_link_args', 'openstate_next_post_link_args');
+  
+  function openstate_previous_post_link_args() {
+		$args = array ( 
+			'format'              => '%link',
+			'link'                => '<span class="meta-nav"><< Previous</span>',
+			'in_same_cat'         => FALSE,
+			'excluded_categories' => ''
+		);
+    return $args;
+  }
+  add_filter('thematic_previous_post_link_args', 'openstate_previous_post_link_args');  
+  
+	function childtheme_override_nav_below() {
+		if (is_single()) {
+      
+      wp_reset_postdata();
+      wp_reset_query();
+      rewind_posts();
+      
+      $nextPost = get_next_post(true);
+      $nextThumb = get_the_post_thumbnail($nextPost->ID, array(150,150));
+      $prevPost = get_previous_post(true);
+      $prevThumb = get_the_post_thumbnail($prevPost->ID, array(150,150));
+      
+      ?>
+      
+			<div id="nav-below" class="navigation">
+				<div class="nav-previous"><?php
+          thematic_previous_post_link(); 
+          echo '<p>' . get_the_title($prevPost->ID) . '</p>';
+          echo $prevThumb;
+        ?></div>
+				<div class="nav-next"><?php 
+          thematic_next_post_link();
+          echo '<p>' . get_the_title($nextPost->ID) . '</p>';
+          echo $nextThumb;
+        ?></div>
+			</div>
+
+<?php
+		} else { ?>
+
+			<div id="nav-below" class="navigation">
+                <?php if(function_exists('wp_pagenavi')) { ?>
+                <?php wp_pagenavi(); ?>
+                <?php } else { ?>  
+				
+				<div class="nav-previous"><?php next_posts_link(sprintf('<span class="meta-nav">&laquo;</span> %s', __('Older posts', 'thematic') ) ) ?></div>
+					
+				<div class="nav-next"><?php previous_posts_link(sprintf('%s <span class="meta-nav">&raquo;</span>',__( 'Newer posts', 'thematic') ) ) ?></div>
+
+				<?php } ?>
+			</div>	
+	
+<?php
+		}
+	}
+  add_action('thematic_abovefooter','thematic_nav_below');
   
 ?>

@@ -26,16 +26,28 @@
 
 
 body {
-font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+    
+	background-image:url("images/tex2res5.png");
+	
+  	overflow:scroll;
+	font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
 }
+
+
 
 @font-face { 
    font-family: Avenir;
-   src: url ("avenirltstdheavy.ttf");    
+   src: url("avenirltstdheavy.ttf");    
+}
+
+
+input, textarea{
+	
+	color: #666;
 }
 
 div.hfeed {
-   background-color: #e7e7e7;
+   
 }
 
 
@@ -79,7 +91,7 @@ div.hfeed {
    padding: 0 0 0px 0;
    height: 277px;
    border-top: 1px solid #CCC;
-    clear: both;
+   clear: both;
 }
 
 
@@ -94,6 +106,20 @@ div.hfeed {
    font-weight: normal;
    float: left;
 }
+
+#content .entry-title a:hover {
+   color: #666;
+   text-decoration: underline;
+   padding-left: 302px;
+   padding-top: 0px;
+   position: relative;
+   top: 40px;
+   font-size: 26px;
+   font-weight: normal;
+   float: left;
+}
+
+
 
 .entry-content {
    padding: 5px 0 0 0;
@@ -188,7 +214,7 @@ div.entry-meta {
 
 
 #menu-open-state-website .has-sub-menu {
-     background-image: url("images/pagination.png");
+     background-image: url("images/blue_arrow_topNav.png");
      background-repeat: no-repeat;
      padding-right: 14px;
      margin-left: 0px;
@@ -231,16 +257,17 @@ background-color:white;
 
 #menu-open-state-website .sub-menu {
    background: white;
-   color: #83b3bb
+   color: #83b3bb;
 }
 
-
 .sf-menu a:hover {
+color: #076776;
     background-color: #CCC;
     border-bottom: none;
     color: white;
         
 }
+
 
 .sf-menu .current-menu-item a {
    color: #83b3bb;   
@@ -271,7 +298,7 @@ border-bottom: none;
 }
 
 .sf-menu a {
-
+color: #076776;
 border-width: 0px;
 border-style: solid;
 border-color: white;
@@ -290,7 +317,6 @@ border-color: white;
    float: left;
    text-decoration: none;
    width: 150px;
-   heigth: 203px;
    height: 96px;
 }
 
@@ -423,7 +449,7 @@ div.slides_container {
 
         
 #announcements .pagination a:active {
-        color: transparant;
+        color: transparent;
         display: inline;
         
 }
@@ -439,26 +465,44 @@ div.slides_container {
      width: 12px;
 }
 
+#announcements #announcement_icon{
+	float: left;
+	background: url("images/calendar_icon.png") no-repeat scroll top left;
+	width: 24px;
+	height: 27px;
+	color: #666;
+	background-color: white;
+	font-size: 15px;
+	font-style: normal;
+	
+	padding-bottom: 7px;
+	margin-bottom: 3px;
+	margin-left: -6px;
+	
+	
+}
 
-#announcements h3.widgettitle {
+
+#announcements span.widgettitle {
+ 
+  float: left;
    color: #666;
-   background-color: white;
-   background: url("images/calendar_icon.png") no-repeat scroll top left;
    font-size: 15px;
    font-style: normal;
-   line-height: 22px;
-   padding-left: 31px;
+   
+   padding-left: 10px;
    padding-bottom: 9px;
-   margin-bottom: 17px;
-   border-bottom: 1px #CCC solid;
-   width: 244px;
-   margin-left: -6px;
+   margin-bottom: 3px;
+   padding-top: 10px;
+   
+  
 }
 
 
 h4.announcement-title {
    color: white;
    font-size: 24px;
+  line-height: 24px;
    padding-left: 19px;
    padding-top: 18px;
    font-family: Myriad-Pro;
@@ -479,7 +523,7 @@ div.statements {
 }
 
 div.statements img.attachment-full {
-    padding-right: 300px;
+    padding-right: 250px;
 }
 
 div.statements .pagination li.current a {
@@ -502,7 +546,7 @@ div.statements .pagination li {
   background-image: url("images/pagination.png");
    background-position: 0 0;
    display: block;
-  float: left;
+   float: left;
    height: 0;
    overflow: hidden;
    padding-top: 12px;
@@ -549,7 +593,7 @@ div.slides_container h3.statement-title {
 
 div.slides_container p {
    margin-top: -397px;
-   margin-left: 685px;
+   margin-left: 675px;
    width: 263px;
    color: #076776;
    font-family: helvetica;
@@ -557,10 +601,17 @@ div.slides_container p {
    line-height: 17px;
 }
 
-#announcements div.slides_container p {
+
+#announcements div.slides_container  {
+border-top: 1px #666 solid;
+margin-top:15px;
+    
+}#announcements div.slides_container p {
+
+
     margin-left: -8px;
     width: 184px;
-    margin-top: 23px;
+    margin-top: 10px;
     color: white;
     font-size: 14px;
 }
@@ -577,6 +628,11 @@ div.slides_container p {
     border-top: 1px solid #076776;
 }
 
+#footer a {
+    color:#076776 ;
+}
+
+
 #subsidiary {
    padding: 0px 0 0 0;
    padding-bottom: 0px;
@@ -585,7 +641,7 @@ div.slides_container p {
 }
 
 #subsidiary h3.widgettitle {
-    color: white;
+    color:#076776 ;
     font-size: 13px;
     border: none;
     font-style: normal;
@@ -593,9 +649,16 @@ div.slides_container p {
 }
 
 #subsidiary a {
-    color: white;
+    color:#076776 ;
     font-size: 13px;
     text-decoration: none;
+    margin-left: -10px;
+}
+
+#subsidiary a:hover {
+    color:#076776 ;
+    font-size: 13px;
+    text-decoration: underline;
     margin-left: -10px;
 }
 
@@ -742,7 +805,6 @@ div.mergeRow {
    padding: 0;
    margin: 0;
    margin-top: -135px;
-   background-color: none;
    width: 248px;
    padding-left: 20px;
    padding-top: 10px;
@@ -769,7 +831,6 @@ div.mergeRow {
 padding: 1px;
 border-width: 0px;
 border-style: solid;
-border-color: none;
 color: #555;
 background-color: #E8F8FC;
 height: 49px;
@@ -877,5 +938,33 @@ div.msg {
 div.avatar img,
 img.avatar {
   border-radius: 100%;
+}
+
+/* Single Post */
+body.single-post h1.entry-title, body.page h1.entry-title {
+font-size: 30px;
+color:#666;
+	
+}
+
+body.single-post #access, body.page #access {
+   border-bottom: 1px solid #ccc;
+   padding-bottom: 35px;
+    
+}
+
+
+body.page .hentry, body.single-post .hentry {
+border-top-color:#fff;
+  border-top-style:solid;
+  border-top-width:1px;
+  clear:both;
+  height:277px;
+}
+
+body.page #main, body.single-post #main {
+	clear:both;
+ 	padding:33px 0 22px;
+ 	
 }
 

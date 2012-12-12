@@ -24,22 +24,38 @@
 /* Prepare theme for plugins */
 @import url('../thematic/library/styles/plugins.css');
 
+@font-face { 
+   font-family: Avenir;
+   src: url("AvenirLTStd-Medium.otf");    
+}
+@font-face { 
+   font-family: AvenirMedium;
+   src: url("AvenirLTStd-Medium.otf");    
+}
+
 
 body {
     
 	background-image:url("images/tex2res5.png");
-	
-  	overflow:scroll;
-	font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+    overflow:scroll;
+    -webkit-font-smoothing: antialiased;
+	font-family: Helvetica, Verdana, Arial, Sans-Serif;
+	line-height:19px;
 }
 
 
 
-@font-face { 
-   font-family: Avenir;
-   src: url("avenirltstdheavy.ttf");    
-}
+h1,h2,h3,h4,h5{
+color: #666;
+font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+text-rendering: optimizeLegibility;
+ }
+ 
 
+
+.avenir {
+font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+}
 
 input, textarea{
 	
@@ -96,6 +112,7 @@ div.hfeed {
 
 
 #content .entry-title a {
+font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    color: #666;
    text-decoration: none;
    padding-left: 302px;
@@ -133,9 +150,9 @@ div.entry-content {
 
 div.entry-content p {
    color: #666;
-   font-family: helvetica;
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
    font-size: 13px;
-   line-height: 17px;
+   line-height: 19px;
 }
 
 #content span.entry-date {
@@ -204,6 +221,8 @@ div.entry-meta {
 
 
 .sf-menu {
+font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+ font-size: 15px;
    float: left;
    margin-left: 51px;
 }
@@ -427,11 +446,24 @@ div.slides_container {
 }
 
 .main-aside ul ul {
-   margin-top: -17px;
+   margin-top: -27px;
+   padding-right: 80px;
    z-index: 10;
    position: relative;
-   margin-left: 121px;
+   margin-left: 111px;
 }
+
+aclass{
+	    float: right;
+	    height: 25px;
+	    padding-right: 80px;
+	    padding-top: 68px;
+	    position: relative;
+	    width: 100px;
+	    z-index: 2;
+}
+
+
 
 #announcements .pagination li a {
    background-image: url("images/pagination.png");
@@ -443,8 +475,8 @@ div.slides_container {
 }
 
 #announcements .pagination li.current a {
-   background-position: 0 -12px;
-   padding-left: 4px;
+   background-position: 0 -13px;
+   padding-left: 5px;
 }
 
         
@@ -465,6 +497,16 @@ div.slides_container {
      width: 12px;
 }
 
+#announcements ul.pagination li {
+    
+     margin-bottom: 4px;
+     margin-left: 4px;
+     margin-right: 4px;
+     
+     
+         
+ }
+
 #announcements #announcement_icon{
 	float: left;
 	background: url("images/calendar_icon.png") no-repeat scroll top left;
@@ -484,29 +526,31 @@ div.slides_container {
 
 
 #announcements span.widgettitle {
- 
-  float: left;
-   color: #666;
-   font-size: 15px;
+   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+   font-size: 17px;
    font-style: normal;
+  
+   float: left;
+   color: #999;
+   
    
    padding-left: 10px;
    padding-bottom: 9px;
    margin-bottom: 3px;
-   padding-top: 10px;
+   padding-top: 8px;
    
   
 }
 
 
 h4.announcement-title {
+  font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    color: white;
-   font-size: 24px;
-  line-height: 24px;
-   padding-left: 19px;
-   padding-top: 18px;
-   font-family: Myriad-Pro;
    font-size: 26px;
+   line-height: 26px;
+   padding-left: 19px;
+   padding-top: 10px;
+  
 }
 
 .aside p, .aside ul, .aside ol, .aside dd, .aside pre {
@@ -527,7 +571,11 @@ div.statements img.attachment-full {
 }
 
 div.statements .pagination li.current a {
-   background-position: 0 -12px;
+color: #666;
+font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+text-rendering: optimizeLegibility;
+
+   background-position: 0 -11px;
    padding-left: 4px;
 }
 
@@ -582,11 +630,12 @@ div.statements ul.pagination li {
    }
 
 div.slides_container h3.statement-title {
-    margin-top: 114px;
+    font-size: 26px;
+    line-height: 26px;
+    margin-top: 104px;
     float: right;
     margin-left: 672px;
     width: 265px;
-    font-size: 26px;
     padding-bottom: 17px;
     color: #076776;
 }
@@ -968,3 +1017,9 @@ body.page #main, body.single-post #main {
  	
 }
 
+body.single-post div.entry-content p,  body.page div.entry-content p  {
+   color: #666;
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 16px;
+   line-height: 22px;
+}

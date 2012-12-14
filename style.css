@@ -914,8 +914,10 @@ li.widgetcontainer.widget_twitter-profile-tracker {
 }
 
 li.widgetcontainer.widget_twitter-profile-tracker h3.widgettitle {
+   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    font-style: normal;
-   color: #666;
+   font-size: 17px;
+   color: #999;
    background: url("images/twitter_icon.png") no-repeat scroll top left;
    margin-left: 34px;
    padding-bottom: 5px;

@@ -933,15 +933,20 @@ li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid {
 }
 
 li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid {
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   line-height:16px;	
    list-style: none;
    color: #076776;
-   font-size: 11px;
+   font-size: 13px;
    font-style: italic;
 }
 
 li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a {
+    font-family: Helvetica, Verdana, Arial, Sans-Serif;
+    line-height:16px;	
     color: #076776;
     font-weight: bold;
+    font-size: 13px;
     text-decoration: none;
 }
 

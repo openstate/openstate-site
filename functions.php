@@ -284,9 +284,9 @@
       rewind_posts();
       
       $nextPost = get_next_post(true);
-      $nextThumb = get_the_post_thumbnail($nextPost->ID, array(150,150));
+      $nextThumb = get_the_post_thumbnail($nextPost->ID, array(100,100));
       $prevPost = get_previous_post(true);
-      $prevThumb = get_the_post_thumbnail($prevPost->ID, array(150,150));
+      $prevThumb = get_the_post_thumbnail($prevPost->ID, array(100,100));
       
       ?>
       

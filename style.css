@@ -1,3 +1,6 @@
+/* @override 
+	http://localhost/~dirk/wordpress/wp-content/themes/thematic-openstate/style.css?ver=3.4.2 */
+
 /*   
   Theme Name: Open State Foundation
   Theme URI: http://github.com/openstate/thematic-openstate
@@ -81,7 +84,8 @@ div.hfeed {
    padding-left: 60px;
 }
 
-#main {
+#main,
+#nav-below {
    width: 960px;
    margin: 0 auto;
    overflow: hidden;
@@ -1011,7 +1015,9 @@ border-top-color:#fff;
   height:277px;
 }
 
-body.page #main, body.single-post #main {
+body.page #main, 
+body.single-post #main,
+#nav-below {
 	clear:both;
  	padding:33px 0 22px;
  	
@@ -1023,3 +1029,83 @@ body.single-post div.entry-content p,  body.page div.entry-content p  {
    font-size: 16px;
    line-height: 22px;
 }
+
+/* @group navigation below */
+
+#nav-below .nav-previous,
+#nav-below .nav-next 
+{	
+  position: relative;
+  width: 311px;
+  height: 150px;
+}
+
+#nav-below .nav-previous 
+{	
+  margin-left: 30px;
+  border-top: 1px solid silver;
+}
+
+#nav-below .nav-next 
+{	
+  margin-right: 306px;
+  border-top: 1px solid silver;
+  border-left: 1px solid silver;
+}
+
+#nav-below p,
+#nav-below a 
+{
+  font-family: Helvetica, Verdana, Arial, Sans-Serif;
+  font-size: 16px;
+}
+
+#nav-below .nav-next p,
+#nav-below .nav-next img,
+#nav-below .nav-previous p,
+#nav-below .nav-previous img
+{
+ position: absolute; 
+ height: 70%;
+ top:  30%;
+}
+
+#nav-below .nav-next p 
+{	
+ left: 5px;
+}
+
+#nav-below .nav-next img 
+{	
+ right: 0px;
+ height: 100px;
+}
+
+#nav-below .nav-previous p 
+{	
+ left: 105px;
+}
+
+#nav-below .nav-previous img 
+{	
+  left: 0px;
+  height: 100px;
+}
+
+#nav-below .nav-previous a,
+#nav-below .nav-next a
+{
+  position: absolute;
+  top:  5px;
+  margin: 10px;
+}
+
+#nav-below .nav-previous a {	
+  left: 0px;
+}
+
+#nav-below .nav-next a {	
+  right: 0px;
+}
+
+/* @end */

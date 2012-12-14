@@ -754,7 +754,7 @@ li.widgetcontainer.widget_categories {
 }
 
 ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg li {
-    list-style-image: url("images/arrow_icon.png");
+    list-style-image: url("images/blue_arrow_right.png");
     position: relative;
     padding-left: 7px;
     margin-left: -22px;
@@ -779,7 +779,7 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
 }
 
 #nav_menu-4 li {
-   list-style-image: url("images/arrow_icon.png");
+   list-style-image: url("images/blue_arrow_right.png");
     position: relative;
     padding-left: 7px;
     margin-left: -22px;
@@ -794,7 +794,7 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
 }
 
 #nav_menu-3 li { 
-   list-style-image: url("images/arrow_icon.png");
+   list-style-image: url("images/blue_arrow_right.png");
     position: relative;
     padding-left: 7px;
     margin-left: -22px;
@@ -803,14 +803,14 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
 /* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
 
 ul.xoxo li.widgetcontainer.widget_categories li {
-    list-style-image: url("images/arrow_icon.png");
+    list-style-image: url("images/blue_arrow_right.png");
     position: relative;
     padding-left: 7px;
     margin-left: -22px;
 }
 
 ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg ul li {
-    background: url("images/arrow_icon.png");
+    background: url("images/blue_arrow_right.png");
     
 }
 

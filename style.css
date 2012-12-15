@@ -60,6 +60,10 @@ text-rendering: optimizeLegibility;
 font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
 }
 
+
+#helvetica{
+	font-family: Helvetica, Verdana, Arial, Sans-Serif;
+}
 input, textarea{
 	
 	color: #666;

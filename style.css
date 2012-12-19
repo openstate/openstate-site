@@ -235,18 +235,70 @@ font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    margin-left: 51px;
 }
 
-#menu-open-state-website li {
+#menu-open-state-website > li {
     border-left: 1px solid #CCC;
 }
 
 
-#menu-open-state-website .has-sub-menu {
+#menu-open-state-website li[id="menu-item-427"] {
      background-image: url("images/blue_arrow_topNav.png");
      background-repeat: no-repeat;
      padding-right: 14px;
-     margin-left: 0px;
+     background-position: right;
+     
+}
+
+#menu-open-state-website li[id="menu-item-435"]{
+     background-image: url("images/blue_arrow_topNav.png");
+     background-repeat: no-repeat;
+     padding-right: 14px;
+     padding-left: 14px;
      background-position: right;
 }
+
+#menu-open-state-website li[id="menu-item-585"]{
+     background-image: url("images/blue_arrow_topNav.png");
+     background-repeat: no-repeat;
+     padding-right: 14px;
+     background-position: right;
+}
+
+#menu-open-state-website li[id="menu-item-427"]:hover {
+     background-image: url("images/white_arrow_topNav.png");
+     background-repeat: no-repeat;
+     padding-right: 14px;
+     background-position: right;
+     
+}
+
+#menu-open-state-website li[id="menu-item-435"]:hover{
+     background-image: url("images/white_arrow_topNav.png");
+     background-repeat: no-repeat;
+     padding-right: 14px;
+     padding-left: 14px;
+     background-position: right;
+}
+
+#menu-open-state-website li[id="menu-item-585"]:hover{
+     background-image: url("images/white_arrow_topNav.png");
+     background-repeat: no-repeat;
+     padding-right: 14px;
+     background-position: right;
+}
+
+
+#menu-open-state-website > li:hover {
+
+background-color: #CCCCCC;
+    
+ }
+ 
+ #menu-open-state-website li:empty{
+ 
+      background-color: #CCCCCC;
+     
+  
+  }
 
 .sf-menu li  {
    background: white;
@@ -288,7 +340,7 @@ background-color:white;
 }
 
 .sf-menu a:hover {
-color: #076776;
+    color: #076776;
     background-color: #CCC;
     border-bottom: none;
     color: white;
@@ -352,7 +404,7 @@ border-color: white;
 }
 
 #blog-title a:hover {
-color: transparent;
+   color: transparent;
 }
 
 

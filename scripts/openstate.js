@@ -1,5 +1,7 @@
 jQuery('#announcements').slides();
 jQuery('.statements').slides();
+
+//the top menu
 jQuery(".menu > ul > li > ul").parent().addClass("has-sub-menu");
 
 // adds name fields to MailChimp widget in sidebar

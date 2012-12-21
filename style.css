@@ -174,7 +174,7 @@ img.attachment-260x260.wp-post-image {
    float: left;
    margin-top: -28px;
    margin-right: 13px;
-   margin-bottom: -68px;
+   margin-bottom: -60px;
 }
 
 .entry-content .wp-post-image {
@@ -1167,6 +1167,10 @@ body.single-post div.entry-content p,  body.page div.entry-content p  {
 
 #nav-below .nav-next a {	
   right: 0px;
+}
+
+.category #nav-below {
+  display: none;
 }
 
 /* @end */

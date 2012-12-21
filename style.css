@@ -1068,12 +1068,13 @@ body.single-post #access, body.page #access {
 }
 
 
-body.page .hentry, body.single-post .hentry {
+body.page .hentry, 
+body.single-post .hentry {
 border-top-color:#fff;
   border-top-style:solid;
   border-top-width:1px;
   clear:both;
-  height:277px;
+  height:auto;
 }
 
 body.page #main, 

@@ -1,6 +1,6 @@
 var noThumbPosts;
 
-noThumbPosts = jQuery(".home .post").filter(function(post) {
+noThumbPosts = jQuery(".home .post, .category .post").filter(function(post) {
   return jQuery('.entry-thumb', this).length === 0
 });
 

@@ -284,7 +284,15 @@ font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
      background-position: right;
 }
 
-
+#menu-open-state-website  li.current-menu-item {
+  color: #83b3bb;   
+  background-color: #CCC;
+  background-image: url("images/white_arrow_topNav.png");
+  background-repeat: no-repeat;
+  padding-right: 14px;
+  background-position: right;
+  
+  }
 #menu-open-state-website > li:hover {
 
 background-color: #CCCCCC;

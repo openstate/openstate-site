@@ -27,6 +27,8 @@
 /* Prepare theme for plugins */
 @import url('../thematic/library/styles/plugins.css');
 
+/* Embed Fonts */
+
 @font-face { 
    font-family: Avenir;
    src: url("AvenirLTStd-Medium.otf");    
@@ -35,6 +37,16 @@
    font-family: AvenirMedium;
    src: url("AvenirLTStd-Medium.otf");    
 }
+
+.avenir {
+font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+
+#helvetica{
+	font-family: Helvetica, Verdana, Arial, Sans-Serif;
+}
+
+
 
 
 body {
@@ -54,16 +66,24 @@ font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
 text-rendering: optimizeLegibility;
  }
  
-
-
-.avenir {
-font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+a:link {
+	color: #076776;
+	text-decoration: none;	
+	font-weight:bold;
 }
 
-
-#helvetica{
-	font-family: Helvetica, Verdana, Arial, Sans-Serif;
+a:hover {
+	color: #076776;
+	text-decoration: underline;	
+	font-weight:bold;
 }
+
+a:visited {
+	color: #076776;
+	text-decoration: none;	
+	font-weight:bold;	
+}
+
 input, textarea{
 	
 	color: #666;

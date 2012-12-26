@@ -739,7 +739,6 @@ div.slides_container p {
 
 
 #announcements div.slides_container  {
-border-top: 1px #666 solid;
 margin-top:15px;
     
 }#announcements div.slides_container p {
@@ -1024,14 +1023,34 @@ li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid {
    font-style: italic;
 }
 
-li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a {
-    font-family: Helvetica, Verdana, Arial, Sans-Serif;
-    line-height:16px;	
-    color: #076776;
-    font-weight: bold;
-    font-size: 13px;
-    text-decoration: none;
+li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a:link {
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 13px;
+   line-height:16px;
+   color: #076776;
+   font-weight: bold;
+   text-decoration: none;
 }
+
+li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a:hover {
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 13px;
+   line-height:16px;
+   color: #076776;
+   font-weight: bold;
+   text-decoration: underline;
+}
+
+li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a:visited {
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 13px;
+   line-height:16px;
+   color: #076776;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+
 
 
 li.widgetcontainer.widget_twitter-profile-tracker ol.tweets {

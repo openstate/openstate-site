@@ -954,7 +954,8 @@ margin-bottom: 0px;
   border-top: 1px solid #076776;
 }
 
-.mc_error_msg {
+.mc_error_msg,
+.mc_success_msg {
    color: #666;
    position: absolute;
    margin-top: 200px;

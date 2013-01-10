@@ -156,7 +156,7 @@ font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
 #content .entry-title a:hover {
    color: #666;
    text-decoration: underline;
-   padding-left: 302px;
+   padding-left: 290px;
    padding-top: 0px;
    position: relative;
    top: 40px;
@@ -250,14 +250,14 @@ div.entry-meta {
 
 
 .sf-menu {
-font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
- font-size: 15px;
-   float: left;
-   margin-left: 51px;
+	font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+ 	font-size: 15px;
+    float: left;
+    margin-left: 51px;
 }
 
 #menu-open-state-website > li {
-    border-left: 1px solid #CCC;
+     border-left: 1px solid #CCC;
 }
 
 
@@ -313,40 +313,35 @@ font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
   padding-right: 14px;
   background-position: right;
   
-  }
+}
   
   
-  #menu-open-state-website  li[id="menu-item-435"].current-menu-item {
+#menu-open-state-website  li[id="menu-item-435"].current-menu-item {
   color: #83b3bb;   
   background-color: #CCC;
   background-image: url("images/white_arrow_topNav.png");
   background-repeat: no-repeat;
   padding-right: 14px;
   background-position: right;
-  }
+}
   
   
-    #menu-open-state-website  li[id="menu-item-585"].current-menu-item {
+#menu-open-state-website  li[id="menu-item-585"].current-menu-item {
   color: #83b3bb;   
   background-color: #CCC;
   background-image: url("images/white_arrow_topNav.png");
   background-repeat: no-repeat;
   padding-right: 14px;
   background-position: right;
-  }
+}
 
 #menu-open-state-website > li:hover {
-
-background-color: #CCCCCC;
-    
- }
+  background-color: #CCCCCC;   
+}
  
  #menu-open-state-website li:empty{
- 
-      background-color: #CCCCCC;
-     
-  
-  }
+   background-color: #CCCCCC;
+}
 
 .sf-menu li  {
    background: white;
@@ -358,14 +353,14 @@ background-color: #CCCCCC;
 }
 
 .sf-menu ul li + li + li {
-border-right: 1px solid #CCC;
+   border-right: 1px solid #CCC;
 }
 
 .sf-menu ul li  {
   border-top: 1px solid #CCC;
   border-right: 1px solid #CCC;
   border-left: 1px solid #CCC;
-  }
+}
 
 .sf-menu ul {
    border-left: 1px solid #CCC;
@@ -373,8 +368,8 @@ border-right: 1px solid #CCC;
 
 
 .sf-menu a, .sf-menu a:visited {
-color: #076776;
-background-color:white;
+   color: #076776;
+   background-color:white;
 }
 
 #menu-open-state-website .sub-menu a:hover {
@@ -410,32 +405,31 @@ background-color:white;
     
 
 .sf-menu ul a:hover {
-background: white;
-border-bottom: none;
+	background: white;
+	border-bottom: none;
 }
 
 .sf-menu ul a {
-background: white;
-border-bottom: none;
+	background: white;
+	border-bottom: none;
 }
 
 .sf-menu ul a:active {
-background: white;
-border-bottom: none;
+	background: white;
+	border-bottom: none;
 }
 
 .sf-menu a {
-color: #076776;
-border-width: 0px;
-border-style: solid;
-border-color: white;
+	color: #076776;
+	border-width: 0px;
+	border-style: solid;
+	border-color: white;
 }
 
 #menu-open-state-website .sub-menu a {
-
-border-width: 0px;
-border-style: solid;
-border-color: white;
+	border-width: 0px;
+	border-style: solid;
+	border-color: white;
 }
 
 #blog-title a {

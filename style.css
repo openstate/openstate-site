@@ -68,21 +68,22 @@ text-rendering: optimizeLegibility;
  
 a:link {
 	color: #076776;
-	text-decoration: none;	
-	font-weight:bold;
+	
 }
 
 a:hover {
 	color: #076776;
 	text-decoration: underline;	
-	font-weight:bold;
+	
 }
 
 a:visited {
 	color: #076776;
 	text-decoration: none;	
-	font-weight:bold;	
+	
 }
+
+
 
 input, textarea{
 	
@@ -143,7 +144,7 @@ div.hfeed {
 font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    color: #666;
    text-decoration: none;
-   padding-left: 302px;
+   padding-left: 290px;
    padding-top: 0px;
    position: relative;
    top: 40px;
@@ -185,7 +186,7 @@ div.entry-content p {
 
 #content span.entry-date {
     position: relative;
-    margin-left: 297px;
+    margin-left: 290px;
     top: -70px;
 }
 
@@ -667,6 +668,10 @@ h4.announcement-title {
    padding-right: 0px;
 }
 
+.aside a:active, .aside a:hover {
+	color: #076776;
+}
+
 div.statements {
    height: 310px;
    width: 960px;
@@ -759,17 +764,32 @@ div.slides_container p {
 
 
 #announcements div.slides_container  {
-margin-top:15px;
-    
-}#announcements div.slides_container p {
+margin-top:15px;  
+}
 
-
+#announcements div.slides_container p {
     margin-left: -8px;
-    width: 184px;
+    width: 244px;
     margin-top: 10px;
     color: white;
     font-size: 14px;
 }
+
+#announcements div.slides_container slides_control p a:hover{
+	color: #076776;
+	text-decoration: underline;	
+	font-weight:bold;	
+	
+}
+
+
+#announcements div.slides_container slides_control p a:visited{
+	color: #076776;
+	text-decoration: none;	
+	font-weight:bold;	
+	
+}
+
 
 
 #footer {

@@ -1252,7 +1252,8 @@ body.single-post div.entry-content p,  body.page div.entry-content p  {
   right: 0px;
 }
 
-.category #nav-below {
+.category #nav-below,
+.home #nav-below {
   display: none;
 }
 

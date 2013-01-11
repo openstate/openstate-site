@@ -27,6 +27,8 @@
 /* Prepare theme for plugins */
 @import url('../thematic/library/styles/plugins.css');
 
+/* Embed Fonts */
+
 @font-face { 
    font-family: Avenir;
    src: url("AvenirLTStd-Medium.otf");    
@@ -35,6 +37,16 @@
    font-family: AvenirMedium;
    src: url("AvenirLTStd-Medium.otf");    
 }
+
+.avenir {
+font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+
+#helvetica{
+	font-family: Helvetica, Verdana, Arial, Sans-Serif;
+}
+
+
 
 
 body {
@@ -54,16 +66,25 @@ font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
 text-rendering: optimizeLegibility;
  }
  
+a:link {
+	color: #076776;
+	
+}
 
+a:hover {
+	color: #076776;
+	text-decoration: underline;	
+	
+}
 
-.avenir {
-font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+a:visited {
+	color: #076776;
+	text-decoration: none;	
+	
 }
 
 
-#helvetica{
-	font-family: Helvetica, Verdana, Arial, Sans-Serif;
-}
+
 input, textarea{
 	
 	color: #666;
@@ -122,7 +143,7 @@ div.hfeed {
 font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    color: #666;
    text-decoration: none;
-   padding-left: 302px;
+   padding-left: 290px;
    padding-top: 0px;
    position: relative;
    top: 40px;
@@ -134,7 +155,7 @@ font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
 #content .entry-title a:hover {
    color: #666;
    text-decoration: underline;
-   padding-left: 302px;
+   padding-left: 290px;
    padding-top: 0px;
    position: relative;
    top: 40px;
@@ -164,7 +185,7 @@ div.entry-content p {
 
 #content span.entry-date {
     position: relative;
-    margin-left: 297px;
+    margin-left: 290px;
     top: -70px;
 }
 
@@ -228,14 +249,14 @@ div.entry-meta {
 
 
 .sf-menu {
-font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
- font-size: 15px;
-   float: left;
-   margin-left: 51px;
+	font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+ 	font-size: 15px;
+    float: left;
+    margin-left: 51px;
 }
 
 #menu-open-state-website > li {
-    border-left: 1px solid #CCC;
+     border-left: 1px solid #CCC;
 }
 
 
@@ -283,19 +304,43 @@ font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
      background-position: right;
 }
 
+#menu-open-state-website  li[id="menu-item-427"].current-menu-item {
+  color: #83b3bb;   
+  background-color: #CCC;
+  background-image: url("images/white_arrow_topNav.png");
+  background-repeat: no-repeat;
+  padding-right: 14px;
+  background-position: right;
+  
+}
+  
+  
+#menu-open-state-website  li[id="menu-item-435"].current-menu-item {
+  color: #83b3bb;   
+  background-color: #CCC;
+  background-image: url("images/white_arrow_topNav.png");
+  background-repeat: no-repeat;
+  padding-right: 14px;
+  background-position: right;
+}
+  
+  
+#menu-open-state-website  li[id="menu-item-585"].current-menu-item {
+  color: #83b3bb;   
+  background-color: #CCC;
+  background-image: url("images/white_arrow_topNav.png");
+  background-repeat: no-repeat;
+  padding-right: 14px;
+  background-position: right;
+}
 
 #menu-open-state-website > li:hover {
-
-background-color: #CCCCCC;
-    
- }
+  background-color: #CCCCCC;   
+}
  
  #menu-open-state-website li:empty{
- 
-      background-color: #CCCCCC;
-     
-  
-  }
+   background-color: #CCCCCC;
+}
 
 .sf-menu li  {
    background: white;
@@ -307,14 +352,14 @@ background-color: #CCCCCC;
 }
 
 .sf-menu ul li + li + li {
-border-right: 1px solid #CCC;
+   border-right: 1px solid #CCC;
 }
 
 .sf-menu ul li  {
   border-top: 1px solid #CCC;
   border-right: 1px solid #CCC;
   border-left: 1px solid #CCC;
-  }
+}
 
 .sf-menu ul {
    border-left: 1px solid #CCC;
@@ -322,8 +367,8 @@ border-right: 1px solid #CCC;
 
 
 .sf-menu a, .sf-menu a:visited {
-color: #076776;
-background-color:white;
+   color: #076776;
+   background-color:white;
 }
 
 #menu-open-state-website .sub-menu a:hover {
@@ -359,32 +404,31 @@ background-color:white;
     
 
 .sf-menu ul a:hover {
-background: white;
-border-bottom: none;
+	background: white;
+	border-bottom: none;
 }
 
 .sf-menu ul a {
-background: white;
-border-bottom: none;
+	background: white;
+	border-bottom: none;
 }
 
 .sf-menu ul a:active {
-background: white;
-border-bottom: none;
+	background: white;
+	border-bottom: none;
 }
 
 .sf-menu a {
-color: #076776;
-border-width: 0px;
-border-style: solid;
-border-color: white;
+	color: #076776;
+	border-width: 0px;
+	border-style: solid;
+	border-color: white;
 }
 
 #menu-open-state-website .sub-menu a {
-
-border-width: 0px;
-border-style: solid;
-border-color: white;
+	border-width: 0px;
+	border-style: solid;
+	border-color: white;
 }
 
 #blog-title a {
@@ -617,6 +661,10 @@ h4.announcement-title {
    padding-right: 0px;
 }
 
+.aside a:active, .aside a:hover {
+	color: #076776;
+}
+
 div.statements {
    height: 310px;
    width: 960px;
@@ -709,18 +757,32 @@ div.slides_container p {
 
 
 #announcements div.slides_container  {
-border-top: 1px #666 solid;
-margin-top:15px;
-    
-}#announcements div.slides_container p {
+margin-top:15px;  
+}
 
-
+#announcements div.slides_container p {
     margin-left: -8px;
-    width: 184px;
+    width: 244px;
     margin-top: 10px;
     color: white;
     font-size: 14px;
 }
+
+#announcements div.slides_container slides_control p a:hover{
+	color: #076776;
+	text-decoration: underline;	
+	font-weight:bold;	
+	
+}
+
+
+#announcements div.slides_container slides_control p a:visited{
+	color: #076776;
+	text-decoration: none;	
+	font-weight:bold;	
+	
+}
+
 
 
 #footer {
@@ -995,14 +1057,34 @@ li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid {
    font-style: italic;
 }
 
-li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a {
-    font-family: Helvetica, Verdana, Arial, Sans-Serif;
-    line-height:16px;	
-    color: #076776;
-    font-weight: bold;
-    font-size: 13px;
-    text-decoration: none;
+li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a:link {
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 13px;
+   line-height:16px;
+   color: #076776;
+   font-weight: bold;
+   text-decoration: none;
 }
+
+li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a:hover {
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 13px;
+   line-height:16px;
+   color: #076776;
+   font-weight: bold;
+   text-decoration: underline;
+}
+
+li.widgetcontainer.widget_twitter-profile-tracker li.HackdeOverheid a:visited {
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 13px;
+   line-height:16px;
+   color: #076776;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+
 
 
 li.widgetcontainer.widget_twitter-profile-tracker ol.tweets {

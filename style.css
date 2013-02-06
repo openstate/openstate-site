@@ -1279,3 +1279,11 @@ body.home #nav-above {
   display: block;
   margin-bottom: 15px;
 }
+
+.category .archive-meta p {
+  color: #666;
+  font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+  line-height: 22px; 
+}

@@ -346,4 +346,20 @@
     <?php 
   }
   
+  function openstate_page_title($content) {
+    if (is_category()) {
+      $content = '';
+			$content .= '<h1 class="page-title">';
+			$content .= ' <span>' . single_cat_title('', FALSE) .'</span>';
+			$content .= '</h1>' . "\n";
+			$content .= "\n\t\t\t\t" . '<div class="archive-meta">';
+			if ( !(''== category_description()) ) : $content .= apply_filters('archive_meta', category_description()); endif;
+			$content .= '</div>';
+    }
+    
+    return $content;
+    
+  }
+  add_filter('thematic_page_title', 'openstate_page_title');  
+  
 ?>

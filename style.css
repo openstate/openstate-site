@@ -254,8 +254,32 @@ div.entry-meta {
     margin-left: 51px;
 }
 
+.sf-menu a, .sf-menu a:visited {
+    color: #076776;
+}
+
 .sf-menu li {
     border-right: 1px solid #ccc;
+}
+
+.sf-menu ul {
+    border-top: 0px solid #CCC;
+    border-right: 1px solid #CCC;
+    border-left: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    /* the margin is a hack to make the menus look nice */
+    margin-left: -1px;
+}
+
+.sf-menu ul li ul {
+    /* the margin is a hack to make the menus look nice */
+    margin-top: -1px;
+}
+
+.sf-menu ul li  {
+  border-top: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  border-left: 1px solid #CCC;
 }
 
 .sf-menu li.current-menu-item, .sf-menu li:hover, .sf-menu li a:hover {
@@ -263,8 +287,18 @@ div.entry-meta {
     background-color: #ccc;  
 }
 
+.sf-menu li ul li:hover, li ul .sf-menu li a:hover {
+    color: #666;
+    background: white;
+}
+
 .sf-menu ul a {
     background: white;
+}
+
+.sub-menu {
+    background: white;
+    color: #83b3bb;
 }
 
 #menu-open-state-website li.has-sub-menu {

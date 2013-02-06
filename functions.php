@@ -65,10 +65,16 @@
             <?php 
               while ( $loop->have_posts() ) : $loop->the_post();
                 echo '<div>';
+                if (get_post_type() == 'post') {
+                   echo '<a class="announcement-link" href="' . get_permalink() . '">';
+                }
                 echo '<h4 class=\'announcement-title\'>';
                 the_title();
                 echo '</h4>';
                 the_excerpt();
+                if (get_post_type() == 'post') {
+                   echo '</a>';
+                }
                 echo '</div>';
               endwhile;
             ?>

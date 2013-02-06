@@ -247,189 +247,25 @@ div.entry-meta {
    z-index: 1;
 }
 
+/* BEGIN MENU */
 
 .sf-menu {
 	font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
- 	font-size: 15px;
-    float: left;
     margin-left: 51px;
 }
 
-#menu-open-state-website > li {
-     border-left: 1px solid #CCC;
+.sf-menu li {
+    border-right: 1px solid #ccc;
 }
 
-
-#menu-open-state-website li[id="menu-item-427"] {
+#menu-open-state-website li.has-sub-menu {
      background-image: url("images/blue_arrow_topNav.png");
+     background-position: right;
      background-repeat: no-repeat;
      padding-right: 14px;
-     background-position: right;
-     
 }
 
-#menu-open-state-website li[id="menu-item-435"]{
-     background-image: url("images/blue_arrow_topNav.png");
-     background-repeat: no-repeat;
-     padding-right: 14px;
-     background-position: right;
-}
-
-#menu-open-state-website li[id="menu-item-585"]{
-     background-image: url("images/blue_arrow_topNav.png");
-     background-repeat: no-repeat;
-     padding-right: 14px;
-     background-position: right;
-}
-
-#menu-open-state-website li[id="menu-item-427"]:hover {
-     background-image: url("images/white_arrow_topNav.png");
-     background-repeat: no-repeat;
-     padding-right: 14px;
-     background-position: right;
-     
-}
-
-#menu-open-state-website li[id="menu-item-435"]:hover{
-     background-image: url("images/white_arrow_topNav.png");
-     background-repeat: no-repeat;
-     padding-right: 14px;
-     background-position: right;
-}
-
-#menu-open-state-website li[id="menu-item-585"]:hover{
-     background-image: url("images/white_arrow_topNav.png");
-     background-repeat: no-repeat;
-     padding-right: 14px;
-     background-position: right;
-}
-
-#menu-open-state-website  li[id="menu-item-427"].current-menu-item {
-  color: #83b3bb;   
-  background-color: #CCC;
-  background-image: url("images/white_arrow_topNav.png");
-  background-repeat: no-repeat;
-  padding-right: 14px;
-  background-position: right;
-  
-}
-  
-  
-#menu-open-state-website  li[id="menu-item-435"].current-menu-item {
-  color: #83b3bb;   
-  background-color: #CCC;
-  background-image: url("images/white_arrow_topNav.png");
-  background-repeat: no-repeat;
-  padding-right: 14px;
-  background-position: right;
-}
-  
-  
-#menu-open-state-website  li[id="menu-item-585"].current-menu-item {
-  color: #83b3bb;   
-  background-color: #CCC;
-  background-image: url("images/white_arrow_topNav.png");
-  background-repeat: no-repeat;
-  padding-right: 14px;
-  background-position: right;
-}
-
-#menu-open-state-website > li:hover {
-  background-color: #CCCCCC;   
-}
- 
- #menu-open-state-website li:empty{
-   background-color: #CCCCCC;
-}
-
-.sf-menu li  {
-   background: white;
-   border-right: 1px solid #CCC;
-}
-
-.sf-menu ul li + li {
-   border-right: 1px solid #CCC;
-}
-
-.sf-menu ul li + li + li {
-   border-right: 1px solid #CCC;
-}
-
-.sf-menu ul li  {
-  border-top: 1px solid #CCC;
-  border-right: 1px solid #CCC;
-  border-left: 1px solid #CCC;
-}
-
-.sf-menu ul {
-   border-left: 1px solid #CCC;
-}
-
-
-.sf-menu a, .sf-menu a:visited {
-   color: #076776;
-   background-color:white;
-}
-
-#menu-open-state-website .sub-menu a:hover {
-    color: #666;
-    background-color: white;
-}
-
-#menu-open-state-website .sub-menu {
-   background: white;
-   color: #83b3bb;
-}
-
-.sf-menu a:hover {
-    color: #076776;
-    background-color: #CCC;
-    border-bottom: none;
-    color: white;
-        
-}
-
-
-.sf-menu .current-menu-item a {
-   color: #83b3bb;   
-   border: none;
-   color: white;
-   background-color: #CCC;
-}
-
-.sf-menu .current-menu-item .sub-menu a {
-    background: white;
-    color: #83b3bb;
-}
-    
-
-.sf-menu ul a:hover {
-	background: white;
-	border-bottom: none;
-}
-
-.sf-menu ul a {
-	background: white;
-	border-bottom: none;
-}
-
-.sf-menu ul a:active {
-	background: white;
-	border-bottom: none;
-}
-
-.sf-menu a {
-	color: #076776;
-	border-width: 0px;
-	border-style: solid;
-	border-color: white;
-}
-
-#menu-open-state-website .sub-menu a {
-	border-width: 0px;
-	border-style: solid;
-	border-color: white;
-}
+/* END MENU */
 
 #blog-title a {
    background: url("images/logo_openstate.png") no-repeat scroll;

@@ -755,6 +755,10 @@ div.slides_container p {
    line-height: 17px;
 }
 
+div.slides_container a {
+  text-decoration: none;
+}
+
 
 #announcements div.slides_container  {
 margin-top:15px;  

@@ -97,6 +97,9 @@
           <?php
             while ( $loop->have_posts() ) : $loop->the_post();
               echo '<div>';
+              if (get_post_type() == 'post') {
+                 echo '<a class="statement-link" href="' . get_permalink() . '">';
+              }
               kd_mfi_the_featured_image( 'statement-head', 'post', 'full' ) || kd_mfi_the_featured_image( 'statement-head', 'announcement', 'full' );
               echo '<div>';
               echo '<h3 class=\'statement-title\'>';
@@ -104,6 +107,9 @@
               echo '</h3>';
               the_excerpt();
               echo '</div>';
+              if (get_post_type() == 'post') {
+                echo '</a>';
+              }
               echo '</div>';
             endwhile;
           ?>

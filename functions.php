@@ -323,4 +323,14 @@
 	}
   add_action('thematic_abovefooter','thematic_nav_below');
   
+  function childtheme_override_nav_above() { 
+    ?>
+    <div id="nav-above">
+      <h2>Latest Entries</h2>
+    </div>
+    
+    
+    <?php 
+  }
+  
 ?>

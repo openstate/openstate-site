@@ -643,6 +643,18 @@ aclass{
   
 }
 
+#announcements h3.widgettitle {
+  color: #666;
+  margin-bottom: 0px;
+  font-style: normal;
+  background: url("images/calendar_icon.png") no-repeat scroll top left;
+  margin-right: 10px;
+  padding-left: 32px;
+  height: 29px;
+  padding-top: 6px;
+  border-bottom: 1px solid #CCC;
+  width: 237px;
+}
 
 h4.announcement-title {
   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;

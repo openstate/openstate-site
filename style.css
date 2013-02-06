@@ -22,7 +22,7 @@
 
 /* Apply default theme styles and colors */
 /* It's better to actually copy over default.css into this file (or link to a copy in your child theme) if you're going to do anything outrageous */
-@import url('../thematic/library/styles/default.css');
+@import url('default.css');
 
 /* Prepare theme for plugins */
 @import url('../thematic/library/styles/plugins.css');
@@ -256,6 +256,15 @@ div.entry-meta {
 
 .sf-menu li {
     border-right: 1px solid #ccc;
+}
+
+.sf-menu li.current-menu-item, .sf-menu li:hover, .sf-menu li a:hover {
+    color: #83b3bb;   
+    background-color: #ccc;  
+}
+
+.sf-menu ul a {
+    background: white;
 }
 
 #menu-open-state-website li.has-sub-menu {

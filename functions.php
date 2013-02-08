@@ -60,15 +60,22 @@
     <div class="aside main-aside">
   		<ul class="xoxo">
   			<li id="announcements" class="widgetcontainer widget_announcement">
-          <span id="announcement_icon"></span><span class="widgettitle">Announcements</span></br>
+          <!--span id="announcement_icon"></span><span class="widgettitle">Announcements</span></br-->
+          <h3 class="widgettitle">Announcements</h3>
           <div class="slides_container">
             <?php 
               while ( $loop->have_posts() ) : $loop->the_post();
                 echo '<div>';
+                if (get_post_type() == 'post') {
+                   echo '<a class="announcement-link" href="' . get_permalink() . '">';
+                }
                 echo '<h4 class=\'announcement-title\'>';
                 the_title();
                 echo '</h4>';
                 the_excerpt();
+                if (get_post_type() == 'post') {
+                   echo '</a>';
+                }
                 echo '</div>';
               endwhile;
             ?>
@@ -97,6 +104,9 @@
           <?php
             while ( $loop->have_posts() ) : $loop->the_post();
               echo '<div>';
+              if (get_post_type() == 'post') {
+                 echo '<a class="statement-link" href="' . get_permalink() . '">';
+              }
               kd_mfi_the_featured_image( 'statement-head', 'post', 'full' ) || kd_mfi_the_featured_image( 'statement-head', 'announcement', 'full' );
               echo '<div>';
               echo '<h3 class=\'statement-title\'>';
@@ -104,6 +114,9 @@
               echo '</h3>';
               the_excerpt();
               echo '</div>';
+              if (get_post_type() == 'post') {
+                echo '</a>';
+              }
               echo '</div>';
             endwhile;
           ?>
@@ -324,5 +337,31 @@
 		}
 	}
   add_action('thematic_abovefooter','thematic_nav_below');
+  
+  function childtheme_override_nav_above() { 
+    ?>
+    <div id="nav-above">
+      <h2>Latest Entries</h2>
+    </div>
+    
+    
+    <?php 
+  }
+  
+  function openstate_page_title($content) {
+    if (is_category()) {
+      $content = '';
+			$content .= '<h1 class="page-title">';
+			$content .= ' <span>' . single_cat_title('', FALSE) .'</span>';
+			$content .= '</h1>' . "\n";
+			$content .= "\n\t\t\t\t" . '<div class="archive-meta">';
+			if ( !(''== category_description()) ) : $content .= apply_filters('archive_meta', category_description()); endif;
+			$content .= '</div>';
+    }
+    
+    return $content;
+    
+  }
+  add_filter('thematic_page_title', 'openstate_page_title');  
   
 ?>

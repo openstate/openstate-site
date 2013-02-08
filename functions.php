@@ -243,6 +243,7 @@
   new kdMultipleFeaturedImages( $statementhead_post );
   new kdMultipleFeaturedImages( $statementhead_announcement );
   
+
   // Add featured image to single posts
   function openstate_thematic_postheader_posttitle($posttitle){
     
@@ -254,6 +255,7 @@
     return apply_filters('openstate_thematic_postheader_posttitle', $posttitle);
   }
   add_filter('thematic_postheader_posttitle','openstate_thematic_postheader_posttitle');
+  
   
   function openstate_singlecomment_text() {
       $content = sprintf( _x( '%1$sOne%2$s Thought' , 'One Thought, where %$1s and %$2s are <span> tags', 'thematic' ), '<span>' , '</span>' );

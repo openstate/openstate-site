@@ -116,6 +116,8 @@ div.hfeed {
    overflow: hidden;
    position: relative;
    background-color: white;
+   padding-top: 53px;
+   padding-bottom: 0px;
 }
 
 #content {
@@ -123,6 +125,7 @@ div.hfeed {
    width: 622px;
    overflow: hidden;
    padding-left: 8px;
+   padding-top: 8px;
 }
 
 #container {
@@ -189,7 +192,30 @@ div.entry-content p {
     top: -70px;
 }
 
+div.archive-meta p { 
+   color: #666;
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 13px;
+   line-height: 19px;
+}
 
+h1.page-title {
+   font-size: 25px;
+   color: #666;
+   position: absolute;
+   top: 22px;
+   padding-top: 5px;
+}
+
+body.single.single-post #content span.entry-date {
+    position: relative;
+    margin-left: 0px;
+    top: 0px;
+}
+
+body.single.single-post div.entry-meta {
+   padding-top: 10px;
+} 
 
 img.attachment-260x260.wp-post-image {
    float: left;
@@ -410,9 +436,22 @@ div.slides_container {
    margin-bottom: 24px;
 }
 
+div.aside.main-aside {
+   top:-29px;
+}
+
+body.single-post div.aside.main-aside {
+   top: 6px;
+}
+
+
+body.page div.aside.main-aside {
+   top: 6px;
+}
+
 #announcements .slides_container {
 
-  background-color: #90DCF0;
+  background-color: #4cc6e6;
   overflow: hidden;
   position: relative;
   display: block;
@@ -443,6 +482,11 @@ aclass{
 	    z-index: 2;
 }
 
+.aside {
+font-size: 13px;
+line-height: 18px;
+margin-bottom: 35px;
+}
 
 
 #announcements .pagination li a {
@@ -506,20 +550,15 @@ aclass{
 
 
 #announcements span.widgettitle {
-   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
-   font-size: 17px;
-   font-style: normal;
-  
-   float: left;
-   color: #999;
-   
-   
-   padding-left: 10px;
-   padding-bottom: 9px;
-   margin-bottom: 3px;
-   padding-top: 8px;
-   
-  
+  font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-size: 15px;
+  font-style: normal;
+  float: left;
+  color: #666;
+  padding-left: 10px;
+  padding-bottom: 9px;
+  margin-bottom: 3px;
+  padding-top: 8px;
 }
 
 #announcements h3.widgettitle {
@@ -681,7 +720,7 @@ margin-top:15px;
 
 
 #footer {
-    background-color: #90dcf0;
+    background-color: #4cc6e6;
     height: 100%;
     margin: 0 auto;
     width: 960px;
@@ -689,6 +728,7 @@ margin-top:15px;
     top: 0px;
     margin-top: 0px;
     border-top: 1px solid #076776;
+    padding-bottom: 15px;
 }
 
 #footer a {
@@ -704,22 +744,24 @@ margin-top:15px;
 }
 
 #subsidiary h3.widgettitle {
-    color:#076776 ;
-    font-size: 13px;
-    border: none;
-    font-style: normal;
-    font-weight: bold;
+color: white;
+font-size: 13px;
+border: none;
+font-style: normal;
+font-weight: bold;
+font-family: Helvetica, Verdana, Arial, Sans-Serif;
 }
 
 #subsidiary a {
-    color:#076776 ;
+    color:white;
     font-size: 13px;
     text-decoration: none;
     margin-left: -10px;
+    font-family: Helvetica, Verdana, Arial, Sans-Serif;
 }
 
 #subsidiary a:hover {
-    color:#076776 ;
+    color: white;
     font-size: 13px;
     text-decoration: underline;
     margin-left: -10px;
@@ -764,7 +806,7 @@ li.widgetcontainer.widget_categories {
 }
 
 ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg li {
-    list-style-image: url("images/blue_arrow_right.png");
+    list-style-image: url("images/white_arrow_footer.png");
     position: relative;
     padding-left: 7px;
     margin-left: -22px;
@@ -789,7 +831,7 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
 }
 
 #nav_menu-4 li {
-   list-style-image: url("images/blue_arrow_right.png");
+   list-style-image: url("images/white_arrow_footer.png");
     position: relative;
     padding-left: 7px;
     margin-left: -22px;
@@ -803,8 +845,10 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
    margin-left: -145px;
 }
 
+
+
 #nav_menu-3 li { 
-   list-style-image: url("images/blue_arrow_right.png");
+    list-style-image: url("images/white_arrow_footer.png");
     position: relative;
     padding-left: 7px;
     margin-left: -22px;
@@ -813,14 +857,14 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
 /* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
 
 ul.xoxo li.widgetcontainer.widget_categories li {
-    list-style-image: url("images/blue_arrow_right.png");
+    list-style-image: url("images/white_arrow_footer.png");
     position: relative;
     padding-left: 7px;
     margin-left: -22px;
 }
 
 ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg ul li {
-    background: url("images/blue_arrow_right.png");
+    background: url("images/white_arrow_footer.png");
     
 }
 
@@ -909,6 +953,10 @@ margin-bottom: 0px;
   margin-bottom: 22px;
   border: none;
   border-top: 1px solid #076776;
+  font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 13px;
+   line-height: 19px;
+   color: #666;
 }
 
 .mc_error_msg,
@@ -916,6 +964,8 @@ margin-bottom: 0px;
    color: #666;
    position: absolute;
    margin-top: 200px;
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-weight: normal;
 }
 
 /* Twitter widget */
@@ -927,8 +977,8 @@ li.widgetcontainer.widget_twitter-profile-tracker {
 li.widgetcontainer.widget_twitter-profile-tracker h3.widgettitle {
    font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    font-style: normal;
-   font-size: 17px;
-   color: #999;
+   font-size: 15px;
+   color: #666;
    background: url("images/twitter_icon.png") no-repeat scroll top left;
    margin-left: 34px;
    padding-bottom: 5px;
@@ -1033,10 +1083,14 @@ img.avatar {
 
 /* Single Post */
 body.single-post h1.entry-title, body.page h1.entry-title {
-font-size: 30px;
-color:#666;
-	
+  font-size: 25px;
+  color: #666;
+  position: absolute;
+  top: 22px;
+  padding-top: 5px;
 }
+	
+
 
 body.single-post #access, body.page #access {
    border-bottom: 1px solid #ccc;
@@ -1056,20 +1110,98 @@ border-top-color:#fff;
 
 body.page #main, 
 body.single-post #main,
-#nav-below {
+ {
 	clear:both;
  	padding:33px 0 22px;
- 	
 }
 
 body.single-post div.entry-content p,  body.page div.entry-content p  {
    color: #666;
    font-family: Helvetica, Verdana, Arial, Sans-Serif;
-   font-size: 16px;
-   line-height: 22px;
+   font-size: 13px;
+   line-height: 19px;
 }
 
 /* @group navigation below */
+
+body.page #nav-below.navigation {
+   display: none;
+}
+
+#nav-below.navigation {
+   clear:both;
+   padding:33px 0 22px;
+   padding-bottom: 5px;
+   padding-top: 0px;
+}
+
+.navigation .meta-nav {
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 14px;
+   text-transform: uppercase;
+   font-size: 12px;
+   color: #666;
+}
+
+.navigation .meta-nav:hover {
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 14px;
+   text-transform: uppercase;
+   font-size: 12px;
+   font-weight: bold;
+   color: #666;
+   text-decoration: none;
+}
+
+
+
+body.home.blog #nav-below {
+    height:40px;
+}
+
+
+body.home.blog #nav-below .nav-previous a {
+   left: 0px;
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 14px;
+   text-transform: uppercase;
+   font-size: 12px;
+   color: #666;
+   font-style: normal;
+}
+
+body.home.blog #nav-below .nav-previous a:hover {
+   left: 0px;
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 14px;
+   text-transform: uppercase;
+   font-weight: bold;
+   font-size: 12px;
+   color: #666;
+   font-style: normal;
+}
+
+body.home.blog #nav-below .nav-next a {
+   right: 0px;
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 14px;
+   text-transform: uppercase;
+   font-size: 12px;
+   color: #666;
+   font-style: normal;
+}
+
+body.home.blog #nav-below .nav-next a:hover {
+   right: 0px;
+   font-family: Helvetica, Verdana, Arial, Sans-Serif;
+   font-size: 14px;
+   text-transform: uppercase;
+   font-weight: bold;
+   font-size: 12px;
+   color: #666;
+   font-style: normal;
+} 
+
 
 #nav-below .nav-previous,
 #nav-below .nav-next 
@@ -1095,8 +1227,10 @@ body.single-post div.entry-content p,  body.page div.entry-content p  {
 #nav-below p,
 #nav-below a 
 {
+  color: #666;
   font-family: Helvetica, Verdana, Arial, Sans-Serif;
-  font-size: 16px;
+  font-size: 13px;
+  line-height: 19px;
 }
 
 #nav-below .nav-next p,
@@ -1109,9 +1243,10 @@ body.single-post div.entry-content p,  body.page div.entry-content p  {
  top:  30%;
 }
 
-#nav-below .nav-next p 
-{	
- left: 5px;
+#nav-below .nav-next p  {
+   left: 5px;
+   width: 180px;
+   text-align: left;
 }
 
 #nav-below .nav-next img 
@@ -1137,6 +1272,7 @@ body.single-post div.entry-content p,  body.page div.entry-content p  {
   position: absolute;
   top:  5px;
   margin: 10px;
+  text-decoration: none;
 }
 
 #nav-below .nav-previous a {	

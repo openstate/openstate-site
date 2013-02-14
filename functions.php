@@ -298,9 +298,9 @@
       wp_reset_query();
       rewind_posts();
       
-      $nextPost = get_next_post(true);
+      $nextPost = get_next_post(false);
       $nextThumb = get_the_post_thumbnail($nextPost->ID, array(100,100));
-      $prevPost = get_previous_post(true);
+      $prevPost = get_previous_post(false);
       $prevThumb = get_the_post_thumbnail($prevPost->ID, array(100,100));
       
       ?>

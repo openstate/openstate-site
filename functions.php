@@ -232,25 +232,23 @@ load_child_theme_textdomain('thematic-openstate');
               'use'       => 'Use as mission statement image',
           )
   );
+
+  new kdMultipleFeaturedImages( $singleposthead );
+  new kdMultipleFeaturedImages( $statementhead_post );
+  new kdMultipleFeaturedImages( $statementhead_announcement );
   
-      new kdMultipleFeaturedImages( $singleposthead );
-      new kdMultipleFeaturedImages( $statementhead_post );
-      new kdMultipleFeaturedImages( $statementhead_announcement );
-      
 
-      // Add featured image to single posts
-      function openstate_thematic_postheader_posttitle($posttitle){
-        
-        if(is_single()){
-          $image = kd_mfi_the_featured_image( 'single-post-head', 'post', 'full' );
-          $posttitle = $image . $posttitle; 
-        }
-        
-        return apply_filters('openstate_thematic_postheader_posttitle', $posttitle);
-      }
-      add_filter('thematic_postheader_posttitle','openstate_thematic_postheader_posttitle');
- 
-
+  // Add featured image to single posts
+  function openstate_thematic_postheader_posttitle($posttitle){
+    
+    if(is_single()){
+      $image = kd_mfi_the_featured_image( 'single-post-head', 'post', 'full' );
+      $posttitle = $image . $posttitle; 
+    }
+    
+    return apply_filters('openstate_thematic_postheader_posttitle', $posttitle);
+  }
+  add_filter('thematic_postheader_posttitle','openstate_thematic_postheader_posttitle');  
   
   function openstate_singlecomment_text() {
       $content = sprintf( _x( '%1$sOne%2$s Thought' , 'One Thought, where %$1s and %$2s are <span> tags', 'thematic' ), '<span>' , '</span>' );
@@ -293,9 +291,9 @@ load_child_theme_textdomain('thematic-openstate');
       wp_reset_query();
       rewind_posts();
       
-      $nextPost = get_next_post(true);
+      $nextPost = get_next_post(false);
       $nextThumb = get_the_post_thumbnail($nextPost->ID, array(100,100));
-      $prevPost = get_previous_post(true);
+      $prevPost = get_previous_post(false);
       $prevThumb = get_the_post_thumbnail($prevPost->ID, array(100,100));
       
       ?>

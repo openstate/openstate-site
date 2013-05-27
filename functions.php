@@ -1,4 +1,6 @@
 <?php
+// Translate, if applicable
+load_child_theme_textdomain('thematic-openstate');
 
   // Unhook default Thematic functions
   function unhook_thematic_functions() {
@@ -61,7 +63,7 @@
   		<ul class="xoxo">
   			<li id="announcements" class="widgetcontainer widget_announcement">
           <!--span id="announcement_icon"></span><span class="widgettitle">Announcements</span></br-->
-          <h3 class="widgettitle">Announcements</h3>
+          <h3 class="widgettitle"><?php echo _e("Announcements", 'thematic-openstate') ?></h3>
           <div class="slides_container">
             <?php 
               while ( $loop->have_posts() ) : $loop->the_post();
@@ -101,25 +103,17 @@
       ?>
       <div class='statements'>
         <div class="slides_container">
-          <?php
-            while ( $loop->have_posts() ) : $loop->the_post();
-              echo '<div>';
-              if (get_post_type() == 'post') {
-                 echo '<a class="statement-link" href="' . get_permalink() . '">';
-              }
-              kd_mfi_the_featured_image( 'statement-head', 'post', 'full' ) || kd_mfi_the_featured_image( 'statement-head', 'announcement', 'full' );
-              echo '<div>';
-              echo '<h3 class=\'statement-title\'>';
-              the_title();
-              echo '</h3>';
-              the_excerpt();
-              echo '</div>';
-              if (get_post_type() == 'post') {
-                echo '</a>';
-              }
-              echo '</div>';
-            endwhile;
-          ?>
+          <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+              <div>
+                <?php if (get_post_type() == 'post') { ?> <a class="statement-link" href=" <?php get_permalink() ?>"> <?php } ?>
+                <?php kd_mfi_the_featured_image( 'statement-head', 'post', 'full' ) || kd_mfi_the_featured_image( 'statement-head', 'announcement', 'full' ); ?>
+                <div>
+                  <h3 class="statement-title"> <?php the_title(); ?> </h3>
+                  <?php the_excerpt(); ?>
+                </div>
+                <?php if (get_post_type() == 'post') { ?> </a> <?php } ?>
+              </div>
+            <?php endwhile; ?>
         </div>
       </div>
       <?php
@@ -208,7 +202,7 @@
           'id' => 'single-post-head',
           'post_type' => 'post',
           'labels' => array(
-              'name'      => 'Singel Post Head Image',
+              'name'      => 'Single Post Head Image',
               'set'       => 'Set image (620x410)',
               'remove'    => 'Remove image',
               'use'       => 'Use as post head',
@@ -238,24 +232,25 @@
               'use'       => 'Use as mission statement image',
           )
   );
-/*  
-  new kdMultipleFeaturedImages( $singleposthead );
-  new kdMultipleFeaturedImages( $statementhead_post );
-  new kdMultipleFeaturedImages( $statementhead_announcement );
   
+      new kdMultipleFeaturedImages( $singleposthead );
+      new kdMultipleFeaturedImages( $statementhead_post );
+      new kdMultipleFeaturedImages( $statementhead_announcement );
+      
 
-  // Add featured image to single posts
-  function openstate_thematic_postheader_posttitle($posttitle){
-    
-    if(is_single()){
-      $image = kd_mfi_the_featured_image( 'single-post-head', 'post', 'full' );
-      $posttitle = $image . $posttitle; 
-    }
-    
-    return apply_filters('openstate_thematic_postheader_posttitle', $posttitle);
-  }
-  add_filter('thematic_postheader_posttitle','openstate_thematic_postheader_posttitle');
-  */
+      // Add featured image to single posts
+      function openstate_thematic_postheader_posttitle($posttitle){
+        
+        if(is_single()){
+          $image = kd_mfi_the_featured_image( 'single-post-head', 'post', 'full' );
+          $posttitle = $image . $posttitle; 
+        }
+        
+        return apply_filters('openstate_thematic_postheader_posttitle', $posttitle);
+      }
+      add_filter('thematic_postheader_posttitle','openstate_thematic_postheader_posttitle');
+ 
+
   
   function openstate_singlecomment_text() {
       $content = sprintf( _x( '%1$sOne%2$s Thought' , 'One Thought, where %$1s and %$2s are <span> tags', 'thematic' ), '<span>' , '</span>' );
@@ -341,7 +336,7 @@
   function childtheme_override_nav_above() { 
     ?>
     <div id="nav-above">
-      <h2>Latest Entries</h2>
+      <h2><?php _e("Latest Entries", 'thematic-openstate'); ?></h2>
     </div>
     
     

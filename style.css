@@ -111,8 +111,7 @@ div.hfeed {
 }
 
 #branding {
-   padding: 31px 0 44px 0;
-   padding-left: 60px;
+   padding: 20px 0 44px 60px;
 }
 
 #main,
@@ -159,6 +158,7 @@ font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    font-size: 26px;
    font-weight: normal;
    float: left;
+   width: 100%;
 }
 
 #content .entry-title a:hover {
@@ -557,7 +557,7 @@ div.entry-meta {
     color: #83b3bb;
 }
 
-#menu-open-state-website li.has-sub-menu {
+li.has-sub-menu {
      background-image: url("images/blue_arrow_topNav.png");
      background-position: right;
      background-repeat: no-repeat;
@@ -966,6 +966,9 @@ margin-top:15px;
 #footer a {
     color:#076776 ;
 }
+#siteinfo {
+  clear:both;
+}
 
 
 #subsidiary {
@@ -1053,38 +1056,36 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
   overflow: visible !important;
 }
 
+/* LINKJES FOOTER */
 
-#nav_menu-4 {
-   float: left;
-  width: 162px;
-  position: relative;
-  height: 183px;
-  left: -165px;
-  margin-left: -26px;
+#footer * { overflow: visible; }
+
+#footer #subsidiary {
+  margin-left: 50px;
+}
+#footer #subsidiary .aside {
+  margin:0px;
 }
 
-#nav_menu-4 li {
-   list-style-image: url("images/white_arrow_footer.png");
-    position: relative;
-    padding-left: 7px;
-    margin-left: -22px;
+#footer .xoxo {
+  margin: 0px;
+  padding: 0px;
 }
 
-#nav_menu-3 {
-   float: left;
-   width: 131px;
-   position: relative;
-   height: 183px;
-   margin-left: -145px;
+.widget_nav_menu * {
+  width:100%;
 }
 
-
-
-#nav_menu-3 li { 
-    list-style-image: url("images/white_arrow_footer.png");
-    position: relative;
-    padding-left: 7px;
-    margin-left: -22px;
+.widget_nav_menu {
+  display:block;
+  width: 50%;
+  float:left; 
+}
+.widget_nav_menu li {
+  list-style-type:none;
+  background: url("images/white_arrow_footer.png") no-repeat left top;
+  padding: 1px 0px 3px 20px !important;
+  margin-left: -30px;
 }
 
 /* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */

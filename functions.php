@@ -233,11 +233,16 @@ load_child_theme_textdomain('thematic-openstate');
           )
   );
 
+
+/*
+ * WARNING: This is a hack to make an image carrousel using the 'Multiple Features Images' wordpress plugin
+ * The plugin must be installed. function_exists checks whether it's installed. Seriously.
+ */ 
+if (function_exists('kd_mfi_the_featured_image')) {
   new kdMultipleFeaturedImages( $singleposthead );
   new kdMultipleFeaturedImages( $statementhead_post );
   new kdMultipleFeaturedImages( $statementhead_announcement );
   
-
   // Add featured image to single posts
   function openstate_thematic_postheader_posttitle($posttitle){
     
@@ -261,7 +266,9 @@ load_child_theme_textdomain('thematic-openstate');
       return apply_filters( 'openstate_multiplecomments_text', $content );
   }
   add_filter('thematic_multiplecomments_text','openstate_multiplecomments_text');
-  
+}
+// END multiple featured images carrousel
+
   function openstate_next_post_link_args() {
 		$args = array ( 
 			'format'              => '%link',

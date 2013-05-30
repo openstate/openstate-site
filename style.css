@@ -158,7 +158,6 @@ font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    font-size: 26px;
    font-weight: normal;
    float: left;
-   width: 100%;
 }
 
 #content .entry-title a:hover {
@@ -451,6 +450,8 @@ img.attachment-260x260.wp-post-image {
    margin-top: -28px;
    margin-right: 13px;
    margin-bottom: -60px;
+   width:260px;
+   height:260px;
 }
 
 .entry-content .wp-post-image {
@@ -1061,10 +1062,27 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
 #footer * { overflow: visible; }
 
 #footer #subsidiary {
-  margin-left: 50px;
+  margin-left: 12px;
 }
 #footer #subsidiary .aside {
   margin:0px;
+  width:273px;
+  padding-left:18px;
+}
+
+#footer #subsidiary #first, #footer #subsidiary #third {
+margin-left: 0px;
+}
+#footer #subsidiary #second {
+margin-left:  29px;
+margin-right: 29px;
+}
+
+#footer #subsidiary ul.xoxo > li.widget_nav_menu:nth-child(odd) {
+  width:163px;
+}
+#footer #subsidiary ul.xoxo > li.widget_nav_menu:nth-child(even) {
+  width:110px;
 }
 
 #footer .xoxo {
@@ -1078,9 +1096,11 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
 
 .widget_nav_menu {
   display:block;
-  width: 50%;
   float:left; 
 }
+
+
+
 .widget_nav_menu li {
   list-style-type:none;
   background: url("images/white_arrow_footer.png") no-repeat left top;

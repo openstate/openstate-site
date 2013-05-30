@@ -235,10 +235,10 @@ load_child_theme_textdomain('thematic-openstate');
 
 
 /*
- * WARNING: This is a hack to make an image carrousel using the 'Multiple Features Images' wordpress plugin
- * The plugin must be installed. function_exists checks whether it's installed. Seriously.
+ * An image carrousel using the 'Multiple Features Images' wordpress plugin
+ * The plugin must be installed. class_exists checks whether it's installed.
  */ 
-if (function_exists('kd_mfi_the_featured_image')) {
+if (class_exists( 'kdMultipleFeaturedImages' )) {
   new kdMultipleFeaturedImages( $singleposthead );
   new kdMultipleFeaturedImages( $statementhead_post );
   new kdMultipleFeaturedImages( $statementhead_announcement );

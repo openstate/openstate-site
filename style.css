@@ -58,6 +58,13 @@ body {
 	line-height:19px;
 }
 
+input, textarea, label, form {
+  font-family: Helvetica, Verdana, Arial, Sans-Serif;
+  font-size: 13px;
+  line-height: 19px;
+  color: #666;
+}
+
 p, ul, ol, dd, pre {
 margin-bottom: 22px;
 font-family: Helvetica, Verdana, Arial, Sans-Serif;
@@ -71,7 +78,13 @@ color: #666;
 font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
 text-rendering: optimizeLegibility;
  }
- 
+
+.entry-title,  .entry-content h1, .entry-content h2 {
+  font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-weight:normal;
+ }
+
+
 a:link {
 	color: #076776;
 	
@@ -128,6 +141,7 @@ div.hfeed {
 #content {
    margin: 0 0 0 14px;
    width: 622px;
+   min-height:400px;
    overflow: hidden;
    padding-left: 8px;
    padding-top: 8px;

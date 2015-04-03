@@ -47,6 +47,40 @@ load_child_theme_textdomain('thematic-openstate');
   		)
   	);
   }
+
+// Multilingual choice dropdown
+if (function_exists('qts_language_menu')) {
+  function openstate_header() {
+    ?>
+      <div style="position:absolute; top:0px; right:0px; margin: 7px 15px 0 0;">
+          <?=qts_language_menu('dropdown'); // qTranslate Slug plugin ?>
+      </div>
+      <style type="text/css">
+        .qtrans_language_chooser { list-style-type: none; }
+        .qtrans_language_chooser li { padding:2px; }
+      </style>
+    <?php
+  }
+  add_action('thematic_header','openstate_header');
+}
+
+// Fix for qTranslate plugin and "Home" menu link reverting back to default language
+if (false && function_exists('qtrans_convertURL')) {
+function qtrans_in_nav_el($output, $item, $depth, $args) {
+$attributes = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
+$attributes .=!empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
+$attributes .=!empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
+// Integration with qTranslate Plugin
+$attributes .=!empty($item->url) ? ' href="' . esc_attr( qtrans_convertURL($item->url) ) . '"' : '';
+$output = $args->before;
+$output .= '<a' . $attributes . '>';
+$output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+$output .= '</a>';
+$output .= $args->after;
+return $output;
+}
+add_filter('walker_nav_menu_start_el', 'qtrans_in_nav_el', 10, 4);
+}
   
   // Add announcements to top of sidebar
   function openstate_abovemainasides()  {  
@@ -87,7 +121,7 @@ load_child_theme_textdomain('thematic-openstate');
     </div>
     <?php
   } 
-  add_action('thematic_abovemainasides','openstate_abovemainasides');
+//  add_action('thematic_abovemainasides','openstate_abovemainasides');
   
   // Add mission statements to header
   function openstate_belowheader() {

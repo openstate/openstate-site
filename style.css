@@ -2,7 +2,7 @@
 	http://localhost/~dirk/wordpress/wp-content/themes/thematic-openstate/style.css?ver=3.4.2 */
 
 /*   
-  Theme Name: Subsite Open State 
+  Theme Name: Open State Foundation
   Theme URI: http://github.com/openstate/thematic-openstate
   Author: Dirk Geurs
   Template: thematic
@@ -58,13 +58,6 @@ body {
 	line-height:19px;
 }
 
-input, textarea, label, form {
-  font-family: Helvetica, Verdana, Arial, Sans-Serif;
-  font-size: 13px;
-  line-height: 19px;
-  color: #666;
-}
-
 p, ul, ol, dd, pre {
 margin-bottom: 22px;
 font-family: Helvetica, Verdana, Arial, Sans-Serif;
@@ -78,13 +71,7 @@ color: #666;
 font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
 text-rendering: optimizeLegibility;
  }
-
-.entry-title,  .entry-content h1, .entry-content h2 {
-  font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
-  font-weight:normal;
- }
-
-
+ 
 a:link {
 	color: #076776;
 	
@@ -124,7 +111,8 @@ div.hfeed {
 }
 
 #branding {
-   padding: 20px 0 44px 60px;
+   padding: 31px 0 44px 0;
+   padding-left: 60px;
 }
 
 #main,
@@ -141,7 +129,6 @@ div.hfeed {
 #content {
    margin: 0 0 0 14px;
    width: 622px;
-   min-height:400px;
    overflow: hidden;
    padding-left: 8px;
    padding-top: 8px;
@@ -421,7 +408,7 @@ span.fn.n {
 position: relative;
 padding-left: 14px;
 background: #fafafa;
-padding-right: 465px;
+padding-right: 457px;
 padding-bottom: 2px;
 left: 7px;
 padding-top: 10px;
@@ -464,8 +451,6 @@ img.attachment-260x260.wp-post-image {
    margin-top: -28px;
    margin-right: 13px;
    margin-bottom: -60px;
-   width:260px;
-   height:260px;
 }
 
 .entry-content .wp-post-image {
@@ -521,7 +506,7 @@ div.entry-meta {
 
 .sf-menu {
 	font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
-    margin-left: 251px;
+    margin-left: 51px;
 }
 
 .sf-menu a, .sf-menu a:visited {
@@ -529,7 +514,7 @@ div.entry-meta {
 }
 
 .sf-menu li {
-    border-right: 1px solid #ccc;
+    /*border-left: 1px solid #ccc;*/
 }
 
 .sf-menu ul {
@@ -572,17 +557,17 @@ div.entry-meta {
     color: #83b3bb;
 }
 
-li.has-sub-menu {
+#menu-open-state-website li.has-sub-menu {
      background-image: url("images/blue_arrow_topNav.png");
      background-position: right;
      background-repeat: no-repeat;
      padding-right: 16px;
+     border-right: 10px solid transparent;
 }
 
 /* END MENU */
 
 #blog-title a {
-   display: none;
    background: url("images/logo_openstate.png") no-repeat scroll;
    color: transparent;
    float: left;
@@ -737,18 +722,17 @@ margin-bottom: 35px;
 
 #announcements .pagination li a {
    background-image: url("images/pagination.png");
-   background-position: 0 0;
    height: 0;
    overflow: hidden;
-   padding-top: 13px;
-   width: 10px;
+  padding-top: 14px;
+  width: 10px;
+  padding-right: 4px;
 }
 
 #announcements .pagination li.current a {
-   background-position: 0 -12px;
-   padding-left: 5px;
+  background-position: 0 -12px;
+  padding-left: 4px;
 }
-
         
 #announcements .pagination a:active {
         color: transparent;
@@ -843,8 +827,7 @@ h4.announcement-title {
 }
 
 div.statements {
-     display: none;
-      height: 310px;
+   height: 310px;
    width: 960px;
    margin: 0 auto;
 }
@@ -981,9 +964,6 @@ margin-top:15px;
 #footer a {
     color:#076776 ;
 }
-#siteinfo {
-  clear:both;
-}
 
 
 #subsidiary {
@@ -1071,56 +1051,7 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
   overflow: visible !important;
 }
 
-/* LINKJES FOOTER */
 
-#footer * { overflow: visible; }
-
-#footer #subsidiary {
-  margin-left: 12px;
-}
-#footer #subsidiary .aside {
-  margin:0px;
-  width:273px;
-  padding-left:18px;
-}
-
-#footer #subsidiary #first, #footer #subsidiary #third {
-margin-left: 0px;
-}
-#footer #subsidiary #second {
-margin-left:  29px;
-margin-right: 29px;
-}
-
-#footer #subsidiary ul.xoxo > li.widget_nav_menu:nth-child(odd) {
-  width:163px;
-}
-#footer #subsidiary ul.xoxo > li.widget_nav_menu:nth-child(even) {
-  width:110px;
-}
-
-#footer .xoxo {
-  margin: 0px;
-  padding: 0px;
-}
-
-.widget_nav_menu * {
-  width:100%;
-}
-
-.widget_nav_menu {
-  display:block;
-  float:left; 
-}
-
-
-
-.widget_nav_menu li {
-  list-style-type:none;
-  background: url("images/white_arrow_footer.png") no-repeat left top;
-  padding: 1px 0px 3px 20px !important;
-  margin-left: -30px;
-}
 
 /* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
 
@@ -1134,6 +1065,10 @@ ul.xoxo li.widgetcontainer.widget_categories li {
 ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg ul li {
     background: url("images/white_arrow_footer.png");
     
+}
+.aside ul ul li {
+  list-style-image: url("images/white_arrow_footer.png");
+  padding-left: 7px;
 }
 
 
@@ -1253,7 +1188,7 @@ li.widgetcontainer.widget_twitter-profile-tracker h3.widgettitle {
    padding-left: 32px;
 }
 
-li.widgetcontainer.widget_twitter-profile-tracker li{
+li.widgetcontainer.widget_twitter-profile-tracker li {
    list-style: none;
    background-color: #E8F8FC;
    color: #076776;
@@ -1296,6 +1231,8 @@ li.widgetcontainer.widget_twitter-profile-tracker li a:visited {
    font-weight: bold;
    text-decoration: none;
 }
+
+
 
 
 li.widgetcontainer.widget_twitter-profile-tracker ol.tweets {

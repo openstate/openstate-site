@@ -1274,7 +1274,7 @@ div.msg {
   padding-top: 5px;
   border-bottom: 1px solid #076776;
   padding-bottom: 15px;
-  height: 121px;
+  /*height: 121px;*/
 }
 
 /* Round image borders */

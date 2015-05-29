@@ -81,6 +81,13 @@ return $output;
 }
 add_filter('walker_nav_menu_start_el', 'qtrans_in_nav_el', 10, 4);
 }
+
+// Allow more file types for upload
+function my_myme_types($mime_types){
+    $mime_types['csv'] = 'text/csv';
+    return $mime_types;
+}
+add_filter('upload_mimes', 'my_myme_types', 1, 1);
   
   // Add announcements to top of sidebar
   function openstate_abovemainasides()  {  

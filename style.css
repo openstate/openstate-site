@@ -150,28 +150,19 @@ div.hfeed {
 
 
 #content .entry-title a {
-font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    color: #666;
    text-decoration: none;
    padding-left: 290px;
    padding-top: 0px;
    position: relative;
-   top: 40px;
    font-size: 26px;
    font-weight: normal;
    float: left;
 }
 
 #content .entry-title a:hover {
-   color: #666;
    text-decoration: underline;
-   padding-left: 290px;
-   padding-top: 0px;
-   position: relative;
-   top: 40px;
-   font-size: 26px;
-   font-weight: normal;
-   float: left;
 }
 
 body.home #content {
@@ -192,6 +183,7 @@ div.entry-content {
    margin-top: 0px;
    position: relative;
    bottom: 0px;
+   clear:left;
 }
 
 div.entry-content a {
@@ -212,7 +204,6 @@ div.entry-content p {
 #content span.entry-date {
     position: relative;
     margin-left: 290px;
-    top: -70px;
 }
 
 /* comments */
@@ -487,12 +478,7 @@ div.entry-utility {
 
 div.entry-meta span.cat-list {
    float: right;
-   top: -70px;
    position: relative;
-}
-
-div.entry-meta {
-    padding-top: 72px;
 }
 
 #access {

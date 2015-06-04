@@ -81,13 +81,6 @@ return $output;
 }
 add_filter('walker_nav_menu_start_el', 'qtrans_in_nav_el', 10, 4);
 }
-
-// Allow more file types for upload
-function my_myme_types($mime_types){
-    $mime_types['csv'] = 'text/csv';
-    return $mime_types;
-}
-add_filter('upload_mimes', 'my_myme_types', 1, 1);
   
   // Add announcements to top of sidebar
   function openstate_abovemainasides()  {  
@@ -182,14 +175,10 @@ add_filter('upload_mimes', 'my_myme_types', 1, 1);
     return apply_filters('thematic_post_meta_entrydate', $entrydate);  
   }   
   function openstate_thematic_postheader_postmeta($postmeta) {
- 
     if(is_single()){
-      
   	  $postmeta;
- 
     }
     else {
-      
       $postmeta = '<div class="entry-meta">';
       $postmeta .= openstate_thematic_postmeta_entrydate();
       $postmeta .= '<span class="cat-list">';
@@ -198,10 +187,20 @@ add_filter('upload_mimes', 'my_myme_types', 1, 1);
       $postmeta .= "</div><!-- .entry-meta -->\n";
       
     }
-    
     return apply_filters('openstate_thematic_postheader_postmeta',$postmeta);     
   }    
   add_filter('thematic_postheader_postmeta','openstate_thematic_postheader_postmeta');
+
+  // Put the postmeta above the posttitle
+  function childtheme_override_postheader() {
+    global $post;
+    if ( is_404() || $post->post_type == 'page') {
+       $postheader = thematic_postheader_posttitle();        
+    } else {
+       $postheader =  thematic_postheader_postmeta() . thematic_postheader_posttitle();
+    }
+    echo apply_filters( 'thematic_postheader', $postheader ); // Filter to override default post header
+  }
   
   // Add avatar to author link
   function childtheme_override_postmeta_authorlink(){

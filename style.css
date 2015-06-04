@@ -648,13 +648,6 @@ div.slides_container {
    margin-bottom: -116px;
    z-index: 1;
 }
-    
-
-.aside input {
-   font-size: 13px;
-   line-height: 18px;
-   margin-bottom: 47px;
-}
 
 .aside ul ul {
    list-style: disc;
@@ -1060,6 +1053,8 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
 
 
 /* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+/* Widgets in left-hand menu */
+
 
 ul.xoxo li.widgetcontainer.widget_categories li {
     /*list-style-image: url("images/white_arrow_footer.png");*/
@@ -1080,24 +1075,34 @@ ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg ul li {
   padding-left: 7px;
 }
 
+/* All primary widgets */
+#primary {
+   border: none;
+   padding: 0px 0 0 0;
+   margin-bottom: 22px;
+}
+
+#primary li.widgetcontainer h3.widgettitle {
+   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+   font-style: normal;
+   font-size: 15px;
+   color: #666;
+   padding-bottom: 5px;
+   padding-left: 32px;
+   border-bottom: 1px solid #CCC;
+}
+
 
 /* Mailchimp */
 
-ul.xoxo li.widgetcontainer.widget_mailchimpsf_widget {
+
+/*ul.xoxo li.widgetcontainer.widget_mailchimpsf_widget {
     margin-top: 27px;
 }
-
+*/
 ul.xoxo li.widgetcontainer.widget_mailchimpsf_widget h3.widgettitle {
-   color: #666;
-   margin-bottom: 174px;
-   font-style: normal;
    background: url("images/envelope_icon.png") no-repeat scroll left;
-   margin-right: 10px;
-   padding-left: 32px;
-   height: 29px;
-   padding-top: 6px;
-   border-bottom: 1px solid #CCC;
-   width: 237px;
+   padding-top: 15px;
 }
 
 #mc-indicates-required {
@@ -1109,12 +1114,6 @@ div.mergeRow {
    display: none;
 }
  
-#primary {
-   border: none;
-   padding: 0px 0 0 0;
-   margin-bottom: 22px;
-}
-
 #mc_signup {
    border-bottom: 1px solid #076776;
    width: 270px;
@@ -1123,23 +1122,26 @@ div.mergeRow {
 .mc_merge_var {
    padding: 0;
    margin: 0;
-   margin-top: -135px;
-   width: 248px;
+   width: 148px;
    padding-left: 20px;
    padding-top: 10px;
+   margin-bottom:0px !important;
 }
 
 .mc_signup_submit input.button {
    text-align: center;
    background: url("images/submit_button.png") no-repeat scroll center;
    height: 46px;
-   width: 47px;
+   width: 100px !important; /* sorry, mailchimp page css */
    color: transparent;
    border: none;
    cursor: pointer;
-   float: right;
-   margin-top: -61px;
-   margin-right: 4px;
+}
+.mc_signup_submit {
+  width:100%;
+  float:left;
+  margin-top: -80px;
+  text-align: right !important; /* sorry, mailchimp page css */
 }
 
 #mc_signup_form .mc_var_label {
@@ -1152,23 +1154,17 @@ border-width: 0px;
 border-style: solid;
 color: #555;
 background-color: #E8F8FC;
-height: 49px;
-width: 268px;
-margin-top: -163px;
-padding-top: 30px;
-margin-bottom: 0px;
+width: 271px;
+margin-bottom:0px;
 }
 
 #mc_signup_form .mc_input {
-   margin-top: 108px;
-  position: relative;
-  margin-bottom: 22px;
   border: none;
   border-top: 1px solid #076776;
   font-family: Helvetica, Verdana, Arial, Sans-Serif;
-   font-size: 13px;
-   line-height: 19px;
-   color: #666;
+  font-size: 13px;
+  line-height: 19px;
+  color: #666;
 }
 
 .mc_error_msg,
@@ -1180,6 +1176,7 @@ margin-bottom: 0px;
    font-weight: normal;
 }
 
+
 /* Twitter widget */
 
 li.widgetcontainer.widget_twitter-profile-tracker {
@@ -1187,14 +1184,8 @@ li.widgetcontainer.widget_twitter-profile-tracker {
 }
 
 li.widgetcontainer.widget_twitter-profile-tracker h3.widgettitle {
-   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
-   font-style: normal;
-   font-size: 15px;
-   color: #666;
    background: url("images/twitter_icon.png") no-repeat scroll top left;
    margin-left: 34px;
-   padding-bottom: 5px;
-   padding-left: 32px;
 }
 
 li.widgetcontainer.widget_twitter-profile-tracker li {
@@ -1241,12 +1232,8 @@ li.widgetcontainer.widget_twitter-profile-tracker li a:visited {
    text-decoration: none;
 }
 
-
-
-
 li.widgetcontainer.widget_twitter-profile-tracker ol.tweets {
    width: 267px;
-   border-top: 1px solid #CCC;
    padding-top: 27px;
    padding-left: 0px;
 }
@@ -1263,7 +1250,6 @@ div.avatar {
    padding-bottom: 35px;
    background: white;
    padding-bottom: 98px;
-   margin-bottom: -17px;
    margin-right: -53px;
 }
 

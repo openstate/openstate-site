@@ -155,6 +155,21 @@ if (function_exists('qts_language_menu')) {
       </div>
       <?php
     }
+    if (is_page()) { ?>
+      <div class='statements'>
+        <div style="width:100%; height:100%; background:#fee;">
+          <?php
+            $root = empty( $post->post_parent ) ? $post->ID : get_post_ancestors($post->ID)[0];
+            var_dump(get_post_ancestors($post->ID));
+            $pages = get_pages('child_of='.$root.'&sort_column=post_title');
+            foreach($pages as $page)
+            { 
+              echo( $page->post_title );
+            }
+          ?>
+        </div>
+      </div>
+    <?php }
   }
   add_action('thematic_belowheader','openstate_belowheader');
 

@@ -112,8 +112,10 @@ div.hfeed {
 }
 
 #branding {
-   padding: 31px 0 44px 0;
-   padding-left: 60px;
+  float:left;
+  width:142px;
+  padding: 31px 10px 0px 60px;
+  overflow:hidden;
 }
 
 #main,
@@ -496,7 +498,8 @@ div.entry-meta span.cat-list {
 
 .sf-menu {
 	font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
-    margin-left: 51px;
+  margin-left: 51px;
+  margin-top: 75px;
 }
 
 .sf-menu a, .sf-menu a:visited {
@@ -564,6 +567,7 @@ div.entry-meta span.cat-list {
    text-decoration: none;
    width: 150px;
    height: 96px;
+   line-height:1em;
 }
 
 #blog-title a:active {
@@ -1275,12 +1279,6 @@ body.single-post h1.entry-title, body.page h1.entry-title {
   position: absolute;
   top: 22px;
   padding-top: 5px;
-}
-	
-
-
-body.single-post #access, body.page #access {
-   padding-bottom: 35px;    
 }
 
 

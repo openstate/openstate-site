@@ -65,6 +65,7 @@ if (function_exists('qts_language_menu')) {
   add_action('thematic_header','openstate_header');
 }
 
+
 // Fix for qTranslate plugin and "Home" menu link reverting back to default language
 /// *** This is now in thematic/functions.php !!! *** ///
 // if (function_exists('qtrans_convertURL')) {
@@ -126,8 +127,8 @@ if (function_exists('qts_language_menu')) {
   } 
 //  add_action('thematic_abovemainasides','openstate_abovemainasides');
   
-  // Add mission statements / navigation to header
-  function openstate_belowheader() {
+  // Add mission statements
+  function openstate_mission_statements() {
     if(is_home()){
       // Mission statements
       $args = array( 
@@ -156,22 +157,42 @@ if (function_exists('qts_language_menu')) {
       </div>
       <?php
     }
-    // Big navigation!
-    if (is_page()) { ?>
-      <div class='statements'>
-        <div style="width:100%; height:100%; background:#fee;">
-          <?php
+  }
+  add_action('thematic_belowheader','openstate_mission_statements');
+
+
+  // Add big navigation
+  function openstate_nav_menu_args($args) {
+    $args['depth'] = 1;
+    return apply_filters('openstate_nav_menu_args', $args);
+  }
+  add_filter('thematic_nav_menu_args', 'openstate_nav_menu_args');
+
+  function openstate_big_nav() {
+    if(is_page()){
+      ?>
+        <div class='statements'>
+          <div style="width:100%; height:100%; background:#fee;">
+            <?=?><br>
+            <?php
+            $id = get_the_ID();
+            
+            $root = empty( $post->post_parent ) ? $post->ID : get_post_ancestors($post->ID)[0];
+
             $menu_name = 'primary-menu';
             $locations = get_nav_menu_locations();
             $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
             $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
             var_dump($menuitems);
-          ?>
+
+
+            ?>
+          </div>
         </div>
-      </div>
-    <?php }
+      <?php
+    }
   }
-  add_action('thematic_belowheader','openstate_belowheader');
+  add_action('thematic_belowheader','openstate_big_nav');
 
   
   // Show excerpt instead of full posts on front page

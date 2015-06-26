@@ -52,6 +52,7 @@ load_child_theme_textdomain('thematic-openstate');
 if (function_exists('qts_language_menu')) {
   function openstate_header() {
     ?>
+      <!-- qTranslate slug dropdown -->
       <div style="position:absolute; top:0px; right:0px; margin: 7px 15px 0 0;">
           <?=qts_language_menu('dropdown'); // qTranslate Slug plugin ?>
       </div>
@@ -155,17 +156,16 @@ if (function_exists('qts_language_menu')) {
       </div>
       <?php
     }
+    // Big navigation!
     if (is_page()) { ?>
       <div class='statements'>
         <div style="width:100%; height:100%; background:#fee;">
           <?php
-            $root = empty( $post->post_parent ) ? $post->ID : get_post_ancestors($post->ID)[0];
-            var_dump(get_post_ancestors($post->ID));
-            $pages = get_pages('child_of='.$root.'&sort_column=post_title');
-            foreach($pages as $page)
-            { 
-              echo( $page->post_title );
-            }
+            $menu_name = 'primary-menu';
+            $locations = get_nav_menu_locations();
+            $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+            $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+            var_dump($menuitems);
           ?>
         </div>
       </div>

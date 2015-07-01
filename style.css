@@ -530,7 +530,7 @@ div.entry-meta span.cat-list {
   border-left: 1px solid #CCC;
 }
 
-.sf-menu li.current-menu-item, .sf-menu li:hover, .sf-menu li a:hover {
+.sf-menu li.current-menu-item, .sf-menu li.current_page_ancestor, .sf-menu li:hover, .sf-menu li a:hover {
     color: #076776;  
     background-color: #ccc;  
 }

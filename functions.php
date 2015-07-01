@@ -161,29 +161,66 @@ if (function_exists('qts_language_menu')) {
   add_action('thematic_belowheader','openstate_mission_statements');
 
 
-  // Add big navigation
+  //// Add big navigation ////
+
   function openstate_nav_menu_args($args) {
+    // Only show the shallow primary menu
     $args['depth'] = 1;
     return apply_filters('openstate_nav_menu_args', $args);
   }
   add_filter('thematic_nav_menu_args', 'openstate_nav_menu_args');
+
+  // Get a certain submenu
+  // source: http://www.ordinarycoder.com/wordpress-wp_nav_menu-show-a-submenu-only/
+
+  function submenu_get_children_ids( $id, $items ) {
+    $ids = wp_filter_object_list( $items, array( 'menu_item_parent' => $id ), 'and', 'ID' );
+    foreach ( $ids as $id ) {
+      $ids = array_merge( $ids, submenu_get_children_ids( $id, $items ) );
+    }
+    return $ids;
+  }
+  function submenu_limit( $items, $args ) {
+    if ( empty($args->submenu) )
+      return $items;
+    $filter_object_list = wp_filter_object_list( $items, array( 'object_id' => $args->submenu ), 'and', 'ID' );
+    $parent_id = array_pop( $filter_object_list );
+    $children  = submenu_get_children_ids( $parent_id, $items );
+    foreach ( $items as $key => $item ) {
+      if ( ! in_array( $item->ID, $children ) )
+        unset($items[$key]);
+    }
+    return $items;
+  }
+  add_filter( 'wp_nav_menu_objects', 'submenu_limit', 10, 2 );
+
+  function menu_get_ancestor( $id, $items ) {
+    // Hack to get menu root
+    $ancs = wp_filter_object_list( $items, array( 'object_id' => $id ), 'and', 'menu_item_parent' );
+    if (empty($ancs)) {
+      return array_pop(wp_filter_object_list( $items, array( 'ID' => $id ), 'and', 'object_id' ));
+    } else {
+      $anc = array_pop($ancs);
+      return ($anc=='0')? $id : menu_get_ancestor($anc, $items);
+    }
+  }
 
   function openstate_big_nav() {
     if(is_page()){
       ?>
         <div class='statements'>
           <div style="width:100%; height:100%; background:#fee;">
-            <?=?><br>
             <?php
             $id = get_the_ID();
-            
-            $root = empty( $post->post_parent ) ? $post->ID : get_post_ancestors($post->ID)[0];
 
             $menu_name = 'primary-menu';
             $locations = get_nav_menu_locations();
             $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
             $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
-            var_dump($menuitems);
+            $root = menu_get_ancestor($id, $menuitems);
+            wp_nav_menu(array( 'theme_location'=>'primary-menu','submenu'=>$root ));
+
+            // var_dump($menuitems);
 
 
             ?>

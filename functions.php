@@ -209,7 +209,7 @@ if (function_exists('qts_language_menu')) {
     if(is_page()){
       ?>
         <div class='statements'>
-          <div style="width:100%; height:100%; background:#fee;">
+          <div id="big-navigation">
             <?php
             $id = get_the_ID();
 
@@ -218,7 +218,7 @@ if (function_exists('qts_language_menu')) {
             $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
             $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
             $root = menu_get_ancestor($id, $menuitems);
-            wp_nav_menu(array( 'theme_location'=>'primary-menu','submenu'=>$root ));
+            wp_nav_menu(array( 'theme_location'=>'primary-menu','submenu'=>$root, 'depth'=>1 ));
 
             // var_dump($menuitems);
 

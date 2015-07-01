@@ -563,6 +563,29 @@ div.entry-meta span.cat-list {
 
 /* END MENU */
 
+/* BEGIN BIG NAVIGATION */
+#big-navigation {
+  background: #E8F8FC;
+  height:100%;
+}
+
+#big-navigation ul {
+  display:table;
+  table-layout: fixed;
+  width:100%;
+  max-width:100%;
+}
+#big-navigation li {
+  text-align:center;
+  padding-top: 3em;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display:table-cell;
+}
+
+/* END BIG NAVIGATION */
+
 #blog-title a {
    background: url("images/logo_openstate.png") no-repeat scroll;
    color: transparent;

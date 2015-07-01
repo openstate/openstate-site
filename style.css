@@ -492,6 +492,7 @@ div.entry-meta span.cat-list {
    font-size: 13px;
    overflow: visible;
    z-index: 1;
+   position:initial;
 }
 
 /* BEGIN MENU */

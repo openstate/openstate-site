@@ -109,7 +109,7 @@ div.hfeed {
    width: 960px;
    margin: 0 auto;
    background-color: white;
-   height: 127px;
+   /*height: 127px;*/
    padding-top: 0px;
 }
 
@@ -150,6 +150,10 @@ div.hfeed {
    padding: 0 0 0px 0;
    border-top: 1px solid #CCC;
    clear: both;
+}
+.has-post-thumbnail {
+   float: right;
+   width: 400px;
 }
 
 
@@ -444,9 +448,9 @@ body.single.single-post div.entry-meta {
 
 img.attachment-260x260.wp-post-image {
   float: left;
-  margin-top: -28px;
-  margin-right: 13px;
-  margin-bottom: -60px;
+  /*margin-top: -28px;*/
+  /*margin-right: 13px;*/
+  /*margin-bottom: -60px;*/
   /* hack: featured images are not 260 but 200 */
   width:200px;
   height:200px;
@@ -494,7 +498,6 @@ div.entry-meta span.cat-list {
    font-size: 13px;
    overflow: visible;
    z-index: 1;
-   position:initial;
 }
 
 /* BEGIN MENU */
@@ -609,7 +612,9 @@ div.entry-meta span.cat-list {
     color: #666666;
     font-size: 13px;
     font-style: italic;
-    display: none;
+    clear:both;
+    padding: 16px 60px;
+    text-align:justify;
 }
 
 /*

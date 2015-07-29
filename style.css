@@ -149,7 +149,7 @@ div.hfeed {
    border-top: 1px solid #CCC;
    clear: both;
 }
-.has-post-thumbnail {
+.index-loop-entry {
    float: right;
    width: 400px;
 }
@@ -159,7 +159,6 @@ div.hfeed {
    font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    color: #666;
    text-decoration: none;
-   padding-left: 230px; /* featured image width + 30 */
    padding-top: 0px;
    position: relative;
    font-size: 26px;
@@ -207,10 +206,7 @@ div.entry-content p {
    line-height: 19px;
 }
 
-#content span.entry-date {
-    position: relative;
-    margin-left: 230px; /* features image width + 30 */
-}
+
 
 /* comments */
 
@@ -444,14 +440,13 @@ body.single.single-post div.entry-meta {
    padding-top: 10px;
 } 
 
+
 img.attachment-260x260.wp-post-image {
   float: left;
-  /*margin-top: -28px;*/
-  /*margin-right: 13px;*/
-  /*margin-bottom: -60px;*/
   /* hack: featured images are not 260 but 200 */
   width:200px;
   height:200px;
+  padding:12px 0px;
 }
 
 .entry-content .wp-post-image {
@@ -465,7 +460,7 @@ img.attachment-260x260.wp-post-image {
 .entry-meta {
    color: #666;
    font-size: 13px;
-   line-height: 18px;
+   line-height: 32px;
 }
 
 .entry-meta a {
@@ -609,11 +604,12 @@ div.entry-meta span.cat-list {
 
 #blog-description {
     color: #666666;
-    font-size: 13px;
+    font-size: 20px;
     font-style: italic;
     clear:both;
     padding: 16px 60px;
     text-align:justify;
+    background-color: #E8F8FC;
 }
 
 /*
@@ -1503,7 +1499,7 @@ body.home.blog #nav-below .nav-next a:hover {
 
 body.home #nav-above {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
 }
 
 .category .archive-meta p {

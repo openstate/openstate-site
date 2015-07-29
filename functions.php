@@ -64,6 +64,11 @@ if (function_exists('qts_language_menu')) {
   }
   add_action('thematic_header','openstate_header');
 }
+function move_blogdescription() {
+    remove_action('thematic_header','thematic_blogdescription',5);
+    add_action('thematic_header','thematic_blogdescription');
+}
+add_action('init','move_blogdescription');
 
 
 // Fix for qTranslate plugin and "Home" menu link reverting back to default language
@@ -158,7 +163,7 @@ if (function_exists('qts_language_menu')) {
       <?php
     }
   }
-  add_action('thematic_belowheader','openstate_mission_statements');
+  // add_action('thematic_belowheader','openstate_mission_statements');
 
 
   //// Add big navigation ////
@@ -268,7 +273,21 @@ if (function_exists('qts_language_menu')) {
   }    
   add_filter('thematic_postheader_postmeta','openstate_thematic_postheader_postmeta');
 
-  // Put the postmeta above the posttitle
+  // Get post thumbnail (featured image)
+  function thematic_post_thumbnail() {
+    $post_title = get_the_title();
+    $size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
+    $attr = apply_filters( 'thematic_post_thumb_attr', array('title'  => sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
+    if ( has_post_thumbnail() ) {
+      echo sprintf('<a class="entry-thumb" href="%s" title="%s">%s</a>',
+              get_permalink() ,
+              sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
+              get_the_post_thumbnail(get_the_ID(), $size, $attr));
+    }
+  }
+  add_action('thematic_belowpost', 'thematic_post_thumbnail');
+
+  // Put the postmeta and thumbnail (featured image) above the posttitle
   function childtheme_override_postheader() {
     global $post;
     if ( is_404() || $post->post_type == 'page') {
@@ -278,6 +297,9 @@ if (function_exists('qts_language_menu')) {
     }
     echo apply_filters( 'thematic_postheader', $postheader ); // Filter to override default post header
   }
+
+  function no() {  return false; }
+  add_filter('thematic_post_thumbs', 'no');
   
   // Add avatar to author link
   function childtheme_override_postmeta_authorlink(){

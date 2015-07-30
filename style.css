@@ -562,8 +562,10 @@ div.entry-meta span.cat-list {
 
 /* BEGIN BIG NAVIGATION */
 #big-navigation {
-  background: #E8F8FC;
-  height:100%;
+  background: white;
+  padding:10px 10px;
+  width: 940px;
+  margin: 0 auto;
 }
 
 #big-navigation ul {
@@ -574,12 +576,28 @@ div.entry-meta span.cat-list {
 }
 #big-navigation li {
   text-align:center;
+  height:200px;
   padding-top: 3em;
   overflow:hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   display:table-cell;
+  background-position: center;
+  border: 10px solid white;
 }
+#big-navigation a {
+  text-decoration: none;
+  display:block;
+  background: rgba(255,255,255,0.6);
+  font-size: 18px;
+  line-height: 2.4em;
+  font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+#big-navigation a:hover {
+  text-decoration: underline;
+}
+
+
 
 /* END BIG NAVIGATION */
 

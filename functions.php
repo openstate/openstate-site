@@ -220,24 +220,36 @@ add_action('init','move_blogdescription');
   function openstate_big_nav() {
     if(is_page()){
       ?>
-        <div class='statements'>
-          <div id="big-navigation">
-            <?php
-            $id = get_the_ID();
-
-            $menu_name = 'primary-menu';
-            $locations = get_nav_menu_locations();
-            $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-            $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
-            $root = menu_get_ancestor($id, $menuitems);
-            wp_nav_menu(array( 'theme_location'=>'primary-menu','submenu'=>$root, 'depth'=>1 ));
-
-            // var_dump($menuitems);
-
-
-            ?>
-          </div>
-        </div>
+      <div id="big-navigation">
+        <?php
+        // Build the primary menu again
+        $id = get_the_ID();
+        $menu_name = 'primary-menu';
+        $locations = get_nav_menu_locations();
+        $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+        $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+        ?>
+        <style>
+          <?php
+          // Add background css (thumbnail/featurd image) per submenu item
+          $size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
+          foreach ( $menuitems as $post ) {
+            $thumb_id = get_post_thumbnail_id( $post->object_id );
+            $thumb = wp_get_attachment_image_src( $thumb_id, $size )[0];
+            if ($thumb) {
+              echo sprintf('#big-navigation .menu-item-%s { background-image:url(\'%s\'); }',
+                $post->ID,
+                $thumb) . "\n";
+            }
+          }
+          ?>
+        </style>
+        <?php
+        // Display big submenu
+        $root = menu_get_ancestor($id, $menuitems);
+        wp_nav_menu(array( 'theme_location'=>$menu_name,'submenu'=>$root, 'depth'=>1 ));
+        ?>
+      </div>
       <?php
     }
   }
@@ -282,7 +294,7 @@ add_action('init','move_blogdescription');
 
 
 
-  // Custom post layout (thumbnail outside, meta above title)
+  // Custom index loop post layout (thumbnail outside, meta above title)
   function childtheme_override_index_loop() {
     // Count the number of posts so we can insert a widgetized area
     $count = 1;

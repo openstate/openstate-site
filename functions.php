@@ -206,15 +206,19 @@ add_action('init','move_blogdescription');
   }
   add_filter( 'wp_nav_menu_objects', 'submenu_limit', 10, 2 );
 
-  function menu_get_ancestor( $id, $items ) {
-    // Hack to get menu root
-    $ancs = wp_filter_object_list( $items, array( 'object_id' => $id ), 'and', 'menu_item_parent' );
-    if (empty($ancs)) {
-      return array_pop(wp_filter_object_list( $items, array( 'ID' => $id ), 'and', 'object_id' ));
-    } else {
-      $anc = array_pop($ancs);
-      return ($anc=='0')? $id : menu_get_ancestor($anc, $items);
+  function menu_get_ancestors( $id, $items ) {
+    $object_menuparents = array();
+    $menu_object = array();
+    foreach ( $items as $item ) {
+      $object_menuparents[$item->object_id] = intval($item->menu_item_parent);
+      $menu_object[$item->ID] = $item->object_id;
     }
+    $path = array();
+    while($id != 0) {
+      array_unshift($path, $id);
+      $id = $menu_object[$object_menuparents[$id]];
+    }
+    return $path;
   }
 
   function openstate_big_nav() {
@@ -233,12 +237,12 @@ add_action('init','move_blogdescription');
           <?php
           // Add background css (thumbnail/featurd image) per submenu item
           $size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
-          foreach ( $menuitems as $post ) {
-            $thumb_id = get_post_thumbnail_id( $post->object_id );
+          foreach ( $menuitems as $item ) {
+            $thumb_id = get_post_thumbnail_id( $item->object_id );
             $thumb = wp_get_attachment_image_src( $thumb_id, $size )[0];
             if ($thumb) {
               echo sprintf('#big-navigation .menu-item-%s { background-image:url(\'%s\'); }',
-                $post->ID,
+                $item->ID,
                 $thumb) . "\n";
             }
           }
@@ -246,14 +250,38 @@ add_action('init','move_blogdescription');
         </style>
         <?php
         // Display big submenu
-        $root = menu_get_ancestor($id, $menuitems);
-        wp_nav_menu(array( 'theme_location'=>$menu_name,'submenu'=>$root, 'depth'=>1 ));
+        $path = menu_get_ancestors($id, $menuitems);
+        wp_nav_menu(array( 'theme_location'=>$menu_name,'submenu'=>$path[0], 'depth'=>1 ));
         ?>
       </div>
       <?php
     }
   }
   add_action('thematic_belowheader','openstate_big_nav');
+  function openstate_side_nav() {
+    if(is_page()){
+      ?>
+        <?php
+        // Build the primary menu again
+        $id = get_the_ID();
+        $menu_name = 'primary-menu';
+        $locations = get_nav_menu_locations();
+        $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+        $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+        
+        // Display big subsubmenu
+        $path = menu_get_ancestors($id, $menuitems);
+        if (count($path)>1) {
+          ?><div id="side-navigation" class="aside main-aside"><?php
+          wp_nav_menu(array( 'theme_location'=>$menu_name,'submenu'=>$path[1], 'depth'=>1 ));
+          ?></div><?php
+        }
+        ?>
+      <?php
+    }
+  }
+  add_action('thematic_abovemainasides','openstate_side_nav');
+
 
   
   // Show excerpt instead of full posts on front page

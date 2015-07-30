@@ -98,7 +98,9 @@ input, textarea{
 }
 
 div.hfeed {
-   
+  box-shadow:0 0 15px #888;
+  margin: 0 auto;
+  width: 960px;
 }
 
 

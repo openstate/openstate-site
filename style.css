@@ -2,10 +2,11 @@
 	http://localhost/~dirk/wordpress/wp-content/themes/thematic-openstate/style.css?ver=3.4.2 */
 
 /*   
-  Theme Name: Subsite Open State 
+  Theme Name: Open State Foundation
   Theme URI: http://github.com/openstate/thematic-openstate
   Author: Dirk Geurs
   Template: thematic
+  Description: Theme for openstate main site. TODO: merge with Open State Subsite
 */
 
 /* Reset browser defaults */
@@ -97,7 +98,9 @@ input, textarea{
 }
 
 div.hfeed {
-   
+  box-shadow:0 0 15px #888;
+  margin: 0 auto;
+  width: 960px;
 }
 
 
@@ -106,12 +109,15 @@ div.hfeed {
    width: 960px;
    margin: 0 auto;
    background-color: white;
-   height: 127px;
+   /*height: 127px;*/
    padding-top: 0px;
 }
 
 #branding {
-   padding: 20px 0 44px 60px;
+  float:left;
+  width:142px;
+  padding: 31px 10px 0px 60px;
+  overflow:hidden;
 }
 
 #main,
@@ -121,7 +127,7 @@ div.hfeed {
    overflow: hidden;
    position: relative;
    background-color: white;
-   padding-top: 53px;
+   padding-top: 10px;
    padding-bottom: 0px;
   }
 
@@ -139,37 +145,30 @@ div.hfeed {
    padding-left: 8px;
 }
 
-
 .hentry {
    padding: 0 0 0px 0;
    border-top: 1px solid #CCC;
    clear: both;
 }
+.index-loop-entry {
+   float: right;
+   width: 400px;
+}
 
 
 #content .entry-title a {
-font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    color: #666;
    text-decoration: none;
-   padding-left: 290px;
    padding-top: 0px;
    position: relative;
-   top: 40px;
    font-size: 26px;
    font-weight: normal;
    float: left;
 }
 
 #content .entry-title a:hover {
-   color: #666;
    text-decoration: underline;
-   padding-left: 290px;
-   padding-top: 0px;
-   position: relative;
-   top: 40px;
-   font-size: 26px;
-   font-weight: normal;
-   float: left;
 }
 
 body.home #content {
@@ -177,8 +176,7 @@ body.home #content {
   width: 622px;
   overflow: hidden;
   padding-left: 8px;
-  padding-top: 0px;
-  margin-top: -28px;
+  padding-top: 11px;
 }
 
 
@@ -190,6 +188,7 @@ div.entry-content {
    margin-top: 0px;
    position: relative;
    bottom: 0px;
+   clear:left;
 }
 
 div.entry-content a {
@@ -207,11 +206,7 @@ div.entry-content p {
    line-height: 19px;
 }
 
-#content span.entry-date {
-    position: relative;
-    margin-left: 290px;
-    top: -70px;
-}
+
 
 /* comments */
 
@@ -407,7 +402,7 @@ span.fn.n {
 position: relative;
 padding-left: 14px;
 background: #fafafa;
-padding-right: 465px;
+padding-right: 457px;
 padding-bottom: 2px;
 left: 7px;
 padding-top: 10px;
@@ -445,13 +440,13 @@ body.single.single-post div.entry-meta {
    padding-top: 10px;
 } 
 
+
 img.attachment-260x260.wp-post-image {
-   float: left;
-   margin-top: -28px;
-   margin-right: 13px;
-   margin-bottom: -60px;
-   width:260px;
-   height:260px;
+  float: left;
+  /* hack: featured images are not 260 but 200 */
+  width:200px;
+  height:200px;
+  padding:12px 0px;
 }
 
 .entry-content .wp-post-image {
@@ -465,7 +460,7 @@ img.attachment-260x260.wp-post-image {
 .entry-meta {
    color: #666;
    font-size: 13px;
-   line-height: 18px;
+   line-height: 32px;
 }
 
 .entry-meta a {
@@ -487,12 +482,7 @@ div.entry-utility {
 
 div.entry-meta span.cat-list {
    float: right;
-   top: -70px;
    position: relative;
-}
-
-div.entry-meta {
-    padding-top: 72px;
 }
 
 #access {
@@ -501,13 +491,15 @@ div.entry-meta {
    font-size: 13px;
    overflow: visible;
    z-index: 1;
+   display: initial;
 }
 
 /* BEGIN MENU */
 
 .sf-menu {
 	font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
-    margin-left: 251px;
+  margin-left: 51px;
+  margin-top: 75px;
 }
 
 .sf-menu a, .sf-menu a:visited {
@@ -515,7 +507,7 @@ div.entry-meta {
 }
 
 .sf-menu li {
-    border-right: 1px solid #ccc;
+    /*border-left: 1px solid #ccc;*/
 }
 
 .sf-menu ul {
@@ -538,7 +530,7 @@ div.entry-meta {
   border-left: 1px solid #CCC;
 }
 
-.sf-menu li.current-menu-item, .sf-menu li:hover, .sf-menu li a:hover {
+.sf-menu li.current-menu-item, .sf-menu li.current_page_ancestor, .sf-menu li:hover, .sf-menu li a:hover {
     color: #076776;  
     background-color: #ccc;  
 }
@@ -558,23 +550,80 @@ div.entry-meta {
     color: #83b3bb;
 }
 
-li.has-sub-menu {
+#menu-open-state-website li.has-sub-menu {
      background-image: url("images/blue_arrow_topNav.png");
      background-position: right;
      background-repeat: no-repeat;
      padding-right: 16px;
+     border-right: 10px solid transparent;
 }
 
 /* END MENU */
 
+/* BEGIN BIG NAVIGATION */
+#big-navigation {
+  background: white;
+  padding:10px 10px 0px;
+  width: 940px;
+  margin: 0 auto;
+}
+
+#big-navigation ul {
+  display:table;
+  table-layout: fixed;
+  width:100%;
+  max-width:100%;
+}
+#big-navigation li {
+  text-align:center;
+  height:240px;
+  overflow:hidden;
+  display:table-cell;
+  background-position: center;
+  border: 10px solid white;
+}
+#big-navigation a {
+  text-decoration: none;
+  display:block;
+  height:100%;
+  padding-top: 60px;
+}
+#big-navigation a>div {
+  background: rgba(255,255,255,0.7);
+  font-size: 18px;
+  padding: .7em .5em;
+  font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+#big-navigation a:hover {
+  text-decoration: underline;
+}
+
+#side-navigation ul.menu {
+  width:260px;
+}
+#side-navigation li {
+  padding:4px 13px;
+}
+#side-navigation a {
+  font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-size: 13px;
+  text-decoration: none;
+}
+#side-navigation a:hover {
+  text-decoration: underline;
+}
+
+
+/* END BIG NAVIGATION */
+
 #blog-title a {
-   display: none;
    background: url("images/logo_openstate.png") no-repeat scroll;
    color: transparent;
    float: left;
    text-decoration: none;
    width: 150px;
    height: 96px;
+   line-height:1em;
 }
 
 #blog-title a:active {
@@ -588,9 +637,11 @@ li.has-sub-menu {
 
 #blog-description {
     color: #666666;
-    font-size: 13px;
+    font-size: 20px;
     font-style: italic;
-    display: none;
+    clear:both;
+    padding: 16px 60px;
+    background-color: #E8F8FC;
 }
 
 /*
@@ -648,13 +699,6 @@ div.slides_container {
    margin-bottom: -116px;
    z-index: 1;
 }
-    
-
-.aside input {
-   font-size: 13px;
-   line-height: 18px;
-   margin-bottom: 47px;
-}
 
 .aside ul ul {
    list-style: disc;
@@ -666,19 +710,6 @@ div.slides_container {
    font-size: 13px;
    line-height: 18px;
    margin-bottom: 24px;
-}
-
-div.aside.main-aside {
-   top:-29px;
-}
-
-body.single-post div.aside.main-aside {
-   top: 6px;
-}
-
-
-body.page div.aside.main-aside {
-   top: 6px;
 }
 
 #announcements .slides_container {
@@ -718,23 +749,23 @@ aclass{
 font-size: 13px;
 line-height: 18px;
 margin-bottom: 35px;
+margin-top: 10px;
 }
 
 
 #announcements .pagination li a {
    background-image: url("images/pagination.png");
-   background-position: 0 0;
    height: 0;
    overflow: hidden;
-   padding-top: 13px;
-   width: 10px;
+  padding-top: 14px;
+  width: 10px;
+  padding-right: 4px;
 }
 
 #announcements .pagination li.current a {
-   background-position: 0 -12px;
-   padding-left: 5px;
+  background-position: 0 -12px;
+  padding-left: 4px;
 }
-
         
 #announcements .pagination a:active {
         color: transparent;
@@ -809,7 +840,7 @@ margin-bottom: 35px;
 
 h4.announcement-title {
   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
-   color: white;
+   color: #076776;
    font-size: 26px;
    line-height: 26px;
    padding-left: 19px;
@@ -819,7 +850,7 @@ h4.announcement-title {
 
 .aside p, .aside ul, .aside ol, .aside dd, .aside pre {
    margin-bottom: 18px;
-   color: white;
+   color: #076776;
    padding-left: 27px;
    padding-right: 0px;
 }
@@ -829,8 +860,7 @@ h4.announcement-title {
 }
 
 div.statements {
-     display: none;
-      height: 310px;
+   height: 310px;
    width: 960px;
    margin: 0 auto;
 }
@@ -932,7 +962,7 @@ margin-top:15px;
     margin-left: -8px;
     width: 244px;
     margin-top: 10px;
-    color: white;
+    color: #076776;
     font-size: 14px;
 }
 
@@ -953,7 +983,7 @@ margin-top:15px;
 
 
 #footer {
-    background-color: #4cc6e6;
+    background-color: #E8F8FC;
     height: 100%;
     margin: 0 auto;
     width: 960px;
@@ -965,10 +995,7 @@ margin-top:15px;
 }
 
 #footer a {
-    color:#076776 ;
-}
-#siteinfo {
-  clear:both;
+    color: #076776;
 }
 
 
@@ -980,16 +1007,16 @@ margin-top:15px;
 }
 
 #subsidiary h3.widgettitle {
-color: white;
-font-size: 13px;
-border: none;
-font-style: normal;
-font-weight: bold;
-font-family: Helvetica, Verdana, Arial, Sans-Serif;
+    color: #076776;
+    font-size: 13px;
+    border: none;
+    font-style: normal;
+    font-weight: bold;
+    font-family: Helvetica, Verdana, Arial, Sans-Serif;
 }
 
 #subsidiary a {
-    color:white;
+    color: #076776;
     font-size: 13px;
     text-decoration: none;
     margin-left: -10px;
@@ -997,7 +1024,6 @@ font-family: Helvetica, Verdana, Arial, Sans-Serif;
 }
 
 #subsidiary a:hover {
-    color: white;
     font-size: 13px;
     text-decoration: underline;
     margin-left: -10px;
@@ -1013,7 +1039,7 @@ font-family: Helvetica, Verdana, Arial, Sans-Serif;
 
 
 li.widgetcontainer.widget_categories {
-  height: 200px;
+  /*height: 200px;*/
    float: left;
    position: relative;
    width: 157px;
@@ -1022,7 +1048,7 @@ li.widgetcontainer.widget_categories {
 }
 
 #wp_category_post_list_itg-2 {
-   height: 200px;
+   /*height: 200px;*/
    float: left;
    position: relative;
    width: 116px;
@@ -1030,7 +1056,7 @@ li.widgetcontainer.widget_categories {
 }
 
 #wp_category_post_list_itg-4 {
-   height: 200px;
+   /*height: 200px;*/
    float: left;
    position: relative;
    width: 142px;
@@ -1043,7 +1069,8 @@ li.widgetcontainer.widget_categories {
 }
 
 ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg li {
-    list-style-image: url("images/white_arrow_footer.png");
+    /*list-style-image: url("images/white_arrow_footer.png");*/
+    list-style-type: none;
     position: relative;
     padding-left: 7px;
     margin-left: -22px;
@@ -1057,89 +1084,64 @@ li.widgetcontainer.widget_wp_category_post_list_itg .wp-cpl-widget li {
   overflow: visible !important;
 }
 
-/* LINKJES FOOTER */
+/* Possible footer arrow */
+/*li.widgetcontainer li:before {
+  content: '\27E9';
+  margin: 0 1.2em;
+}*/
 
-#footer * { overflow: visible; }
-
-#footer #subsidiary {
-  margin-left: 12px;
-}
-#footer #subsidiary .aside {
-  margin:0px;
-  width:273px;
-  padding-left:18px;
-}
-
-#footer #subsidiary #first, #footer #subsidiary #third {
-margin-left: 0px;
-}
-#footer #subsidiary #second {
-margin-left:  29px;
-margin-right: 29px;
-}
-
-#footer #subsidiary ul.xoxo > li.widget_nav_menu:nth-child(odd) {
-  width:163px;
-}
-#footer #subsidiary ul.xoxo > li.widget_nav_menu:nth-child(even) {
-  width:110px;
-}
-
-#footer .xoxo {
-  margin: 0px;
-  padding: 0px;
-}
-
-.widget_nav_menu * {
-  width:100%;
-}
-
-.widget_nav_menu {
-  display:block;
-  float:left; 
-}
-
-
-
-.widget_nav_menu li {
-  list-style-type:none;
-  background: url("images/white_arrow_footer.png") no-repeat left top;
-  padding: 1px 0px 3px 20px !important;
-  margin-left: -30px;
-}
 
 /* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+/* Widgets in left-hand menu */
+
 
 ul.xoxo li.widgetcontainer.widget_categories li {
-    list-style-image: url("images/white_arrow_footer.png");
+    /*list-style-image: url("images/white_arrow_footer.png");*/
+    list-style-type: none;
     position: relative;
     padding-left: 7px;
     margin-left: -22px;
 }
 
 ul.xoxo li.widgetcontainer.widget_wp_category_post_list_itg ul li {
-    background: url("images/white_arrow_footer.png");
+    /*background: url("images/white_arrow_footer.png");*/
+    list-style-type: none;
     
+}
+.aside ul ul li {
+  /*list-style-image: url("images/white_arrow_footer.png");*/
+  list-style-type: none;
+  padding-left: 7px;
+}
+
+/* All primary widgets */
+#primary {
+   border: none;
+   padding: 0px 0 0 0;
+   margin-bottom: 22px;
+}
+
+#primary li.widgetcontainer h3.widgettitle {
+   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+   font-style: normal;
+   font-size: 15px;
+   color: #666;
+   padding-bottom: 5px;
+   padding-left: 32px;
+   border-bottom: 1px solid #CCC;
 }
 
 
 /* Mailchimp */
 
-ul.xoxo li.widgetcontainer.widget_mailchimpsf_widget {
+
+/*ul.xoxo li.widgetcontainer.widget_mailchimpsf_widget {
     margin-top: 27px;
 }
-
+*/
 ul.xoxo li.widgetcontainer.widget_mailchimpsf_widget h3.widgettitle {
-   color: #666;
-   margin-bottom: 174px;
-   font-style: normal;
    background: url("images/envelope_icon.png") no-repeat scroll left;
-   margin-right: 10px;
-   padding-left: 32px;
-   height: 29px;
-   padding-top: 6px;
-   border-bottom: 1px solid #CCC;
-   width: 237px;
+   padding-top: 15px;
 }
 
 #mc-indicates-required {
@@ -1151,12 +1153,6 @@ div.mergeRow {
    display: none;
 }
  
-#primary {
-   border: none;
-   padding: 0px 0 0 0;
-   margin-bottom: 22px;
-}
-
 #mc_signup {
    border-bottom: 1px solid #076776;
    width: 270px;
@@ -1165,23 +1161,26 @@ div.mergeRow {
 .mc_merge_var {
    padding: 0;
    margin: 0;
-   margin-top: -135px;
-   width: 248px;
+   width: 148px;
    padding-left: 20px;
    padding-top: 10px;
+   margin-bottom:0px !important;
 }
 
 .mc_signup_submit input.button {
    text-align: center;
    background: url("images/submit_button.png") no-repeat scroll center;
    height: 46px;
-   width: 47px;
+   width: 100px !important; /* sorry, mailchimp page css */
    color: transparent;
    border: none;
    cursor: pointer;
-   float: right;
-   margin-top: -61px;
-   margin-right: 4px;
+}
+.mc_signup_submit {
+  width:100%;
+  float:left;
+  margin-top: -80px;
+  text-align: right !important; /* sorry, mailchimp page css */
 }
 
 #mc_signup_form .mc_var_label {
@@ -1194,33 +1193,28 @@ border-width: 0px;
 border-style: solid;
 color: #555;
 background-color: #E8F8FC;
-height: 49px;
-width: 268px;
-margin-top: -163px;
-padding-top: 30px;
-margin-bottom: 0px;
+width: 271px;
+margin-bottom:0px;
 }
 
 #mc_signup_form .mc_input {
-   margin-top: 108px;
-  position: relative;
-  margin-bottom: 22px;
   border: none;
   border-top: 1px solid #076776;
   font-family: Helvetica, Verdana, Arial, Sans-Serif;
-   font-size: 13px;
-   line-height: 19px;
-   color: #666;
+  font-size: 13px;
+  line-height: 19px;
+  color: #666;
 }
 
 .mc_error_msg,
 .mc_success_msg {
    color: #666;
    position: absolute;
-   margin-top: 200px;
+   margin-top: 100px;
    font-family: Helvetica, Verdana, Arial, Sans-Serif;
    font-weight: normal;
 }
+
 
 /* Twitter widget */
 
@@ -1229,17 +1223,11 @@ li.widgetcontainer.widget_twitter-profile-tracker {
 }
 
 li.widgetcontainer.widget_twitter-profile-tracker h3.widgettitle {
-   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
-   font-style: normal;
-   font-size: 15px;
-   color: #666;
    background: url("images/twitter_icon.png") no-repeat scroll top left;
    margin-left: 34px;
-   padding-bottom: 5px;
-   padding-left: 32px;
 }
 
-li.widgetcontainer.widget_twitter-profile-tracker li{
+li.widgetcontainer.widget_twitter-profile-tracker li {
    list-style: none;
    background-color: #E8F8FC;
    color: #076776;
@@ -1283,10 +1271,8 @@ li.widgetcontainer.widget_twitter-profile-tracker li a:visited {
    text-decoration: none;
 }
 
-
 li.widgetcontainer.widget_twitter-profile-tracker ol.tweets {
    width: 267px;
-   border-top: 1px solid #CCC;
    padding-top: 27px;
    padding-left: 0px;
 }
@@ -1303,7 +1289,6 @@ div.avatar {
    padding-bottom: 35px;
    background: white;
    padding-bottom: 98px;
-   margin-bottom: -17px;
    margin-right: -53px;
 }
 
@@ -1322,7 +1307,7 @@ div.msg {
   padding-top: 5px;
   border-bottom: 1px solid #076776;
   padding-bottom: 15px;
-  height: 121px;
+  /*height: 121px;*/
 }
 
 /* Round image borders */
@@ -1337,17 +1322,8 @@ img.avatar {
 body.single-post h1.entry-title, body.page h1.entry-title {
   font-size: 25px;
   color: #666;
-  position: absolute;
   top: 22px;
   padding-top: 5px;
-}
-	
-
-
-body.single-post #access, body.page #access {
-   border-bottom: 1px solid #ccc;
-   padding-bottom: 35px;
-    
 }
 
 
@@ -1542,7 +1518,7 @@ body.home.blog #nav-below .nav-next a:hover {
 
 body.home #nav-above {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
 }
 
 .category .archive-meta p {
@@ -1589,4 +1565,22 @@ textarea.wpcf7-form-control.wpcf7-textarea {
   font-family: Helvetica, Verdana, Arial, Sans-Serif;
   font-size: 13px;
   line-height: 19px;
+}
+
+
+/* team pagina */
+p.team {
+  clear:both;
+  border-top:1px solid #ccc;
+}
+p.team > img {
+  float:left;
+  padding:1em;
+  border-radius: 100%;
+  width:200px;
+  height:200px;
+}
+p.team > p {
+  display: block;
+  padding:1em;
 }

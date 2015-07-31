@@ -251,7 +251,12 @@ add_action('init','move_blogdescription');
         <?php
         // Display big submenu
         $path = menu_get_ancestors($id, $menuitems);
-        wp_nav_menu(array( 'theme_location'=>$menu_name,'submenu'=>$path[0], 'depth'=>1 ));
+        wp_nav_menu(array( 
+          'theme_location'=>$menu_name,
+          'submenu'=>$path[0], 
+          'depth'=>1,
+          'link_before'=>'<div>', 'link_after'=>'</div>'
+        ));
         ?>
       </div>
       <?php
@@ -273,7 +278,7 @@ add_action('init','move_blogdescription');
         $path = menu_get_ancestors($id, $menuitems);
         if (count($path)>1) {
           ?><div id="side-navigation" class="aside main-aside"><?php
-          wp_nav_menu(array( 'theme_location'=>$menu_name,'submenu'=>$path[1], 'depth'=>1 ));
+          wp_nav_menu(array( 'theme_location'=>$menu_name,'submenu'=>$path[1] ));
           ?></div><?php
         }
         ?>

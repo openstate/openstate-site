@@ -145,7 +145,6 @@ div.hfeed {
    padding-left: 8px;
 }
 
-
 .hentry {
    padding: 0 0 0px 0;
    border-top: 1px solid #CCC;
@@ -578,11 +577,8 @@ div.entry-meta span.cat-list {
 }
 #big-navigation li {
   text-align:center;
-  height:200px;
-  padding-top: 3em;
+  height:240px;
   overflow:hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   display:table-cell;
   background-position: center;
   border: 10px solid white;
@@ -590,15 +586,33 @@ div.entry-meta span.cat-list {
 #big-navigation a {
   text-decoration: none;
   display:block;
-  background: rgba(255,255,255,0.6);
+  height:100%;
+  padding-top: 60px;
+}
+#big-navigation a>div {
+  background: rgba(255,255,255,0.7);
   font-size: 18px;
-  line-height: 2.4em;
+  padding: .7em .5em;
   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
 }
 #big-navigation a:hover {
   text-decoration: underline;
 }
 
+#side-navigation ul.menu {
+  width:260px;
+}
+#side-navigation li {
+  padding:4px 13px;
+}
+#side-navigation a {
+  font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-size: 13px;
+  text-decoration: none;
+}
+#side-navigation a:hover {
+  text-decoration: underline;
+}
 
 
 /* END BIG NAVIGATION */

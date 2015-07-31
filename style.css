@@ -127,7 +127,7 @@ div.hfeed {
    overflow: hidden;
    position: relative;
    background-color: white;
-   padding-top: 53px;
+   padding-top: 10px;
    padding-bottom: 0px;
   }
 
@@ -176,8 +176,7 @@ body.home #content {
   width: 622px;
   overflow: hidden;
   padding-left: 8px;
-  padding-top: 0px;
-  margin-top: -28px;
+  padding-top: 11px;
 }
 
 
@@ -564,7 +563,7 @@ div.entry-meta span.cat-list {
 /* BEGIN BIG NAVIGATION */
 #big-navigation {
   background: white;
-  padding:10px 10px;
+  padding:10px 10px 0px;
   width: 940px;
   margin: 0 auto;
 }
@@ -714,19 +713,6 @@ div.slides_container {
    margin-bottom: 24px;
 }
 
-div.aside.main-aside {
-   top:-29px;
-}
-
-body.single-post div.aside.main-aside {
-   top: 6px;
-}
-
-
-body.page div.aside.main-aside {
-   top: 6px;
-}
-
 #announcements .slides_container {
 
   background-color: #4cc6e6;
@@ -764,6 +750,7 @@ aclass{
 font-size: 13px;
 line-height: 18px;
 margin-bottom: 35px;
+margin-top: 10px;
 }
 
 
@@ -1336,7 +1323,6 @@ img.avatar {
 body.single-post h1.entry-title, body.page h1.entry-title {
   font-size: 25px;
   color: #666;
-  position: absolute;
   top: 22px;
   padding-top: 5px;
 }

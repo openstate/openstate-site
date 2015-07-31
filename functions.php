@@ -240,6 +240,10 @@ if (function_exists('qts_language_menu')) {
       return apply_filters('hdo_thematic_post_thumb_size', array(260, 260));
   }
   add_filter('thematic_post_thumb_size','hdo_thematic_post_thumb_size');
+
+  //temp thumbnail off
+  function nope($x) {return false;}
+  add_filter( 'thematic_post_thumbs', nope);
   
   // Add featured image for single post header
   $singleposthead = array(

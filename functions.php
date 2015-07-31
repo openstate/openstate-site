@@ -174,7 +174,6 @@ add_action('init','move_blogdescription');
 
 
   //// Add big navigation ////
-if (isset($_GET['test'])) {
   function openstate_nav_menu_args($args) {
     // Only show the shallow primary menu
     $args['depth'] = 1;
@@ -290,7 +289,6 @@ if (isset($_GET['test'])) {
     }
   }
   add_action('thematic_abovemainasides','openstate_side_nav');
-}
 
   
   // Show excerpt instead of full posts on front page
@@ -377,8 +375,8 @@ if (isset($_GET['test'])) {
     endwhile;
   }
   // Remove thumbnail from within post content
-  function no() {  return false; }
-  add_filter('thematic_post_thumbs', 'no'); 
+  function nope() {  return false; }
+  add_filter('thematic_post_thumbs', 'nope'); 
 
 
   // Add avatar to author link

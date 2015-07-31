@@ -236,14 +236,16 @@ if (isset($_GET['test'])) {
         <style>
           <?php
           // Add background css (thumbnail/featurd image) per submenu item
-          $size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
           foreach ( $menuitems as $item ) {
             $thumb_id = get_post_thumbnail_id( $item->object_id );
-            $thumb = wp_get_attachment_image_src( $thumb_id, $size )[0];
-            if ($thumb) {
-              echo sprintf('#big-navigation .menu-item-%s { background-image:url(\'%s\'); }',
-                $item->ID,
-                $thumb) . "\n";
+            $thumb = wp_get_attachment_image_src( $thumb_id, 'large' );
+            if (count($thumb)>0) {
+              $thumb = $thumb[0];
+              if ($thumb) {
+                echo sprintf('#big-navigation .menu-item-%s { background-image:url(\'%s\'); }',
+                  $item->ID,
+                  $thumb) . "\n";
+              }
             }
           }
           ?>
@@ -251,12 +253,14 @@ if (isset($_GET['test'])) {
         <?php
         // Display big submenu
         $path = menu_get_ancestors($id, $menuitems);
-        wp_nav_menu(array( 
-          'theme_location'=>$menu_name,
-          'submenu'=>$path[0], 
-          'depth'=>1,
-          'link_before'=>'<div>', 'link_after'=>'</div>'
-        ));
+        if (count($path)>0) {
+          wp_nav_menu(array( 
+            'theme_location'=>$menu_name,
+            'submenu'=>$path[0], 
+            'depth'=>1,
+            'link_before'=>'<div>', 'link_after'=>'</div>'
+          ));
+        }
         ?>
       </div>
       <?php
@@ -373,8 +377,8 @@ if (isset($_GET['test'])) {
     endwhile;
   }
   // Remove thumbnail from within post content
-  function nope() {  return false; }
-  add_filter('thematic_post_thumbs', 'nope'); 
+  function no() {  return false; }
+  add_filter('thematic_post_thumbs', 'no'); 
 
 
   // Add avatar to author link

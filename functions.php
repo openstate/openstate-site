@@ -20,10 +20,15 @@ load_child_theme_textdomain('thematic-openstate');
         array('slidejs'),
         false,
         true
-      );                
+      );
+      wp_enqueue_style(
+        'fontawesome',
+        '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'
+      );                 
   }    
   add_action('wp_enqueue_scripts', 'openstate_enqueue_scripts');
 
+  
   // Add custom post type for announcements
   add_action( 'init', 'create_my_post_types' );
 

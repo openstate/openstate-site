@@ -156,14 +156,17 @@ div.hfeed {
 }
 
 
+.entry-title {
+  font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-weight: normal;
+}
+
 #content .entry-title a {
-   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
    color: #666;
    text-decoration: none;
    padding-top: 0px;
    position: relative;
    font-size: 26px;
-   font-weight: normal;
    float: left;
 }
 

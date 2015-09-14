@@ -226,7 +226,7 @@ add_action('init','move_blogdescription');
             if (count($thumb)>0) {
               $thumb = $thumb[0];
               if ($thumb) {
-                echo sprintf('#big-navigation .menu-item-%s { background-image:url(\'%s\'); }',
+                echo sprintf('#big-navigation .menu-item-%s>a{ background-image:url(\'%s\'); }',
                   $item->ID,
                   $thumb) . "\n";
               }

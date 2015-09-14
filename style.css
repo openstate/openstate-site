@@ -594,22 +594,18 @@ div.entry-meta span.cat-list {
 }
 #big-navigation a>div {
   background: white; /*rgba(255,255,255,0.7);*/
-  border:1px solid #ccc;
   font-size: 18px;
   width: 210px;
   padding: .7em 0px;
   margin-left:-5px;
   font-family: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
 
-  /*-ms-transform: rotate(-45deg); /* IE 9 */
-  /*-webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
-  /*transform: rotate(-45deg); /* standard */
+  -ms-transform: rotate(-45deg); /* IE 9 */
+  -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+  transform: rotate(-45deg);
 }
 #big-navigation a:hover {
   text-decoration: underline;
-}
-#big-navigation a:hover div{
-background: #ccc;
 }
 
 #side-navigation ul.menu {

@@ -592,6 +592,9 @@ div.entry-meta span.cat-list {
   width:200px;
   margin: 0px auto;
 }
+#big-navigation li:not(.current-menu-item) a {
+  opacity:0.5;
+}
 #big-navigation a>div {
   background: white; /*rgba(255,255,255,0.7);*/
   font-size: 18px;

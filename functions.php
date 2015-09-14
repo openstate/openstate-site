@@ -312,45 +312,67 @@ add_action('init','move_blogdescription');
   }    
   add_filter('thematic_postheader_postmeta','openstate_thematic_postheader_postmeta');
 
-
-
+  // CUSTOM POST LAYOUT
   // Custom index loop post layout (thumbnail outside, meta above title)
+  function openstate_post($is_index) {
+    ?>
+    <div id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
+      <?php
+      // thumbnail
+      $post_title = get_the_title();
+      $size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
+      $attr = apply_filters( 'thematic_post_thumb_attr', array('title'  => sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
+      if ( has_post_thumbnail() ) {
+        echo sprintf('<a class="entry-thumb" href="%s" title="%s">%s</a>',
+                get_permalink() ,
+                sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
+                get_the_post_thumbnail(get_the_ID(), $size, $attr));
+      }
+      ?>
+      <div class="entry-excerpt">
+        <?php
+          // skip the post header function
+          echo thematic_postheader_postmeta();
+          echo thematic_postheader_posttitle();
+          global $post;
+          $content = get_extended( $post->post_content );
+          if (strlen($content['extended']) == 0) {
+            $main = $is_index? get_the_excerpt() : '';
+            $extended = get_the_content();
+          } else {
+            $main = strip_shortcodes($content['main']);
+            $extended = $content['extended'];
+          }
+        ?>
+        <div class="entry-content">
+          <?=apply_filters('thematic_post', apply_filters('the_excerpt', $main)); ?>
+        </div>
+      </div>
+      <?php if (!$is_index): ?>
+        <div style="clear:both;"></div>
+        <div class="entry-content">
+          <?=apply_filters('thematic_post', apply_filters('the_content', $extended)) ?>
+          <?php wp_link_pages(array('before' => sprintf('<div class="page-link">%s', __('Pages:', 'thematic')),
+                        'after' => '</div>')); ?>
+        </div><!-- .entry-content -->
+      <?php endif; ?>
+      <?php thematic_postfooter(); ?>
+    </div><!-- #post -->
+    <?php
+  }
+  // Custom post layout in single post page
+  function childtheme_override_single_post() { 
+    thematic_abovepost();
+    openstate_post(false);
+    thematic_belowpost();
+  }
+  // Custom post layout in index loop
   function childtheme_override_index_loop() {
     // Count the number of posts so we can insert a widgetized area
     $count = 1;
     while ( have_posts() ) : the_post();
-        // action hook for inserting content above #post
         thematic_abovepost();
-        ?>
-        <div id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
-          <?php
-          // thumbnail
-          $post_title = get_the_title();
-          $size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
-          $attr = apply_filters( 'thematic_post_thumb_attr', array('title'  => sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
-          if ( has_post_thumbnail() ) {
-            echo sprintf('<a class="entry-thumb" href="%s" title="%s">%s</a>',
-                    get_permalink() ,
-                    sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
-                    get_the_post_thumbnail(get_the_ID(), $size, $attr));
-          }
-          ?>
-          <div class="index-loop-entry">
-            <?php
-              // skip the post header function
-              echo thematic_postheader_postmeta();
-              echo thematic_postheader_posttitle();
-            ?>
-            <div class="entry-content">
-              <?php thematic_content(); ?>
-              <?php wp_link_pages(array('before' => sprintf('<div class="page-link">%s', __('Pages:', 'thematic')),
-                            'after' => '</div>')); ?>
-            </div><!-- .entry-content -->
-          </div>
-          <?php thematic_postfooter(); ?>
-        </div><!-- #post -->
-      <?php 
-        // action hook for insterting content below #post
+        openstate_post(true);
         thematic_belowpost();
         comments_template();
         if ( $count == thematic_get_theme_opt( 'index_insert' ) ) {
@@ -360,7 +382,7 @@ add_action('init','move_blogdescription');
     endwhile;
   }
   // Remove thumbnail from within post content
-  function nope() {  return false; }
+  function nope() { return false; }
   add_filter('thematic_post_thumbs', 'nope'); 
 
 

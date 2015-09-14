@@ -150,7 +150,7 @@ div.hfeed {
    border-top: 1px solid #CCC;
    clear: both;
 }
-.index-loop-entry {
+.entry-excerpt {
    float: right;
    width: 400px;
 }
@@ -438,10 +438,6 @@ body.single.single-post #content span.entry-date {
     margin-left: 0px;
     top: 0px;
 }
-
-body.single.single-post div.entry-meta {
-   padding-top: 10px;
-} 
 
 
 img.attachment-260x260.wp-post-image {

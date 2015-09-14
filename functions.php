@@ -232,11 +232,20 @@ add_action('init','move_blogdescription');
               }
             }
           }
+          // Make non-active menu items transparent
+          $path = menu_get_ancestors($id, $menuitems);
           ?>
+          <?php if (count($path)>1): ?>
+            #big-navigation li a {
+              opacity:0.5;
+            }
+            #big-navigation li.current-menu-item a, #big-navigation li a:hover {
+              opacity:1;
+            }
+          <?php endif; ?>
         </style>
         <?php
         // Display big submenu
-        $path = menu_get_ancestors($id, $menuitems);
         if (count($path)>0) {
           wp_nav_menu(array( 
             'theme_location'=>$menu_name,

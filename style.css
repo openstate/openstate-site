@@ -165,9 +165,7 @@ div.hfeed {
    color: #666;
    text-decoration: none;
    padding-top: 0px;
-   position: relative;
    font-size: 26px;
-   float: left;
 }
 
 #content .entry-title a:hover {
@@ -428,8 +426,6 @@ div.archive-meta p {
 h1.page-title {
    font-size: 25px;
    color: #666;
-   position: absolute;
-   top: 22px;
    padding-top: 5px;
 }
 

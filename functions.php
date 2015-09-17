@@ -390,6 +390,9 @@ add_action('init','move_blogdescription');
         $count = $count + 1;
     endwhile;
   }
+  function childtheme_override_category_loop() {
+    childtheme_override_index_loop();
+  }
   // Remove thumbnail from within post content
   function nope() { return false; }
   add_filter('thematic_post_thumbs', 'nope'); 

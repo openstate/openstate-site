@@ -20,20 +20,25 @@ load_child_theme_textdomain('thematic-openstate');
         array('slidejs'),
         false,
         true
-      );                
+      );
+      wp_enqueue_style(
+        'fontawesome',
+        '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'
+      );                 
   }    
   add_action('wp_enqueue_scripts', 'openstate_enqueue_scripts');
 
+  
   // Add custom post type for announcements
   add_action( 'init', 'create_my_post_types' );
 
   function create_my_post_types() {
-  	register_post_type( 'announcement', 
-  		array(
-  			'labels' => array(
-  				'name' => 'Announcements',
-  				'singular_name' => 'Announcement'
-  			),
+    register_post_type( 'announcement', 
+      array(
+        'labels' => array(
+          'name' => 'Announcements',
+          'singular_name' => 'Announcement'
+        ),
         'supports' => array(  
           'title',
           'excerpt'
@@ -41,17 +46,18 @@ load_child_theme_textdomain('thematic-openstate');
         'taxonomies' => array(
           'category'
         ),
-  			'public' => true,
+        'public' => true,
         'menu_position' => 5,
         'hierarchical' => false
-  		)
-  	);
+      )
+    );
   }
 
 // Multilingual choice dropdown
 if (function_exists('qts_language_menu')) {
   function openstate_header() {
     ?>
+      <!-- qTranslate slug dropdown -->
       <div style="position:absolute; top:0px; right:0px; margin: 7px 15px 0 0;">
           <?=qts_language_menu('dropdown'); // qTranslate Slug plugin ?>
       </div>
@@ -64,25 +70,18 @@ if (function_exists('qts_language_menu')) {
   add_action('thematic_header','openstate_header');
 }
 
-// Fix for qTranslate plugin and "Home" menu link reverting back to default language
-/// *** This is now in thematic/functions.php !!! *** ///
-// if (function_exists('qtrans_convertURL')) {
-// function openstate_qtrans_in_nav_el($output, $item, $depth, $args) {
-// $attributes = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
-// $attributes .=!empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
-// $attributes .=!empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
-// // Integration with qTranslate Plugin
-// $attributes .=!empty($item->url) ? ' href="' . esc_attr( qtrans_convertURL($item->url) ) . '"' : '';
+// Use tagline (blog description) as mission statement
+function childtheme_override_blogdescription() {
+  // Always make it h1
+  $blogdesc = '"blog-description">' . get_bloginfo('description', 'display');
+  echo "\t<h1 id=$blogdesc</h1>\n\n";
+}
+function move_blogdescription() {
+    remove_action('thematic_header','thematic_blogdescription',5);
+    add_action('thematic_header','thematic_blogdescription');
+}
+add_action('init','move_blogdescription');
 
-// $output = $args->before;
-// $output .= '<a' . $attributes . '>';
-// $output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-// $output .= '</a>';
-// $output .= $args->after;
-// return $output;
-// }
-// add_filter('walker_nav_menu_start_el', 'openstate_qtrans_in_nav_el', 10, 4);
-// }
   
   // Add announcements to top of sidebar
   function openstate_abovemainasides()  {  
@@ -96,8 +95,8 @@ if (function_exists('qts_language_menu')) {
     $loop = new WP_Query( $args );
     ?>
     <div class="aside main-aside">
-  		<ul class="xoxo">
-  			<li id="announcements" class="widgetcontainer widget_announcement">
+      <ul class="xoxo">
+        <li id="announcements" class="widgetcontainer widget_announcement">
           <!--span id="announcement_icon"></span><span class="widgettitle">Announcements</span></br-->
           <h3 class="widgettitle"><?php echo _e("Announcements", 'thematic-openstate') ?></h3>
           <div class="slides_container">
@@ -119,14 +118,14 @@ if (function_exists('qts_language_menu')) {
             ?>
           </div>
       </li>
-  		</ul>
+      </ul>
     </div>
     <?php
   } 
 //  add_action('thematic_abovemainasides','openstate_abovemainasides');
   
-  // Add mission statements / navigation to header
-  function openstate_belowheader() {
+  // Add mission statements
+  function openstate_mission_statements() {
     if(is_home()){
       // Mission statements
       $args = array( 
@@ -156,31 +155,158 @@ if (function_exists('qts_language_menu')) {
       <?php
     }
   }
-  add_action('thematic_belowheader','openstate_belowheader');
+  // add_action('thematic_belowheader','openstate_mission_statements');
+
+
+  //// Add big navigation ////
+  function openstate_nav_menu_args($args) {
+    // Only show the shallow primary menu
+    $args['depth'] = 1;
+    return apply_filters('openstate_nav_menu_args', $args);
+  }
+  add_filter('thematic_nav_menu_args', 'openstate_nav_menu_args');
+
+  // Get a certain submenu
+  // source: http://www.ordinarycoder.com/wordpress-wp_nav_menu-show-a-submenu-only/
+
+  function submenu_get_children_ids( $id, $items ) {
+    $ids = wp_filter_object_list( $items, array( 'menu_item_parent' => $id ), 'and', 'ID' );
+    foreach ( $ids as $id ) {
+      $ids = array_merge( $ids, submenu_get_children_ids( $id, $items ) );
+    }
+    return $ids;
+  }
+  function submenu_limit( $items, $args ) {
+    if ( empty($args->submenu) )
+      return $items;
+    $filter_object_list = wp_filter_object_list( $items, array( 'object_id' => $args->submenu ), 'and', 'ID' );
+    $parent_id = array_pop( $filter_object_list );
+    $children  = submenu_get_children_ids( $parent_id, $items );
+    foreach ( $items as $key => $item ) {
+      if ( ! in_array( $item->ID, $children ) )
+        unset($items[$key]);
+    }
+    return $items;
+  }
+  add_filter( 'wp_nav_menu_objects', 'submenu_limit', 10, 2 );
+
+  function menu_get_ancestors( $id, $items ) {
+    $object_menuparents = array();
+    $menu_object = array();
+    foreach ( $items as $item ) {
+      $object_menuparents[$item->object_id] = intval($item->menu_item_parent);
+      $menu_object[$item->ID] = $item->object_id;
+    }
+    $path = array();
+    while($id != 0) {
+      array_unshift($path, $id);
+      $id = $menu_object[$object_menuparents[$id]];
+    }
+    return $path;
+  }
+
+  function openstate_big_nav() {
+    if(is_page()){
+      ?>
+      <div id="big-navigation">
+        <?php
+        // Build the primary menu again
+        $id = get_the_ID();
+        $menu_name = 'primary-menu';
+        $locations = get_nav_menu_locations();
+        $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+        $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+        ?>
+        <style>
+          <?php
+          // Add background css (thumbnail/featurd image) per submenu item
+          foreach ( $menuitems as $item ) {
+            $thumb_id = get_post_thumbnail_id( $item->object_id );
+            $thumb = wp_get_attachment_image_src( $thumb_id, 'large' );
+            if (count($thumb)>0) {
+              $thumb = $thumb[0];
+              if ($thumb) {
+                echo sprintf('#big-navigation .menu-item-%s>a{ background-image:url(\'%s\'); }',
+                  $item->ID,
+                  $thumb) . "\n";
+              }
+            }
+          }
+          // Make non-active menu items transparent
+          $path = menu_get_ancestors($id, $menuitems);
+          ?>
+          <?php if (count($path)>1): ?>
+            #big-navigation li a {
+              opacity:0.5;
+            }
+            #big-navigation li.current-menu-item a, #big-navigation li a:hover {
+              opacity:1;
+            }
+          <?php endif; ?>
+        </style>
+        <?php
+        // Display big submenu
+        if (count($path)>0) {
+          wp_nav_menu(array( 
+            'theme_location'=>$menu_name,
+            'submenu'=>$path[0], 
+            'depth'=>1,
+            'link_before'=>'<div>', 'link_after'=>'</div>'
+          ));
+        }
+        ?>
+      </div>
+      <?php
+    }
+  }
+  add_action('thematic_belowheader','openstate_big_nav');
+  function openstate_side_nav() {
+    if(is_page()){
+      ?>
+        <?php
+        // Build the primary menu again
+        $id = get_the_ID();
+        $menu_name = 'primary-menu';
+        $locations = get_nav_menu_locations();
+        $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+        $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+        
+        // Display big subsubmenu
+        $path = menu_get_ancestors($id, $menuitems);
+        if (count($path)>1) {
+          ?><div id="side-navigation" class="aside main-aside"><?php
+          wp_nav_menu(array( 'theme_location'=>$menu_name,'submenu'=>$path[1] ));
+          ?></div><?php
+        }
+        ?>
+      <?php
+    }
+  }
+  add_action('thematic_abovemainasides','openstate_side_nav');
 
   
   // Show excerpt instead of full posts on front page
   function openstate_thematic_content($post) {
-  	if (is_home() || is_front_page()) {
-  	    $post = 'excerpt';
-  	}
-  	return apply_filters('openstate_thematic_content', $post);
+    if (is_home() || is_front_page()) {
+        $post = 'excerpt';
+    }
+    return apply_filters('openstate_thematic_content', $post);
   }
   add_filter('thematic_content', 'openstate_thematic_content');
   
   // Filter author and seperators from post-meta block
   function openstate_thematic_postmeta_entrydate() {
-	
+  
     $entrydate .= '<span class="entry-date"><abbr class="published" title="';
     $entrydate .= get_the_time(thematic_time_title()) . '">';
     $entrydate .= get_the_time(thematic_time_display());
     $entrydate .= '</abbr></span>';
-	    
+      
     return apply_filters('thematic_post_meta_entrydate', $entrydate);  
   }   
   function openstate_thematic_postheader_postmeta($postmeta) {
     if(is_single()){
-  	  $postmeta;
+      $postmeta;
     }
     else {
       $postmeta = '<div class="entry-meta">';
@@ -195,45 +321,103 @@ if (function_exists('qts_language_menu')) {
   }    
   add_filter('thematic_postheader_postmeta','openstate_thematic_postheader_postmeta');
 
-  // Put the postmeta above the posttitle
-  function childtheme_override_postheader() {
-    global $post;
-    if ( is_404() || $post->post_type == 'page') {
-       $postheader = thematic_postheader_posttitle();        
-    } else {
-       $postheader =  thematic_postheader_postmeta() . thematic_postheader_posttitle();
-    }
-    echo apply_filters( 'thematic_postheader', $postheader ); // Filter to override default post header
+  // CUSTOM POST LAYOUT
+  // Custom index loop post layout (thumbnail outside, meta above title)
+  function openstate_post($is_index) {
+    ?>
+    <div id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
+      <?php
+      // thumbnail
+      $post_title = get_the_title();
+      $size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
+      $attr = apply_filters( 'thematic_post_thumb_attr', array('title'  => sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
+      if ( has_post_thumbnail() ) {
+        echo sprintf('<a class="entry-thumb" href="%s" title="%s">%s</a>',
+                get_permalink() ,
+                sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
+                get_the_post_thumbnail(get_the_ID(), $size, $attr));
+      }
+      ?>
+      <div class="entry-excerpt">
+        <?php
+          // skip the post header function
+          echo thematic_postheader_postmeta();
+          echo thematic_postheader_posttitle();
+          global $post;
+          $content = get_extended( $post->post_content );
+          if (strlen($content['extended']) == 0) {
+            $main = $is_index? get_the_excerpt() : '';
+            $extended = get_the_content();
+          } else {
+            $main = strip_shortcodes($content['main']);
+            $extended = $content['extended'];
+          }
+        ?>
+        <div class="entry-content">
+          <?=apply_filters('thematic_post', apply_filters('the_excerpt', $main)); ?>
+        </div>
+      </div>
+      <?php if (!$is_index): ?>
+        <div style="clear:both;"></div>
+        <div class="entry-content">
+          <?=apply_filters('thematic_post', apply_filters('the_content', $extended)) ?>
+          <?php wp_link_pages(array('before' => sprintf('<div class="page-link">%s', __('Pages:', 'thematic')),
+                        'after' => '</div>')); ?>
+        </div><!-- .entry-content -->
+      <?php endif; ?>
+      <?php thematic_postfooter(); ?>
+    </div><!-- #post -->
+    <?php
   }
-  
+  // Custom post layout in single post page
+  function childtheme_override_single_post() { 
+    thematic_abovepost();
+    openstate_post(false);
+    thematic_belowpost();
+  }
+  // Custom post layout in index loop
+  function childtheme_override_index_loop() {
+    // Count the number of posts so we can insert a widgetized area
+    $count = 1;
+    while ( have_posts() ) : the_post();
+        thematic_abovepost();
+        openstate_post(true);
+        thematic_belowpost();
+        comments_template();
+        if ( $count == thematic_get_theme_opt( 'index_insert' ) ) {
+          get_sidebar('index-insert');
+        }
+        $count = $count + 1;
+    endwhile;
+  }
+  // Remove thumbnail from within post content
+  function nope() { return false; }
+  add_filter('thematic_post_thumbs', 'nope'); 
+
+
   // Add avatar to author link
-  function childtheme_override_postmeta_authorlink(){
-		global $authordata;
-    
-      $author_avatar = '<span class="post-author" >';
-      $author_avatar .= get_avatar( get_the_author_meta('ID'), 32 );
-      $author_avatar .= '</span>';  
-	
-	    $author_prep = '<span class="meta-prep meta-prep-author">' . __('Posted by', 'thematic') . ' </span>';
-	    
-	    if ( thematic_is_custom_post_type() && !current_theme_supports( 'thematic_support_post_type_author_link' ) ) {
-	    	$author_info  = '<span class="vcard"><span class="fn nickname">';
-	    	$author_info .= get_the_author_meta( 'display_name' ) ;
-	    	$author_info .= '</span></span>';
-	    } else {
-	    	$author_info  = '<span class="author vcard">';
-	    	$author_info .= sprintf('<a class="url fn n" href="%s" title="%s">%s</a>',
-	    							get_author_posts_url( $authordata->ID, $authordata->user_nicename ),
-									/* translators: author name */
-	    							sprintf( esc_attr__( 'View all posts by %s', 'thematic' ), get_the_author_meta( 'display_name' ) ),
-	    							get_the_author_meta( 'display_name' ));
-	    	$author_info .= '</span>';
-	    }
-	    
-	    $author_credit = $author_avatar . $author_prep . $author_info ;
-	    
-	    return apply_filters('thematic_postmeta_authorlink', $author_credit);
-  }
+  // function childtheme_override_postmeta_authorlink(){
+  //   global $authordata;
+  //     $author_avatar = '<span class="post-author" >';
+  //     $author_avatar .= get_avatar( get_the_author_meta('ID'), 32 );
+  //     $author_avatar .= '</span>';  
+  //     $author_prep = '<span class="meta-prep meta-prep-author">' . __('Posted by', 'thematic') . ' </span>';
+  //     if ( thematic_is_custom_post_type() && !current_theme_supports( 'thematic_support_post_type_author_link' ) ) {
+  //       $author_info  = '<span class="vcard"><span class="fn nickname">';
+  //       $author_info .= get_the_author_meta( 'display_name' ) ;
+  //       $author_info .= '</span></span>';
+  //     } else {
+  //       $author_info  = '<span class="author vcard">';
+  //       $author_info .= sprintf('<a class="url fn n" href="%s" title="%s">%s</a>',
+  //                   get_author_posts_url( $authordata->ID, $authordata->user_nicename ),
+  //                 /* translators: author name */
+  //                   sprintf( esc_attr__( 'View all posts by %s', 'thematic' ), get_the_author_meta( 'display_name' ) ),
+  //                   get_the_author_meta( 'display_name' ));
+  //       $author_info .= '</span>';
+  //     }
+  //     $author_credit = $author_avatar . $author_prep . $author_info ;
+  //     return apply_filters('thematic_postmeta_authorlink', $author_credit);
+  // }
   
   // Increase post thumbnail image thumbnail size
   function hdo_thematic_post_thumb_size() {
@@ -318,29 +502,29 @@ if (class_exists( 'kdMultipleFeaturedImages' )) {
 // END multiple featured images carrousel
 
   function openstate_next_post_link_args() {
-		$args = array ( 
-			'format'              => '%link',
-			'link'                => '<span class="meta-nav">Next >></span>',
-			'in_same_cat'         => FALSE,
-			'excluded_categories' => ''
-		);
+    $args = array ( 
+      'format'              => '%link',
+      'link'                => '<span class="meta-nav">Next >></span>',
+      'in_same_cat'         => FALSE,
+      'excluded_categories' => ''
+    );
     return $args;
   }
   add_filter('thematic_next_post_link_args', 'openstate_next_post_link_args');
   
   function openstate_previous_post_link_args() {
-		$args = array ( 
-			'format'              => '%link',
-			'link'                => '<span class="meta-nav"><< Previous</span>',
-			'in_same_cat'         => FALSE,
-			'excluded_categories' => ''
-		);
+    $args = array ( 
+      'format'              => '%link',
+      'link'                => '<span class="meta-nav"><< Previous</span>',
+      'in_same_cat'         => FALSE,
+      'excluded_categories' => ''
+    );
     return $args;
   }
   add_filter('thematic_previous_post_link_args', 'openstate_previous_post_link_args');  
   
-	function childtheme_override_nav_below() {
-		if (is_single()) {
+  function childtheme_override_nav_below() {
+    if (is_single()) {
       
       wp_reset_postdata();
       wp_reset_query();
@@ -353,37 +537,37 @@ if (class_exists( 'kdMultipleFeaturedImages' )) {
       
       ?>
       
-			<div id="nav-below" class="navigation">
-				<div class="nav-previous"><?php
+      <div id="nav-below" class="navigation">
+        <div class="nav-previous"><?php
           thematic_previous_post_link(); 
           echo '<p>' . get_the_title($prevPost->ID) . '</p>';
           echo $prevThumb;
         ?></div>
-				<div class="nav-next"><?php 
+        <div class="nav-next"><?php 
           thematic_next_post_link();
           echo '<p>' . get_the_title($nextPost->ID) . '</p>';
           echo $nextThumb;
         ?></div>
-			</div>
+      </div>
 
 <?php
-		} else { ?>
+    } else { ?>
 
-			<div id="nav-below" class="navigation">
+      <div id="nav-below" class="navigation">
                 <?php if(function_exists('wp_pagenavi')) { ?>
                 <?php wp_pagenavi(); ?>
                 <?php } else { ?>  
-				
-				<div class="nav-previous"><?php next_posts_link(sprintf('<span class="meta-nav">&laquo;</span> %s', __('Older posts', 'thematic') ) ) ?></div>
-					
-				<div class="nav-next"><?php previous_posts_link(sprintf('%s <span class="meta-nav">&raquo;</span>',__( 'Newer posts', 'thematic') ) ) ?></div>
+        
+        <div class="nav-previous"><?php next_posts_link(sprintf('<span class="meta-nav">&laquo;</span> %s', __('Older posts', 'thematic') ) ) ?></div>
+          
+        <div class="nav-next"><?php previous_posts_link(sprintf('%s <span class="meta-nav">&raquo;</span>',__( 'Newer posts', 'thematic') ) ) ?></div>
 
-				<?php } ?>
-			</div>	
-	
+        <?php } ?>
+      </div>  
+  
 <?php
-		}
-	}
+    }
+  }
   add_action('thematic_abovefooter','thematic_nav_below');
   
   function childtheme_override_nav_above() { 
@@ -399,12 +583,12 @@ if (class_exists( 'kdMultipleFeaturedImages' )) {
   function openstate_page_title($content) {
     if (is_category()) {
       $content = '';
-			$content .= '<h1 class="page-title">';
-			$content .= ' <span>' . single_cat_title('', FALSE) .'</span>';
-			$content .= '</h1>' . "\n";
-			$content .= "\n\t\t\t\t" . '<div class="archive-meta">';
-			if ( !(''== category_description()) ) : $content .= apply_filters('archive_meta', category_description()); endif;
-			$content .= '</div>';
+      $content .= '<h1 class="page-title">';
+      $content .= ' <span>' . single_cat_title('', FALSE) .'</span>';
+      $content .= '</h1>' . "\n";
+      $content .= "\n\t\t\t\t" . '<div class="archive-meta">';
+      if ( !(''== category_description()) ) : $content .= apply_filters('archive_meta', category_description()); endif;
+      $content .= '</div>';
     }
     
     return $content;

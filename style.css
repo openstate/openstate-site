@@ -173,10 +173,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #666666;
   text-rendering: optimizeLegibility; }
 
-#nav-above > h2, h3.widgettitle {
-  font-size: 15px;
-  padding-bottom: 7px; }
-
 body {
   background-image: url("images/tex2res5.png");
   font-family: Helvetica, Verdana, Arial, Sans-Serif;
@@ -192,7 +188,7 @@ body {
   body a:hover {
     text-decoration: underline; }
 
-body.page h1.entry-title {
+body.page h1.entry-title, body.archive h1.page-title {
   padding-top: 5px;
   padding-bottom: 24px; }
 
@@ -260,6 +256,8 @@ body.page h1.entry-title {
     position: relative;
     margin-bottom: 24px; }
     #main li.widgetcontainer h3.widgettitle {
+      font-size: 15px;
+      padding-bottom: 7px;
       padding-left: 36px;
       border-bottom: 1px solid #CCC; }
   #main #container {
@@ -267,7 +265,7 @@ body.page h1.entry-title {
     float: left;
     padding-left: 8px; }
     #main #container #content {
-      margin: 0 0 0 14px;
+      margin: 26px 0 0 14px;
       width: 622px;
       overflow: hidden;
       padding-left: 8px; }

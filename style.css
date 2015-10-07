@@ -208,7 +208,7 @@ body.page h1.entry-title, body.archive h1.page-title {
   background: white;
   height: 96px;
   font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
-  padding-top: 24px; }
+  padding-top: 0px; }
   #header #branding {
     float: left;
     width: 142px;
@@ -226,21 +226,23 @@ body.page h1.entry-title, body.archive h1.page-title {
     font-size: 14px; }
     #header #access .skip-link {
       display: none; }
-    #header #access .sf-menu {
+    #header #access #menu-open-state-website {
       float: left;
-      margin: 40px 0px 0px 51px;
-      padding: 0;
-      list-style: none; }
-      #header #access .sf-menu > li {
-        display: inline; }
-        #header #access .sf-menu > li a {
-          padding: 9px 13px;
-          text-decoration: none;
-          color: #076776;
-          background: white; }
-      #header #access .sf-menu > li.current-menu-item a, #header #access .sf-menu > li a:hover {
-        color: #076776;
-        background: #cccccc; }
+      margin: 9px 0px 0px 240px;
+      padding: 0; }
+    #header #access #menu-open-state-website-1 {
+      clear: left; }
+  #header .menu > ul li {
+    list-style-type: none;
+    display: inline; }
+    #header .menu > ul li a {
+      padding: 9px 13px;
+      text-decoration: none;
+      color: #076776;
+      background: white; }
+  #header .menu > ul > li.current-menu-item a, #header .menu > ul > li a:hover {
+    color: #076776;
+    background: #cccccc; }
   #header #blog-description {
     display: none; }
 

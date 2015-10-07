@@ -83,131 +83,16 @@ function move_blogdescription() {
 add_action('init','move_blogdescription');
 
 
-//// Add big navigation ////
-function openstate_nav_menu_args($args) {
-  // Only show the shallow primary menu
-  $args['depth'] = 1;
-  return apply_filters('openstate_nav_menu_args', $args);
+//// Theme navigation ////
+function openstate_theme_navigation() {
+  wp_nav_menu(array( 
+    'theme_location'=>'secondary-menu',
+  ));
 }
-add_filter('thematic_nav_menu_args', 'openstate_nav_menu_args');
+add_action('thematic_header','openstate_theme_navigation');
 
-  // Get a certain submenu
-  // source: http://www.ordinarycoder.com/wordpress-wp_nav_menu-show-a-submenu-only/
+//// End theme navigation ////
 
-function submenu_get_children_ids( $id, $items ) {
-  $ids = wp_filter_object_list( $items, array( 'menu_item_parent' => $id ), 'and', 'ID' );
-  foreach ( $ids as $id ) {
-    $ids = array_merge( $ids, submenu_get_children_ids( $id, $items ) );
-  }
-  return $ids;
-}
-function submenu_limit( $items, $args ) {
-  if ( empty($args->submenu) )
-    return $items;
-  $filter_object_list = wp_filter_object_list( $items, array( 'object_id' => $args->submenu ), 'and', 'ID' );
-  $parent_id = array_pop( $filter_object_list );
-  $children  = submenu_get_children_ids( $parent_id, $items );
-  foreach ( $items as $key => $item ) {
-    if ( ! in_array( $item->ID, $children ) )
-      unset($items[$key]);
-  }
-  return $items;
-}
-add_filter( 'wp_nav_menu_objects', 'submenu_limit', 10, 2 );
-
-function menu_get_ancestors( $id, $items ) {
-  $object_menuparents = array();
-  $menu_object = array();
-  foreach ( $items as $item ) {
-    $object_menuparents[$item->object_id] = intval($item->menu_item_parent);
-    $menu_object[$item->ID] = $item->object_id;
-  }
-  $path = array();
-  while($id != 0) {
-    array_unshift($path, $id);
-    $id = $menu_object[$object_menuparents[$id]];
-  }
-  return $path;
-}
-
-function openstate_big_nav() {
-  if(is_page()){
-    ?>
-    <div id="big-navigation">
-      <?php
-        // Build the primary menu again
-      $id = get_the_ID();
-      $menu_name = 'primary-menu';
-      $locations = get_nav_menu_locations();
-      $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-      $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
-      ?>
-      <style>
-      <?php
-          // Add background css (thumbnail/featurd image) per submenu item
-      foreach ( $menuitems as $item ) {
-        $thumb_id = get_post_thumbnail_id( $item->object_id );
-        $thumb = wp_get_attachment_image_src( $thumb_id, 'large' );
-        if (count($thumb)>0) {
-          $thumb = $thumb[0];
-          if ($thumb) {
-            echo sprintf('#big-navigation .menu-item-%s>a{ background-image:url(\'%s\'); }',
-              $item->ID,
-              $thumb) . "\n";
-          }
-        }
-      }
-          // Make non-active menu items transparent
-      $path = menu_get_ancestors($id, $menuitems);
-      ?>
-      <?php if (count($path)>1): ?>
-      #big-navigation li a {
-        opacity:0.5;
-      }
-      #big-navigation li.current-menu-item a, #big-navigation li a:hover {
-        opacity:1;
-      }
-      <?php endif; ?>
-      </style>
-      <?php
-        // Display big submenu
-      if (count($path)>0) {
-        wp_nav_menu(array( 
-          'theme_location'=>$menu_name,
-          'submenu'=>$path[0], 
-          'depth'=>1,
-          'link_before'=>'<div>', 'link_after'=>'</div>'
-          ));
-      }
-      ?>
-    </div>
-    <?php
-  }
-}
-add_action('thematic_belowheader','openstate_big_nav');
-function openstate_side_nav() {
-  if(is_page()){
-    ?>
-    <?php
-        // Build the primary menu again
-    $id = get_the_ID();
-    $menu_name = 'primary-menu';
-    $locations = get_nav_menu_locations();
-    $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-    $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
-
-        // Display big subsubmenu
-    $path = menu_get_ancestors($id, $menuitems);
-    if (count($path)>1) {
-      ?><div id="side-navigation" class="aside main-aside"><?php
-      wp_nav_menu(array( 'theme_location'=>$menu_name,'submenu'=>$path[1] ));
-      ?></div><?php
-    }
-    ?>
-    <?php
-  }
-}
-add_action('thematic_abovemainasides','openstate_side_nav');
 
 
 // Show excerpt instead of full posts on front page
@@ -219,7 +104,7 @@ function openstate_thematic_content($post) {
 }
 add_filter('thematic_content', 'openstate_thematic_content');
 
-  // Filter author and seperators from post-meta block
+// Filter author and seperators from post-meta block
 function openstate_thematic_postmeta_entrydate() {
 
   $entrydate .= '<span class="entry-date"><abbr class="published" title="';

@@ -123,7 +123,7 @@ body.page h1.entry-title, body.archive h1.page-title {
     background: $menu-back;
     height: 96px;
     font-family: $title-font;
-    padding-top: 24px;
+    padding-top: 0px;
 
     #branding {
         float:left;
@@ -146,24 +146,29 @@ body.page h1.entry-title, body.archive h1.page-title {
     #access {
         font-size: 14px;
         .skip-link { display:none; }
-        .sf-menu {
+        #menu-open-state-website {
             float:left;
-            margin: 40px 0px 0px 51px;
+            margin: 9px 0px 0px 240px;
             padding:0;
-            list-style:none;
-            > li {
-                display: inline; 
-                a {
-                    padding:9px 13px;
-                    text-decoration: none;
-                    color: $menu-text;
-                    background: $menu-back;
-                }
-            }
-            > li.current-menu-item a, > li a:hover {
+        }
+        #menu-open-state-website-1 {
+            clear: left;
+        }
+    }
+    .menu>ul {
+        li {
+            list-style-type: none;
+            display: inline; 
+            a {
+                padding:9px 13px;
+                text-decoration: none;
                 color: $menu-text;
-                background: $menu-front;
+                background: $menu-back;
             }
+        }
+        > li.current-menu-item a, > li a:hover {
+            color: $menu-text;
+            background: $menu-front;
         }
     }
     #blog-description {

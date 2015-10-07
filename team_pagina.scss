@@ -1,0 +1,16 @@
+/* team pagina */
+p.team {
+  clear:both;
+  border-top:1px solid #ccc;
+}
+p.team > img {
+  float:left;
+  padding:1em;
+  border-radius: 100%;
+  width:200px;
+  height:200px;
+}
+p.team > p {
+  display: block;
+  padding:1em;
+}

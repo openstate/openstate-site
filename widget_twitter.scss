@@ -1,0 +1,81 @@
+$twitter-back: $lighter-blue;
+$twitter-front: $dark-blue;
+
+li.widgetcontainer.widget_twitter-profile-tracker {
+    h3.widgettitle {
+        background: url("images/twitter_icon.png") no-repeat scroll top left;
+    }
+
+    div.avatar img,
+    img.avatar {
+      border-radius: 100%;
+    }
+
+    li {
+        list-style: none;
+        color: $twitter-front;
+
+        font-style: italic;
+        font-family: Helvetica, Verdana, Arial, Sans-Serif;
+        line-height:16px;    
+        font-size: 13px;
+    }
+
+    li a:link {
+        color: $twitter-front;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        color: $twitter-front;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    li a:visited {
+        color: $twitter-front;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    ol.tweets {
+        padding-top: 10px;
+    }
+
+    .twitter_btn {
+        position: absolute;
+        top: 0px;
+        right: 5px;
+    }
+
+    div.avatar {
+        float: left;
+        // padding-right: 5px;
+        // padding-bottom: 35px;
+        background: white;
+        // padding-bottom: 98px;
+        // margin-right: -53px;
+    }
+
+    div.info {
+        display: none;
+        clear:both;
+    }
+
+    span.twit {
+        // padding-left: 0px;
+    }
+
+    div.msg {
+        background-color: $twitter-back;
+        float:right;
+        width: 206px;
+        padding: 5px 0 15px 10px;
+        // margin-left: 53px;
+        border-bottom: 1px solid $twitter-front;
+    }
+    .clearleft {
+        clear:both;
+    }
+}

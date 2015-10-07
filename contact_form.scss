@@ -1,0 +1,20 @@
+input.wpcf7-form-control.wpcf7-text,
+input.wpcf7-form-control.wpcf7-submit,
+input.wpcf7-form-control.wpcf7-submit:hover,
+textarea.wpcf7-form-control.wpcf7-textarea {
+  border: 1px solid #CCC;
+  color: #666;
+  font-size: 13px;
+  line-height: 19px;
+  font-family: Helvetica, Verdana, Arial, Sans-Serif;
+}
+
+input.wpcf7-form-control.wpcf7-text,
+textarea.wpcf7-form-control.wpcf7-textarea {
+  width: 500px;
+}
+
+input.wpcf7-form-control.wpcf7-submit,
+input.wpcf7-form-control.wpcf7-submit:hover {
+  width: 60px;
+}

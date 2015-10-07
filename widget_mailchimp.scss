@@ -1,0 +1,81 @@
+$mc-back: $lighter-blue;
+$mc-front: $dark-blue;
+
+li.widgetcontainer.widget_mailchimpsf_widget {
+
+    h3.widgettitle {
+        background: url("images/envelope_icon.png") no-repeat scroll left;
+    }
+
+    #mc-indicates-required {
+        width: 100%;
+        display: none;
+    }
+
+    div.mergeRow {
+        display: none;
+    }
+
+    #mc_signup {
+        border-bottom: 1px solid $mc-front;
+        width: 270px;
+    }
+
+    .mc_merge_var {
+        padding: 0;
+        margin: 0;
+        width: 148px;
+        padding-left: 20px;
+        padding-top: 10px;
+        margin-bottom:0px !important;
+    }
+
+    .mc_signup_submit input.button {
+        text-align: center;
+        background: url("images/submit_button.png") no-repeat scroll center;
+        height: 46px;
+        width: 100px !important; /* sorry, mailchimp page css */
+        color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    .mc_signup_submit {
+        width:100%;
+        float:left;
+        margin-top: -70px;
+        text-align: right !important; /* sorry, mailchimp page css */
+    }
+
+    #mc_signup_form {
+        padding: 1px;
+        border-width: 0px;
+        border-style: solid;
+        color: #555;
+        background-color: $mc-back;
+        width: 271px;
+        margin-bottom:0px;
+        padding-bottom: 12px;
+
+        .mc_var_label {
+            display: none;
+        }
+        .mc_input {
+            border: none;
+            border-top: 1px solid $mc-front;
+            font-family: Helvetica, Verdana, Arial, Sans-Serif;
+            font-size: 13px;
+            line-height: 19px;
+            color: #666;
+        }
+    }
+
+
+    .mc_error_msg,
+    .mc_success_msg {
+        color: #666;
+        position: absolute;
+        margin-top: 100px;
+        font-family: Helvetica, Verdana, Arial, Sans-Serif;
+        font-weight: normal;
+    }
+}

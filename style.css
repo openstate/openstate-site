@@ -226,23 +226,29 @@ body.page h1.entry-title, body.archive h1.page-title {
     font-size: 14px; }
     #header #access .skip-link {
       display: none; }
-    #header #access #menu-open-state-website {
-      float: left;
-      margin: 9px 0px 0px 240px;
-      padding: 0; }
-    #header #access #menu-open-state-website-1 {
-      clear: left; }
-  #header .menu > ul li {
-    list-style-type: none;
-    display: inline; }
-    #header .menu > ul li a {
-      padding: 9px 13px;
-      text-decoration: none;
+  #header ul.menu, #header ul.sf-menu {
+    padding: 0; }
+    #header ul.menu li, #header ul.sf-menu li {
+      list-style-type: none;
+      display: inline; }
+      #header ul.menu li a, #header ul.sf-menu li a {
+        padding: 9px 13px;
+        text-decoration: none; }
+  #header ul#menu-open-state-website {
+    float: right;
+    margin: 9px 120px 0px 0px; }
+    #header ul#menu-open-state-website > li a:hover {
+      text-decoration: underline; }
+  #header ul#menu-themes {
+    clear: right;
+    padding-top: 24px;
+    margin: 0px 0px 0px 240px; }
+    #header ul#menu-themes li a {
       color: #076776;
       background: white; }
-  #header .menu > ul > li.current-menu-item a, #header .menu > ul > li a:hover {
-    color: #076776;
-    background: #cccccc; }
+    #header ul#menu-themes > li.current-menu-item a, #header ul#menu-themes > li a:hover {
+      color: #076776;
+      background: #cccccc; }
   #header #blog-description {
     display: none; }
 

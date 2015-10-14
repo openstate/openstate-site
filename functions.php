@@ -2,22 +2,17 @@
 // Translate, if applicable
 load_child_theme_textdomain('thematic-openstate');
 
-  // Unhook default Thematic functions
+// Unhook default Thematic functions
 function unhook_thematic_functions() {
   remove_action('thematic_navigation_below', 'thematic_nav_below', 2);
 }
 add_action('init','unhook_thematic_functions');
 
+
 function openstate_enqueue_scripts() {
-  wp_enqueue_script(
-    'slidejs',
-    get_stylesheet_directory_uri() . '/scripts/slides.min.jquery.js',
-    array('jquery')
-    );
   wp_enqueue_script(
     'openstatejs',
     get_stylesheet_directory_uri() . '/scripts/openstate.js',
-    array('slidejs'),
     false,
     true
     );
@@ -28,10 +23,25 @@ function openstate_enqueue_scripts() {
 }    
 add_action('wp_enqueue_scripts', 'openstate_enqueue_scripts');
 
+// Themes Menu //
+function register_themes_menu() {
+  register_nav_menu( 'themes-menu', __( 'Themes Menu', 'theme-slug' ) );
+}
+add_action( 'after_setup_theme', 'register_themes_menu' );
+function openstate_theme_navigation() {
+  wp_nav_menu(array( 
+    'theme_location'=>'themes-menu',
+  ));
+}
+add_action('thematic_header','openstate_theme_navigation');
+function openstate_thematic_nav_menu_args($args) {
+  $args['depth'] = 1;
+  return apply_filters('openstate_thematic_nav_menu_args', $args);
+}
+add_filter('thematic_nav_menu_args', 'openstate_thematic_nav_menu_args');
 
-  // Add custom post type for announcements
+// Add custom post type for announcements //
 add_action( 'init', 'create_my_post_types' );
-
 function create_my_post_types() {
   register_post_type( 'announcement', 
     array(
@@ -81,17 +91,6 @@ function move_blogdescription() {
   add_action('thematic_header','thematic_blogdescription');
 }
 add_action('init','move_blogdescription');
-
-
-//// Theme navigation ////
-function openstate_theme_navigation() {
-  wp_nav_menu(array( 
-    'theme_location'=>'secondary-menu',
-  ));
-}
-add_action('thematic_header','openstate_theme_navigation');
-
-//// End theme navigation ////
 
 
 
@@ -212,42 +211,6 @@ function hdo_thematic_post_thumb_size() {
   return apply_filters('hdo_thematic_post_thumb_size', array(260, 260));
 }
 add_filter('thematic_post_thumb_size','hdo_thematic_post_thumb_size');
-
-// Add featured image for single post header
-$singleposthead = array(
-  'id' => 'single-post-head',
-  'post_type' => 'post',
-  'labels' => array(
-    'name'      => 'Single Post Head Image',
-    'set'       => 'Set image (620x410)',
-    'remove'    => 'Remove image',
-    'use'       => 'Use as post head',
-    )
-  );
-
-// Add featured image for single post header
-$statementhead_post = array(
-  'id' => 'statement-head',
-  'post_type' => 'post',
-  'labels' => array(
-    'name'      => 'Mission Statement Head Image',
-    'set'       => 'Set image (660x310)',
-    'remove'    => 'Remove image',
-    'use'       => 'Use as mission statement image',
-    )
-  );
-
-// Add featured image for single post header
-$statementhead_announcement = array(
-  'id' => 'statement-head',
-  'post_type' => 'announcement',
-  'labels' => array(
-    'name'      => 'Mission Statement Head Image',
-    'set'       => 'Set image (660x310)',
-    'remove'    => 'Remove image',
-    'use'       => 'Use as mission statement image',
-    )
-  );
 
 // POST NAVIGATION //
 function openstate_next_post_link_args() {

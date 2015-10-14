@@ -184,6 +184,32 @@ body.page h1.entry-title, body.archive h1.page-title {
     }
 }
 
+#home-statement {
+    width: 75%;
+    margin: 30px auto;
+    h1 {
+        color: $dark-grey;
+        font-size: 20px;
+        font-style: italic;
+        clear:both;
+        line-height: 24px;
+        padding: 10px 0px;
+    }
+    h1:before {
+      color: $light-grey;
+      font-size: 2em;
+      content: "\201C";
+    }
+    h1:after {
+      color: $light-grey;
+      font-size: 2em;
+      content: "\201E";
+    }
+    a {
+        float: right;
+    }
+}
+
 .aside {
     >ul {
         list-style: none;

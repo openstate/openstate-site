@@ -252,6 +252,27 @@ body.page h1.entry-title, body.archive h1.page-title {
   #header #blog-description {
     display: none; }
 
+#home-statement {
+  width: 75%;
+  margin: 30px auto; }
+  #home-statement h1 {
+    color: #666666;
+    font-size: 20px;
+    font-style: italic;
+    clear: both;
+    line-height: 24px;
+    padding: 10px 0px; }
+  #home-statement h1:before {
+    color: #cccccc;
+    font-size: 2em;
+    content: "\201C"; }
+  #home-statement h1:after {
+    color: #cccccc;
+    font-size: 2em;
+    content: "\201E"; }
+  #home-statement a {
+    float: right; }
+
 .aside > ul {
   list-style: none; }
 

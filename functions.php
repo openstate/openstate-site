@@ -40,30 +40,7 @@ function openstate_thematic_nav_menu_args($args) {
 }
 add_filter('thematic_nav_menu_args', 'openstate_thematic_nav_menu_args');
 
-// Add custom post type for announcements //
-add_action( 'init', 'create_my_post_types' );
-function create_my_post_types() {
-  register_post_type( 'announcement', 
-    array(
-      'labels' => array(
-        'name' => 'Announcements',
-        'singular_name' => 'Announcement'
-        ),
-      'supports' => array(  
-        'title',
-        'excerpt'
-        ),
-      'taxonomies' => array(
-        'category'
-        ),
-      'public' => true,
-      'menu_position' => 5,
-      'hierarchical' => false
-      )
-    );
-}
-
-// Multilingual choice dropdown
+// Multilingual choice dropdown //
 if (function_exists('qts_language_menu')) {
   function openstate_header() {
     ?>
@@ -80,18 +57,31 @@ if (function_exists('qts_language_menu')) {
   add_action('thematic_header','openstate_header');
 }
 
-// Use tagline (blog description) as mission statement
-function childtheme_override_blogdescription() {
-  // Always make it h1
-  $blogdesc = '"blog-description">' . get_bloginfo('description', 'display');
-  echo "\t<h1 id=$blogdesc</h1>\n\n";
-}
+// Custom Front Page //
+add_action('init','move_blogdescription');
 function move_blogdescription() {
   remove_action('thematic_header','thematic_blogdescription',5);
-  add_action('thematic_header','thematic_blogdescription');
 }
-add_action('init','move_blogdescription');
+function openstate_thematic_belowheader($post) {
+  if (is_home() || is_front_page()) {
 
+    ?>
+    <div id="home-statement">
+      <?php
+      // Use one specific page for home page
+      $home_id = 142;
+      $post = get_post($home_id); 
+      $content = apply_filters('the_content', $post->post_content); 
+      echo $content;
+      ?>
+    </div>
+    <div id="home-cases">
+
+    </div>
+    <?php
+  }
+}
+add_action('thematic_belowheader', 'openstate_thematic_belowheader');
 
 
 // Show excerpt instead of full posts on front page

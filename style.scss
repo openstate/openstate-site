@@ -185,6 +185,7 @@ body.page h1.entry-title, body.archive h1.page-title {
 }
 
 #home-statement {
+    font-family: $title-font;
     width: 75%;
     margin: 30px auto;
     h1 {
@@ -328,6 +329,7 @@ body.page h1.entry-title, body.archive h1.page-title {
 
 
 #footer {
+    font-family: $title-font;
     clear:both;
     background-color: $footer-back;
     height: 100%;
@@ -341,8 +343,31 @@ body.page h1.entry-title, body.archive h1.page-title {
     padding-bottom: 15px;
     padding-top: 15px;
 
+    #subsidiary {
+        >.aside {
+            width: 32%;
+            display: inline-block;
+            min-height: 1em;
+            vertical-align:top;
+        }
+        .menu {
+            list-style-type: none;
+        }
+        #first {
+            text-align: left;
+            >ul.xoxo { margin-left: 2em; }
+        }
+        #second {
+            text-align: center;
+        }
+        #third {
+            text-align: right;
+            >ul.xoxo { margin-right: 2em; }
+        }
+    }
+
     .btn-social-list {
-        text-align: center;
+        
         padding-right: 27px;
         > div {
             display: inline-block;

@@ -253,6 +253,7 @@ body.page h1.entry-title, body.archive h1.page-title {
     display: none; }
 
 #home-statement {
+  font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
   width: 75%;
   margin: 30px auto; }
   #home-statement h1 {
@@ -361,6 +362,7 @@ body.page h1.entry-title, body.archive h1.page-title {
     width: 300px; }
 
 #footer {
+  font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
   clear: both;
   background-color: #e8f8fc;
   height: 100%;
@@ -372,8 +374,24 @@ body.page h1.entry-title, body.archive h1.page-title {
   border-top: 1px solid #076776;
   padding-bottom: 15px;
   padding-top: 15px; }
+  #footer #subsidiary > .aside {
+    width: 32%;
+    display: inline-block;
+    min-height: 1em;
+    vertical-align: top; }
+  #footer #subsidiary .menu {
+    list-style-type: none; }
+  #footer #subsidiary #first {
+    text-align: left; }
+    #footer #subsidiary #first > ul.xoxo {
+      margin-left: 2em; }
+  #footer #subsidiary #second {
+    text-align: center; }
+  #footer #subsidiary #third {
+    text-align: right; }
+    #footer #subsidiary #third > ul.xoxo {
+      margin-right: 2em; }
   #footer .btn-social-list {
-    text-align: center;
     padding-right: 27px; }
     #footer .btn-social-list > div {
       display: inline-block;

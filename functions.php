@@ -84,6 +84,9 @@ function openstate_thematic_belowheader($post) {
 add_action('thematic_belowheader', 'openstate_thematic_belowheader');
 
 
+
+
+
 // Show excerpt instead of full posts on front page
 function openstate_thematic_content($post) {
   if (is_home() || is_front_page()) {

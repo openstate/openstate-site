@@ -76,15 +76,27 @@ function openstate_thematic_belowheader($post) {
       ?>
     </div>
     <div id="home-cases">
-
+      <?php
+      // The Loop
+      $the_query = new WP_Query( array('category_name' => 'events' ) );
+      if ( $the_query->have_posts() ) {
+        echo '<ul>';
+        while ( $the_query->have_posts() ) {
+          $the_query->the_post();
+          echo '<li>' . get_the_title() . ' (thumbnail ' . get_post_thumbnail_id() . ')</li>';
+        }
+        echo '</ul>';
+      } else {
+        // no posts found
+      }
+      // Restore original Post Data 
+      wp_reset_postdata();
+      ?>
     </div>
     <?php
   }
 }
 add_action('thematic_belowheader', 'openstate_thematic_belowheader');
-
-
-
 
 
 // Show excerpt instead of full posts on front page

@@ -214,6 +214,15 @@ blockquote.twitter-tweet a:focus {
 blockquote.twitter-tweet .gray {
   color: #868484; }
 
+.page-template-case-page-php #container {
+  width: 940px;
+  float: left; }
+
+.page-template-case-page-php #content {
+  margin: 0 0 0 10px;
+  width: 940px;
+  overflow: hidden; }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
   font-weight: normal;

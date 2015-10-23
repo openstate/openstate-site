@@ -39,6 +39,7 @@ function openstate_theme_navigation() {
     'container_class'=>'themes-menu'
   ));
 }
+
 add_action('thematic_header','openstate_theme_navigation');
 function openstate_thematic_nav_menu_args($args) {
   $args['depth'] = 1;
@@ -124,7 +125,7 @@ function remove_blogdescription() {
   remove_action('thematic_header','thematic_blogdescription',5);
 }
 add_action('init','remove_blogdescription');
-function openstate_thematic_belowheader($post) {
+function openstate_thematic_belowheader() {
   if (is_home() || is_front_page()) {
     ?>
     <div id="home-statement">
@@ -188,9 +189,11 @@ function openstate_post($is_index) {
   ?>
   <div id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
     <?php
-      // thumbnail
+      global $post;
+    
+    // thumbnail
     $post_title = get_the_title();
-    $size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
+    $size = apply_filters( 'thematic_post_thumb_size' , array(70,70));
     $attr = apply_filters( 'thematic_post_thumb_attr', array('title'  => sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
     if ( has_post_thumbnail() ) {
       echo sprintf('<a class="entry-thumb" href="%s" title="%s">%s</a>',
@@ -201,27 +204,15 @@ function openstate_post($is_index) {
     ?>
     <div class="entry-excerpt">
       <?php
-          // skip the post header function
+      // skip the post header function
       echo thematic_postheader_postmeta();
-      echo thematic_postheader_posttitle();
-      global $post;
-      $content = get_extended( $post->post_content );
-      if (strlen($content['extended']) == 0) {
-        $main = $is_index? get_the_excerpt() : '';
-        $extended = get_the_content();
-      } else {
-        $main = strip_shortcodes($content['main']);
-        $extended = $content['extended'];
-      }
+      echo thematic_postheader_posttitle();    
       ?>
-      <div class="entry-content">
-        <?=apply_filters('thematic_post', apply_filters('the_excerpt', $main)); ?>
-      </div>
     </div>
     <?php if (!$is_index): ?>
     <div style="clear:both;"></div>
     <div class="entry-content">
-      <?=apply_filters('thematic_post', apply_filters('the_content', $extended)) ?>
+      <?=apply_filters('thematic_post', apply_filters('the_content', $post->post_content)) ?>
       <?php wp_link_pages(array('before' => sprintf('<div class="page-link">%s', __('Pages:', 'thematic')),
       'after' => '</div>')); ?>
     </div><!-- .entry-content -->
@@ -251,18 +242,14 @@ function childtheme_override_index_loop() {
   $count = $count + 1;
   endwhile;
 }
+
 function childtheme_override_category_loop() {
   childtheme_override_index_loop();
 }
-  // Remove thumbnail from within post content
+
+// Remove thumbnail from within post content
 function nope() { return false; }
 add_filter('thematic_post_thumbs', 'nope'); 
-
-// Increase post thumbnail image thumbnail size
-function hdo_thematic_post_thumb_size() {
-  return apply_filters('hdo_thematic_post_thumb_size', array(260, 260));
-}
-add_filter('thematic_post_thumb_size','hdo_thematic_post_thumb_size');
 
 // POST NAVIGATION //
 function openstate_next_post_link_args() {

@@ -24,11 +24,9 @@ dl, dd, ol, ul, figure {
 @font-face {
   font-family: Avenir;
   src: url("AvenirLTStd-Medium.otf"); }
-
 @font-face {
   font-family: AvenirMedium;
   src: url("AvenirLTStd-Medium.otf"); }
-
 li.widgetcontainer.widget_twitter-profile-tracker h3.widgettitle {
   background: url("images/twitter_icon.png") no-repeat scroll top left; }
 li.widgetcontainer.widget_twitter-profile-tracker div.avatar img,
@@ -66,7 +64,7 @@ li.widgetcontainer.widget_twitter-profile-tracker div.info {
   display: none;
   clear: both; }
 li.widgetcontainer.widget_twitter-profile-tracker div.msg {
-  background-color: #e8f8fc;
+  background-color: #E8F8FC;
   float: right;
   width: 206px;
   padding: 5px 0 15px 10px;
@@ -111,7 +109,7 @@ li.widgetcontainer.widget_mailchimpsf_widget #mc_signup_form {
   border-width: 0px;
   border-style: solid;
   color: #555;
-  background-color: #e8f8fc;
+  background-color: #E8F8FC;
   width: 271px;
   margin-bottom: 0px;
   padding-bottom: 12px; }
@@ -170,14 +168,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
   font-weight: normal;
   clear: both;
-  color: #666666;
+  color: #666;
   text-rendering: optimizeLegibility; }
 
 body {
   background-image: url("images/tex2res5.png");
   font-family: Helvetica, Verdana, Arial, Sans-Serif;
   font-size: 13px;
-  color: #666666;
+  color: #666;
   font-variant: normal;
   -webkit-font-smoothing: antialiased; }
   body p {
@@ -248,7 +246,7 @@ body.page h1.entry-title, body.archive h1.page-title {
       background: white; }
     #header div.themes-menu > ul > li.current-menu-item a, #header div.themes-menu > ul > li a:hover {
       color: #076776;
-      background: #cccccc; }
+      background: #ccc; }
   #header #blog-description {
     display: none; }
 
@@ -257,18 +255,18 @@ body.page h1.entry-title, body.archive h1.page-title {
   width: 75%;
   margin: 30px auto; }
   #home-statement h1 {
-    color: #666666;
+    color: #666;
     font-size: 20px;
     font-style: italic;
     clear: both;
     line-height: 24px;
     padding: 10px 0px; }
   #home-statement h1:before {
-    color: #cccccc;
+    color: #ccc;
     font-size: 2em;
     content: "\201C"; }
   #home-statement h1:after {
-    color: #cccccc;
+    color: #ccc;
     font-size: 2em;
     content: "\201E"; }
   #home-statement a {
@@ -299,11 +297,8 @@ body.page h1.entry-title, body.archive h1.page-title {
       width: 622px;
       overflow: hidden;
       padding-left: 8px; }
-      #main #container #content .post img.attachment-260x260.wp-post-image {
+      #main #container #content .post img.wp-post-image {
         float: left;
-        /* hack: featured images are not 260 but 200 */
-        width: 200px;
-        height: 200px;
         padding: 12px 0px;
         border-radius: 100%; }
       #main #container #content .post .entry-meta {
@@ -313,7 +308,7 @@ body.page h1.entry-title, body.archive h1.page-title {
         #main #container #content .post .entry-meta abbr {
           cursor: text; }
         #main #container #content .post .entry-meta abbr, #main #container #content .post .entry-meta a {
-          color: #666666;
+          color: #666;
           border: none;
           font-size: 11px;
           font-style: normal;
@@ -324,12 +319,12 @@ body.page h1.entry-title, body.archive h1.page-title {
           text-decoration: underline; }
       #main #container #content .post .entry-excerpt {
         float: right;
-        width: 400px; }
-      #main #container #content .post .entry-title a {
+        width: 530px; }
+      #main #container #content .post .entry-title {
         color: #666;
         text-decoration: none;
         padding-top: 0px;
-        font-size: 26px;
+        font-size: 24px;
         line-height: 26px;
         padding-bottom: 7px; }
       #main #container #content .post .entry-content {
@@ -364,7 +359,7 @@ body.page h1.entry-title, body.archive h1.page-title {
 #footer {
   font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
   clear: both;
-  background-color: #e8f8fc;
+  background-color: #E8F8FC;
   height: 100%;
   margin: 0 auto;
   width: 960px;
@@ -410,3 +405,5 @@ body.page h1.entry-title, body.archive h1.page-title {
         background: transparent; }
         #footer .btn-social-list > div a.btn-social .fa-fw {
           line-height: 45px; }
+
+/*# sourceMappingURL=style.css.map */

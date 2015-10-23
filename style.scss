@@ -62,10 +62,10 @@ dl, dd, ol, ul, figure {
 
 
 @import 
-    "widget_twitter",
-    "widget_mailchimp",
-    "team_pagina",
-    "contact_form"
+    "scss/widget_twitter",
+    "scss/widget_mailchimp",
+    "scss/team_pagina",
+    "scss/contact_form"
 ;
 
 
@@ -246,11 +246,8 @@ body.page h1.entry-title, body.archive h1.page-title {
             padding-left: 8px;
 
             .post {
-                img.attachment-260x260.wp-post-image {
+                img.wp-post-image {
                     float: left;
-                    /* hack: featured images are not 260 but 200 */
-                    width:200px;
-                    height:200px;
                     padding:12px 0px;
                     border-radius: 100%;
                 }
@@ -275,13 +272,13 @@ body.page h1.entry-title, body.archive h1.page-title {
                 }
                 .entry-excerpt {
                     float: right;
-                    width: 400px;
+                    width: 530px;
                 }
-                .entry-title a {
+                .entry-title {
                     color: #666;
                     text-decoration: none;
                     padding-top: 0px;
-                    font-size: 26px;
+                    font-size: 24px;
                     line-height:26px;
                     padding-bottom: 7px;
                 }

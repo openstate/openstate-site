@@ -62,10 +62,10 @@ dl, dd, ol, ul, figure {
 
 
 @import 
-    "widget_twitter",
-    "widget_mailchimp",
-    "team_pagina",
-    "contact_form"
+    "scss/widget_twitter",
+    "scss/widget_mailchimp",
+    "scss/team_pagina",
+    "scss/contact_form"
 ;
 
 
@@ -274,7 +274,7 @@ body.page h1.entry-title, body.archive h1.page-title {
                     float: right;
                     width: 530px;
                 }
-                .entry-title a {
+                .entry-title {
                     color: #666;
                     text-decoration: none;
                     padding-top: 0px;

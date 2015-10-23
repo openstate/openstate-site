@@ -144,7 +144,9 @@ function openstate_post($is_index) {
   ?>
   <div id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
     <?php
-      // thumbnail
+      global $post;
+    
+    // thumbnail
     $post_title = get_the_title();
     $size = apply_filters( 'thematic_post_thumb_size' , array(70,70));
     $attr = apply_filters( 'thematic_post_thumb_attr', array('title'  => sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
@@ -157,30 +159,15 @@ function openstate_post($is_index) {
     ?>
     <div class="entry-excerpt">
       <?php
-          // skip the post header function
+      // skip the post header function
       echo thematic_postheader_postmeta();
-      echo thematic_postheader_posttitle();
-      if (!$is_index){
-        global $post;
-        $content = get_extended( $post->post_content );
-        // if the <--more--> 
-        if (strlen($content['extended']) == 0) {
-          $main = $is_index? get_the_excerpt() : '';
-          $extended = get_the_content();
-        } else {
-          $main = strip_shortcodes($content['main']);
-          $extended = $content['extended'];
-        }
-      }
+      echo thematic_postheader_posttitle();    
       ?>
-      <div class="entry-content">
-        <?=apply_filters('thematic_post', apply_filters('the_excerpt', $main)); ?>
-      </div>
     </div>
     <?php if (!$is_index): ?>
     <div style="clear:both;"></div>
     <div class="entry-content">
-      <?=apply_filters('thematic_post', apply_filters('the_content', $extended)) ?>
+      <?=apply_filters('thematic_post', apply_filters('the_content', $post->post_content)) ?>
       <?php wp_link_pages(array('before' => sprintf('<div class="page-link">%s', __('Pages:', 'thematic')),
       'after' => '</div>')); ?>
     </div><!-- .entry-content -->

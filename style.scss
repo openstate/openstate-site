@@ -211,6 +211,17 @@ body.page h1.entry-title, body.archive h1.page-title {
     }
 }
 
+#home-cases {
+    margin: 30px auto;
+    >ul{
+        list-style: none;
+        >li {
+            display: inline-block;
+            margin: 30px;
+        }
+    }
+}
+
 .aside {
     >ul {
         list-style: none;

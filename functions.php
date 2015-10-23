@@ -149,8 +149,7 @@ function openstate_page_list($cat, $parent=null) {
     while ( $the_query->have_posts() ) {
       $the_query->the_post();
       echo '<li>';
-      echo get_the_title();
-      $size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
+      $size = apply_filters( 'thematic_post_thumb_size' , array(150,150) );
       $attr = apply_filters( 'thematic_post_thumb_attr', array('title'  => sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
       if ( has_post_thumbnail() ) {
         echo sprintf('<a class="entry-thumb" href="%s" title="%s">%s</a>',
@@ -158,8 +157,10 @@ function openstate_page_list($cat, $parent=null) {
           sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
           get_the_post_thumbnail(get_the_ID(), $size, $attr));
       }
+      echo '';
       $parent = wp_get_post_parent_id( get_the_ID() );
-      echo '<a href="'.get_permalink($parent).'">'.get_the_title($parent).'</a>';
+      echo '<div class="parent"><a href="'.get_permalink($parent).'">'.get_the_title($parent).'</a></div>';
+      echo '<h3>' . get_the_title() . '</h3>';
       echo '</li>';
     }
     echo '</ul>';

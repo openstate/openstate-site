@@ -322,6 +322,14 @@ body.page h1.entry-title, body.archive h1.page-title {
   #home-statement a {
     float: right; }
 
+#home-cases {
+  margin: 30px auto; }
+  #home-cases > ul {
+    list-style: none; }
+    #home-cases > ul > li {
+      display: inline-block;
+      margin: 30px; }
+
 .aside > ul {
   list-style: none; }
 

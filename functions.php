@@ -1,13 +1,64 @@
 <?php
-// Global id settings
-$HOME_ID = 142;
-$CASES_CATEGORY_ID = 110;
-$TOOLS_CATEGORY_ID = null;
-
-// Translate, if applicable
+// Translate, if applicable //
 load_child_theme_textdomain('thematic-openstate');
 
-// Unhook default Thematic functions
+// Global ID Settings //
+function openstate_opt_init() {
+  /* Register childtheme setting separate from thematic */
+  register_setting('thematic_opt_group', 'openstate_options', 'openstate_options_validate');
+  /* Add a settings section for our openstate */
+  add_settings_section('openstate_section', '', 'openstate_section_html', 'thematic_theme_opt');
+  /* Add settings fields to the settings section */
+  add_settings_field('openstate_home_id', __('Mission Statement Page', 'thematic-openstate'), 'openstate_do_home_id', 'thematic_theme_opt', 'openstate_section');
+  add_settings_field('openstate_cases_catid', __('Cases Category', 'thematic-openstate'), 'openstate_do_cases_catid', 'thematic_theme_opt', 'openstate_section');
+  add_settings_field('openstate_tools_catid', __('Tools Category', 'thematic-openstate'), 'openstate_do_tools_catid', 'thematic_theme_opt', 'openstate_section');
+}
+add_action ('admin_init', 'openstate_opt_init');
+
+function openstate_section_html() {}
+function openstate_options_validate( $input ) { return $input;}
+function openstate_default_opt() {
+  $openstate_default_opt = array(
+    'openstate_home_id'   => 142,
+    'openstate_cases_catid'   => 110,
+    'openstate_tools_catid'   => 111
+  );
+  return $openstate_default_opt;
+}
+
+function openstate_do_home_id() {
+  $opt = thematic_get_wp_opt( 'openstate_options', openstate_default_opt() );
+  wp_dropdown_pages(array(
+    'selected' => $opt['openstate_home_id'],
+    'name' => 'openstate_options[openstate_home_id]'
+  ));
+}
+function openstate_do_cases_catid() {
+  $opt = thematic_get_wp_opt( 'openstate_options', openstate_default_opt() );
+  wp_dropdown_categories(array(
+    'selected' => $opt['openstate_cases_catid'],
+    'name' => 'openstate_options[openstate_cases_catid]',
+    'hierarchical'=>1
+  ));
+}
+function openstate_do_tools_catid() {
+  $opt = thematic_get_wp_opt( 'openstate_options', openstate_default_opt() );
+  wp_dropdown_categories(array(
+    'selected' => $opt['openstate_tools_catid'],
+    'name' => 'openstate_options[openstate_tools_catid]',
+    'hierarchical'=>1
+  ));
+}
+function openstate_get_option($opt_key) {
+  $theme_opt = thematic_get_wp_opt( 'openstate_options', openstate_default_opt() );
+  if (isset( $theme_opt[$opt_key] )) {
+    return $theme_opt[$opt_key];
+  } else {
+    return null;
+  }
+}
+
+// Unhook default Thematic functions //
 function unhook_thematic_functions() {
   remove_action('thematic_navigation_below', 'thematic_nav_below', 2);
 }
@@ -98,8 +149,7 @@ function openstate_page_list($cat, $parent=null) {
     while ( $the_query->have_posts() ) {
       $the_query->the_post();
       echo '<li>';
-      echo get_the_title();
-      $size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
+      $size = apply_filters( 'thematic_post_thumb_size' , array(150,150) );
       $attr = apply_filters( 'thematic_post_thumb_attr', array('title'  => sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
       if ( has_post_thumbnail() ) {
         echo sprintf('<a class="entry-thumb" href="%s" title="%s">%s</a>',
@@ -107,8 +157,10 @@ function openstate_page_list($cat, $parent=null) {
           sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
           get_the_post_thumbnail(get_the_ID(), $size, $attr));
       }
+      echo '';
       $parent = wp_get_post_parent_id( get_the_ID() );
-      echo '<a href="'.get_permalink($parent).'">'.get_the_title($parent).'</a>';
+      echo '<div class="parent"><a href="'.get_permalink($parent).'">'.get_the_title($parent).'</a></div>';
+      echo '<h3>' . get_the_title() . '</h3>';
       echo '</li>';
     }
     echo '</ul>';
@@ -131,14 +183,14 @@ function openstate_thematic_belowheader() {
     <div id="home-statement">
       <?php
       // Use one specific page for home page
-      global $HOME_ID;
-      echo apply_filters('the_content', get_post($HOME_ID)->post_content); 
+      $home_id = openstate_get_option('openstate_home_id');
+      echo apply_filters('the_content', get_post($home_id)->post_content); 
       ?>
     </div>
     <div id="home-cases">
       <?php
-      global $CASES_CATEGORY_ID;
-      openstate_page_list($CASES_CATEGORY_ID);
+      $cases_category_id = openstate_get_option('openstate_cases_catid');
+      openstate_page_list($cases_category_id);
       ?>
     </div>
     <?php

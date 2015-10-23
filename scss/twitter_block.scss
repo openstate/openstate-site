@@ -1,0 +1,56 @@
+blockquote.twitter-tweet {
+  display: inline-block;
+  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 16px;
+  border-color: #eee #ddd #bbb;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin: 10px 5px;
+  padding: 2px 16px 16px 16px;
+  max-width: 237px;
+  color: rgb(28, 32, 34);
+}
+
+blockquote.twitter-tweet .identity-avatar {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    background-color: transparent;
+    border-radius: 4px;
+    margin-top: 3px;
+}
+blockquote.twitter-tweet .identity-name {
+    position: absolute;
+    top: 20px;
+    left: 77px;
+    a {
+      color:inherit;
+    }
+}
+
+
+blockquote.twitter-tweet p {
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 20px;
+}
+ 
+blockquote.twitter-tweet a {
+  color: rgb(43, 123, 185);;
+  font-weight: normal;
+  text-decoration: none;
+  outline: 0 none;
+}
+ 
+blockquote.twitter-tweet a:hover,
+blockquote.twitter-tweet a:focus {
+  text-decoration: underline;
+}
+blockquote.twitter-tweet .gray {
+  color: #868484;
+}

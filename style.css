@@ -234,19 +234,19 @@ body.page h1.entry-title, body.archive h1.page-title {
       #header ul.menu li a, #header ul.sf-menu li a {
         padding: 9px 13px;
         text-decoration: none; }
-  #header ul#menu-open-state-website {
+  #header #access > div.menu > ul {
     float: right;
     margin: 9px 120px 0px 0px; }
-    #header ul#menu-open-state-website > li a:hover {
+    #header #access > div.menu > ul > li a:hover {
       text-decoration: underline; }
-  #header ul#menu-themes {
+  #header div.themes-menu > ul {
     clear: right;
     padding-top: 24px;
     margin: 0px 0px 0px 240px; }
-    #header ul#menu-themes li a {
+    #header div.themes-menu > ul li a {
       color: #076776;
       background: white; }
-    #header ul#menu-themes > li.current-menu-item a, #header ul#menu-themes > li a:hover {
+    #header div.themes-menu > ul > li.current-menu-item a, #header div.themes-menu > ul > li a:hover {
       color: #076776;
       background: #cccccc; }
   #header #blog-description {

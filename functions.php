@@ -31,6 +31,7 @@ add_action( 'after_setup_theme', 'register_themes_menu' );
 function openstate_theme_navigation() {
   wp_nav_menu(array( 
     'theme_location'=>'themes-menu',
+    'container_class'=>'themes-menu'
   ));
 }
 add_action('thematic_header','openstate_theme_navigation');

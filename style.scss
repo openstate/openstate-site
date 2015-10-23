@@ -158,14 +158,14 @@ body.page h1.entry-title, body.archive h1.page-title {
             }
         }
     }
-    ul#menu-open-state-website {
+    #access > div.menu > ul {
         float: right;
         margin: 9px 120px 0px 0px;
         > li a:hover {
             text-decoration: underline;
         }
     }
-    ul#menu-themes {
+    div.themes-menu > ul {
         clear:right;
         padding-top: 24px;
         margin: 0px 0px 0px 240px;

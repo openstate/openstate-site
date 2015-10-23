@@ -1,4 +1,9 @@
 <?php
+// Global id settings
+$HOME_ID = 142;
+$CASES_CATEGORY_ID = 110;
+$TOOLS_CATEGORY_ID = null;
+
 // Translate, if applicable
 load_child_theme_textdomain('thematic-openstate');
 
@@ -58,40 +63,81 @@ if (function_exists('qts_language_menu')) {
   add_action('thematic_header','openstate_header');
 }
 
+// Case and Tool pages //
+// This means pages get categories and featured images!
+function add_taxonomies_to_pages() {
+  register_taxonomy_for_object_type( 'post_tag', 'page' );
+  register_taxonomy_for_object_type( 'category', 'page' );
+}
+add_action( 'init', 'add_taxonomies_to_pages' );
+add_theme_support( 'post-thumbnails', array( 'post', 'movie' ) );
+if ( ! is_admin() ) {
+  function category_and_tag_archives( $wp_query ) {
+    $my_post_array = array('post','page');
+    if ( $wp_query->get( 'category_name' ) || $wp_query->get( 'cat' ) ) {
+      $wp_query->set( 'post_type', $my_post_array );
+    }
+    if ( $wp_query->get( 'tag' ) ) {
+      $wp_query->set( 'post_type', $my_post_array );
+    }
+  }
+  add_action( 'pre_get_posts', 'category_and_tag_archives' );
+}
+function add_extra_thumbnail_support() {
+  // Featured images for pages
+  add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+}
+add_action( 'after_setup_theme', 'add_extra_thumbnail_support' );
+function openstate_page_list($cat, $parent=null) {
+  $the_query = new WP_Query( array('cat' => $cat, 'post_type' => 'page' ) );
+  if ($parent) { $the_query->post_parent = $parent; }
+  // The Loop
+  if ( $the_query->have_posts() ) {
+    echo '<ul>';
+    while ( $the_query->have_posts() ) {
+      $the_query->the_post();
+      echo '<li>';
+      echo get_the_title();
+      $size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
+      $attr = apply_filters( 'thematic_post_thumb_attr', array('title'  => sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
+      if ( has_post_thumbnail() ) {
+        echo sprintf('<a class="entry-thumb" href="%s" title="%s">%s</a>',
+          get_permalink() ,
+          sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
+          get_the_post_thumbnail(get_the_ID(), $size, $attr));
+      }
+      $parent = wp_get_post_parent_id( get_the_ID() );
+      echo '<a href="'.get_permalink($parent).'">'.get_the_title($parent).'</a>';
+      echo '</li>';
+    }
+    echo '</ul>';
+  } else {
+    // no posts found
+  }
+  // Restore original Post Data 
+  wp_reset_postdata();
+}
+
+
 // Custom Front Page //
-add_action('init','move_blogdescription');
-function move_blogdescription() {
+function remove_blogdescription() {
   remove_action('thematic_header','thematic_blogdescription',5);
 }
+add_action('init','remove_blogdescription');
 function openstate_thematic_belowheader($post) {
   if (is_home() || is_front_page()) {
-
     ?>
     <div id="home-statement">
       <?php
       // Use one specific page for home page
-      $home_id = 142;
-      $post = get_post($home_id); 
-      $content = apply_filters('the_content', $post->post_content); 
-      echo $content;
+      global $HOME_ID;
+      echo apply_filters('the_content', get_post($HOME_ID)->post_content); 
       ?>
     </div>
     <div id="home-cases">
       <?php
-      // The Loop
-      $the_query = new WP_Query( array('category_name' => 'events' ) );
-      if ( $the_query->have_posts() ) {
-        echo '<ul>';
-        while ( $the_query->have_posts() ) {
-          $the_query->the_post();
-          echo '<li>' . get_the_title() . ' (thumbnail ' . get_post_thumbnail_id() . ')</li>';
-        }
-        echo '</ul>';
-      } else {
-        // no posts found
-      }
-      // Restore original Post Data 
-      wp_reset_postdata();
+      global $CASES_CATEGORY_ID;
+      openstate_page_list($CASES_CATEGORY_ID);
       ?>
     </div>
     <?php

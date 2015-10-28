@@ -1,22 +1,22 @@
 <?php
 /*
-Template Name: case-page
+Template Name: theme-page
 */
 
-function widget_area_primary_aside_case(){
+function widget_area_primary_aside_theme(){
 	echo get_post_meta($post->ID, 'tweet', true);
 }
-add_action('widget_area_primary_aside', 'widget_area_primary_aside_case');
+add_action('widget_area_primary_aside', 'widget_area_primary_aside_theme');
 
-	function openstate_thematic_case_belowheader() {
+	function openstate_thematic_theme_belowheader() {
 	  if ( has_post_thumbnail() ) {
-	  		echo '<div class="case-header-img" style="background-image:url(\''.
-      			wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0].
-      		'\')"></div>';
+  		echo '<div class="case-header-img" style="background-image:url(\''.
+  			wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0].
+  		'\')"></div>';
       }
 	}
 
-add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');	
+add_action('thematic_belowheader', 'openstate_thematic_theme_belowheader');	
 
 ?>
 
@@ -33,18 +33,18 @@ add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');
     // calling the header.php
     get_header();
 
+
+
     // action hook for placing content above #container
     thematic_abovecontainer();
 ?>
-		<div class="opacity-mask"></div>
+
 		<div id="container">
-
-
 		
 			<?php
 				// action hook for placing content above #content
 				thematic_abovecontent();
- 
+
 				// filter for manipulating the element that wraps the content 
 				echo apply_filters( 'thematic_open_id_content', '<div id="content">' . "\n" );
 			
@@ -109,9 +109,6 @@ add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');
 
     // calling the standard sidebar 
     //thematic_sidebar();
-
-
-    
     widget_area_primary_aside();
     
     // calling footer.php

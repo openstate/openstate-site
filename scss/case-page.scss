@@ -1,10 +1,23 @@
 .page-template-case-page-php #container {
-    width:940px;
-    float:left;
+    margin-top: -150px;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-left: 20px;
+    border: 1px solid $light-grey;
+    width: 630px !important;
 }
 
-.page-template-case-page-php  #content {
-    margin:0 0 0 10px;
-    width:940px;
-    overflow:hidden;
+.page-template-case-page-php #content {
+	width: 592px !important;
+}
+
+.page-template-case-page-php .main-aside {
+	margin-top: -150px;
+}
+
+.case-header-img {
+	width: 100%;
+	height: 300px;
+	overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center; 
 }

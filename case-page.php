@@ -6,6 +6,7 @@ Template Name: case-page
 function widget_area_primary_aside_case(){
 	echo get_post_meta($post->ID, 'tweet', true);
 }
+
 add_action('widget_area_primary_aside', 'widget_area_primary_aside_case');
 
 	function openstate_thematic_case_belowheader() {

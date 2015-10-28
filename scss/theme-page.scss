@@ -13,3 +13,31 @@
 .page-template-theme-page-php .main-aside {
 	margin-top: -150px;
 }
+
+.fact-container {
+	border: 1px solid $light-grey;
+	background-color: rgba(255, 255, 255, 0.9);
+	padding: 20px 30px;
+	margin: 10px 0;
+	font-size: 30px;
+	line-height: 1.2em;
+}
+
+p.author > img {
+  float:left;
+  padding:0.5em;
+  border-radius: 100%;
+  width:210px;
+  height:210px;
+}
+p.author {
+  display: block;
+  padding:1em;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.2em;
+}
+
+p.author a {
+	clear: both;
+}

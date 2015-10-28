@@ -124,7 +124,9 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
     <?php
         $facts = get_post_meta($post->ID, 'fact', false);
         foreach ($facts as $fact){
-            echo '<div class="fact-container">'.$fact.'</div>';
+            echo '<div class="fact-container">';
+            echo __($fact);
+            echo '</div>';
         }
         
         print_the_author();

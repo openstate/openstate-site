@@ -3,24 +3,41 @@
 Template Name: theme-page
 */
 
-
+function widget_area_primary_aside_theme(){
+    echo get_post_meta($post->ID, 'tweet', true);
+}
 
 add_action('widget_area_primary_aside', 'widget_area_primary_aside_theme');
 
-
 function openstate_thematic_theme_belowheader() {
-  if ( has_post_thumbnail() ) {
-    echo '<div class="case-header-img" style="background-image:url(\''.
-        wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0].
-    '\')"></div>';
-  }
+    if ( has_post_thumbnail() ) {
+        echo '<div class="case-header-img" style="background-image:url(\''.
+            wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0].
+        '\')"></div>';
+    }
+}
+add_action('thematic_belowheader', 'openstate_thematic_theme_belowheader');
+
+function openstate_thematic_belowcontainer() {
+    ?>
+    <div class="theme-subs">
+        <h1>Cases</h1>
+        <?php
+            $cases_category_id = openstate_get_option('openstate_cases_catid');
+            openstate_page_list($cases_category_id, get_the_ID(), 4);
+        ?>
+        
+        <h1>Tools</h1>
+        <?php
+            $tools_category_id = openstate_get_option('openstate_tools_catid');
+            openstate_page_list($tools_category_id, get_the_ID(), 4);
+        ?>
+    </div>
+    <?php
 }
 
-add_action('thematic_belowheader', 'openstate_thematic_theme_belowheader'); 
+add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer'); 
 
-?>
-
-<?php
 /**
  * Page Template
  *
@@ -57,7 +74,7 @@ add_action('thematic_belowheader', 'openstate_thematic_theme_belowheader');
                 // action hook for placing content above #post
                 thematic_abovepost();
             ?>
-                    
+                     
                 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?> > 
 
                 <?php
@@ -84,8 +101,8 @@ add_action('thematic_belowheader', 'openstate_thematic_theme_belowheader');
                 // action hook for inserting content below #post
                 thematic_belowpost();
                             
-                // action hook for calling the comments_template
-                thematic_comments_template();
+                   // action hook for calling the comments_template
+                   thematic_comments_template();
                 
                 // end loop
                 endwhile;
@@ -103,11 +120,6 @@ add_action('thematic_belowheader', 'openstate_thematic_theme_belowheader');
             
         </div><!-- #container -->
 
-
-<?php 
-    // action hook for placing content below #container
-    thematic_belowcontainer();
-?>
 <div id="primary" class="aside main-aside">
     <?php
         $facts = get_post_meta($post->ID, 'fact', false);
@@ -132,9 +144,8 @@ add_action('thematic_belowheader', 'openstate_thematic_theme_belowheader');
 </div>
 
 
-
 <?php
-
+    thematic_belowcontainer();
     // calling the standard sidebar 
     //thematic_sidebar();
     

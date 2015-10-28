@@ -140,28 +140,41 @@ function add_extra_thumbnail_support() {
   add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
 }
 add_action( 'after_setup_theme', 'add_extra_thumbnail_support' );
-function openstate_page_list($cat, $parent=null) {
-  $the_query = new WP_Query( array('cat' => $cat, 'post_type' => 'page' ) );
-  if ($parent) { $the_query->post_parent = $parent; }
+
+function openstate_page_list($cat, $parent=null, $limit=5) {
+  // Print a list of pages with thumbnails based on category
+  $the_query = new WP_Query( array(
+    'cat' => $cat, 
+    'post_type' => 'page',
+    'meta_query' => array(array('key' => '_thumbnail_id')),
+    'posts_per_page' => $limit,
+    'post_parent' => $parent,
+  ) );
   // The Loop
   if ( $the_query->have_posts() ) {
-    echo '<ul>';
+    echo '<ul class="page-thumbs">';
     while ( $the_query->have_posts() ) {
       $the_query->the_post();
-      echo '<li>';
-      $size = apply_filters( 'thematic_post_thumb_size' , array(150,150) );
-      $attr = apply_filters( 'thematic_post_thumb_attr', array('title'  => sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
       if ( has_post_thumbnail() ) {
-        echo sprintf('<a class="entry-thumb" href="%s" title="%s">%s</a>',
-          get_permalink() ,
-          sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
-          get_the_post_thumbnail(get_the_ID(), $size, $attr));
+        $thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium' );
+        $ratio = $thumb_url[1] / ($thumb_url[2]+1);
+        $height = 160;
+        echo sprintf('<li style="height:%spx; min-width:%spx;">', 
+          $height, min(max(160 * $ratio, $height),240));
+        echo sprintf('<a class="back" style="background-image:url(\'%s\');" href="%s">&nbsp;</a>',
+          $thumb_url[0],
+          get_permalink()
+        );
+        $this_parent = wp_get_post_parent_id( get_the_ID() );
+        echo '<div class="title">';
+        if ($this_parent != $parent) {
+          echo '<a href="'.get_permalink($parent).'">'.get_the_title($parent).'</a>';
+        } else {
+          echo '<div>&nbsp;</div>';
+        }
+        echo sprintf('<h2><a href="%s">', get_permalink()) . get_the_title() . '</a></h2>';
+        echo '</div></li>';
       }
-      echo '';
-      $parent = wp_get_post_parent_id( get_the_ID() );
-      echo '<div class="parent"><a href="'.get_permalink($parent).'">'.get_the_title($parent).'</a></div>';
-      echo '<h3>' . get_the_title() . '</h3>';
-      echo '</li>';
     }
     echo '</ul>';
   } else {
@@ -172,11 +185,13 @@ function openstate_page_list($cat, $parent=null) {
 }
 
 
-// Custom Front Page //
 function remove_blogdescription() {
   remove_action('thematic_header','thematic_blogdescription',5);
 }
 add_action('init','remove_blogdescription');
+
+// Custom Front Page //
+// Show the mission statement and latest cases
 function openstate_thematic_belowheader() {
   if (is_home() || is_front_page()) {
     ?>
@@ -190,14 +205,13 @@ function openstate_thematic_belowheader() {
     <div id="home-cases">
       <?php
       $cases_category_id = openstate_get_option('openstate_cases_catid');
-      openstate_page_list($cases_category_id);
+      openstate_page_list($cases_category_id, null, 2);
       ?>
     </div>
     <?php
   }
 }
 add_action('thematic_belowheader', 'openstate_thematic_belowheader');
-
 
 // Show excerpt instead of full posts on front page
 function openstate_thematic_content($post) {
@@ -268,7 +282,7 @@ function openstate_post($is_index) {
       <?php wp_link_pages(array('before' => sprintf('<div class="page-link">%s', __('Pages:', 'thematic')),
       'after' => '</div>')); ?>
     </div><!-- .entry-content -->
-  <?php endif; ?>
+    <?php endif; ?>
   <?php thematic_postfooter(); ?>
 </div><!-- #post -->
 <?php
@@ -281,7 +295,7 @@ function childtheme_override_single_post() {
 }
 // Custom post layout in index loop
 function childtheme_override_index_loop() {
-    // Count the number of posts so we can insert a widgetized area
+  // Count the number of posts so we can insert a widgetized area
   $count = 1;
   while ( have_posts() ) : the_post();
   thematic_abovepost();

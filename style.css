@@ -217,10 +217,7 @@ blockquote.twitter-tweet .gray {
 
 .page-template-case-page-php #container {
   margin-top: -150px;
-  z-index: 10;
-  position: relative;
-  background-color: white;
-  opacity: 0.9;
+  background-color: rgba(255, 255, 255, 0.9);
   margin-left: 20px;
   border: 1px solid #ccc;
   width: 630px !important; }
@@ -229,26 +226,27 @@ blockquote.twitter-tweet .gray {
   width: 592px !important; }
 
 .page-template-case-page-php .main-aside {
-  margin-top: -150px;
-  z-index: 10;
-  position: relative; }
-
-.page-template-case-page-php #content {
-  margin: 0 0 0 10px;
-  width: 940px;
-  overflow: hidden; }
+  margin-top: -150px; }
 
 .case-header-img {
-  top: 50%;
   width: 100%;
   height: 300px;
   overflow: hidden;
-  vertical-align: middle; }
+  background-repeat: no-repeat;
+  background-position: center; }
 
-.case-header-img img {
-  top: -50%;
-  width: 100%;
-  position: relative; }
+.page-template-theme-page-php #container {
+  margin-top: -150px;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-left: 20px;
+  border: 1px solid #ccc;
+  width: 630px !important; }
+
+.page-template-theme-page-php #content {
+  width: 592px !important; }
+
+.page-template-theme-page-php .main-aside {
+  margin-top: -150px; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;

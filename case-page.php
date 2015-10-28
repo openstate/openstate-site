@@ -2,6 +2,22 @@
 /*
 Template Name: case-page
 */
+
+function widget_area_primary_aside_case(){
+	echo get_post_meta($post->ID, 'tweet', true);
+}
+add_action('widget_area_primary_aside', 'widget_area_primary_aside_case');
+
+	function openstate_thematic_case_belowheader() {
+	  if ( has_post_thumbnail() ) {
+      		echo '<div class="case-header-img">'.
+      		get_the_post_thumbnail(get_the_ID(), $attr).
+      		'</div>';
+      }
+	}
+
+add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');	
+
 ?>
 
 <?php
@@ -20,8 +36,10 @@ Template Name: case-page
     // action hook for placing content above #container
     thematic_abovecontainer();
 ?>
-
+		<div class="opacity-mask"></div>
 		<div id="container">
+
+
 		
 			<?php
 				// action hook for placing content above #content
@@ -91,6 +109,10 @@ Template Name: case-page
 
     // calling the standard sidebar 
     //thematic_sidebar();
+
+
+    
+    widget_area_primary_aside();
     
     // calling footer.php
     get_footer();

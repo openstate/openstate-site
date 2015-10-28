@@ -216,11 +216,15 @@ body.page h1.entry-title, body.archive h1.page-title {
 
 #home-cases {
     margin: 10px auto;
-    >ul{
+    ul.page-thumbs > li {
+        margin: 0px 30px;
+    }
+}
+ul.page-thumbs {
         list-style: none;
         >li {
+            text-align: left;
             display: inline-block;
-            margin: 0px 30px;
             >a.back {
                 display:block;
                 width:100%;
@@ -241,7 +245,6 @@ body.page h1.entry-title, body.archive h1.page-title {
             }
         }
     }
-}
 
 .aside {
     >ul {

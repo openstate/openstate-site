@@ -248,6 +248,19 @@ blockquote.twitter-tweet .gray {
 .page-template-theme-page-php .main-aside {
   margin-top: -150px; }
 
+.theme-subs {
+  width: 620px;
+  float: left;
+  margin: 20px 0px 0px 10px;
+  padding-left: 28px; }
+  .theme-subs > h1 {
+    margin-left: 10px;
+    line-height: 1.6em; }
+  .theme-subs ul.page-thumbs {
+    margin-bottom: 30px; }
+    .theme-subs ul.page-thumbs > li {
+      margin: 10px 10px; }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
   font-weight: normal;
@@ -358,26 +371,29 @@ body.page h1.entry-title, body.archive h1.page-title {
 
 #home-cases {
   margin: 10px auto; }
-  #home-cases > ul {
-    list-style: none; }
-    #home-cases > ul > li {
-      display: inline-block;
-      margin: 0px 30px; }
-      #home-cases > ul > li > a.back {
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        margin-bottom: -60px; }
-      #home-cases > ul > li .title {
-        background: rgba(255, 255, 255, 0.9);
-        width: 100%;
-        height: 60px;
-        padding: 8px; }
-      #home-cases > ul > li h2 {
-        line-height: 1.6em; }
+  #home-cases ul.page-thumbs > li {
+    margin: 0px 30px; }
+
+ul.page-thumbs {
+  list-style: none; }
+  ul.page-thumbs > li {
+    text-align: left;
+    display: inline-block; }
+    ul.page-thumbs > li > a.back {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-bottom: -60px; }
+    ul.page-thumbs > li .title {
+      background: rgba(255, 255, 255, 0.9);
+      width: 100%;
+      height: 60px;
+      padding: 8px; }
+    ul.page-thumbs > li h2 {
+      line-height: 1.6em; }
 
 .aside > ul {
   list-style: none; }

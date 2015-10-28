@@ -13,3 +13,21 @@
 .page-template-theme-page-php .main-aside {
 	margin-top: -150px;
 }
+
+.theme-subs {
+    width: 620px;
+    float:left;
+    margin: 20px 0px 0px 10px;
+    padding-left: 28px;
+    >h1 {
+        margin-left: 10px;
+        line-height: 1.6em;
+    }
+
+    ul.page-thumbs {
+        margin-bottom: 30px;
+        > li {
+            margin: 10px 10px;
+        }
+    }
+}

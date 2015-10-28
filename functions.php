@@ -146,12 +146,13 @@ function openstate_page_list($cat, $parent=null, $limit=5) {
   $the_query = new WP_Query( array(
     'cat' => $cat, 
     'post_type' => 'page',
-    'posts_per_page' => $limit
+    'meta_query' => array(array('key' => '_thumbnail_id')),
+    'posts_per_page' => $limit,
+    'post_parent' => $parent,
   ) );
-  if ($parent) { $the_query->post_parent = $parent; }
   // The Loop
   if ( $the_query->have_posts() ) {
-    echo '<ul>';
+    echo '<ul class="page-thumbs">';
     while ( $the_query->have_posts() ) {
       $the_query->the_post();
       if ( has_post_thumbnail() ) {
@@ -159,14 +160,18 @@ function openstate_page_list($cat, $parent=null, $limit=5) {
         $ratio = $thumb_url[1] / ($thumb_url[2]+1);
         $height = 160;
         echo sprintf('<li style="height:%spx; min-width:%spx;">', 
-          $height, min(max(160 * $ratio, $height),320));
+          $height, min(max(160 * $ratio, $height),240));
         echo sprintf('<a class="back" style="background-image:url(\'%s\');" href="%s">&nbsp;</a>',
           $thumb_url[0],
           get_permalink()
         );
-        $parent = wp_get_post_parent_id( get_the_ID() );
+        $this_parent = wp_get_post_parent_id( get_the_ID() );
         echo '<div class="title">';
-        echo '<a href="'.get_permalink($parent).'">'.get_the_title($parent).'</a>';
+        if ($this_parent != $parent) {
+          echo '<a href="'.get_permalink($parent).'">'.get_the_title($parent).'</a>';
+        } else {
+          echo '<div>&nbsp;</div>';
+        }
         echo sprintf('<h2><a href="%s">', get_permalink()) . get_the_title() . '</a></h2>';
         echo '</div></li>';
       }

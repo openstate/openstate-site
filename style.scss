@@ -78,7 +78,6 @@ dl, dd, ol, ul, figure {
 h1, h2, h3, h4, h5, h6 {
     font-family: $title-font;
     font-weight:normal;
-    clear:both;
     color: $dark-grey;
     text-rendering: optimizeLegibility;
 }
@@ -103,6 +102,7 @@ body {
 body.page h1.entry-title, h1.page-title {
     padding-top: 5px;
     padding-bottom: 24px;
+    clear: none;
 }
 
 .entry-content {
@@ -220,6 +220,13 @@ body.page h1.entry-title, h1.page-title {
         margin: 0px 30px;
     }
 }
+
+#home-allposts {
+    font-family: $title-font;
+    text-align: right;
+    clear: both;
+}
+
 ul.page-thumbs {
         list-style: none;
         >li {
@@ -334,6 +341,14 @@ ul.page-thumbs {
         float:right;
     }
 }
+#main:after { 
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
+
 .home, .blog, .search, .archive {
     .hentry {
         padding: 0 0 0px 0;
@@ -341,23 +356,27 @@ ul.page-thumbs {
         clear: both;
     }
 }
-
-#nav-below {
-    width: 651px;
-    padding-left: 30px;
-    clear:both;
-    img { border-radius: 100%; }
-    .nav-previous, .nav-next {display:none;}
-    .nav-previous {
-        float:left;
-        width: 300px;
-    }
-    .nav-next {
-        float:right;
-        width: 300px;
-    }
+#searchform {
+    line-height: 3em;
+    text-align: center;
 }
 
+.navigation {
+    width: 100%;
+
+    clear:both;
+    img { border-radius: 100%; }
+    .nav-previous {
+        text-align: left;
+        float:left;
+        line-height: 3em;
+    }
+    .nav-next {
+        text-align: right;
+        line-height: 3em;
+        float:right;
+    }
+}
 
 
 #footer {
@@ -369,7 +388,7 @@ ul.page-thumbs {
     width: 960px;
     position: relative;
     top: 0px;
-    margin-top: 0px;
+    margin-top: 60px;
     border-top: 1px solid $footer-border;
     
     padding-bottom: 15px;

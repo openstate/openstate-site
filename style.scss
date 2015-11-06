@@ -100,7 +100,7 @@ body {
     }
     a:hover { text-decoration: underline; }
 }
-body.page h1.entry-title, body.archive h1.page-title {
+body.page h1.entry-title, h1.page-title {
     padding-top: 5px;
     padding-bottom: 24px;
 }
@@ -176,7 +176,7 @@ body.page h1.entry-title, body.archive h1.page-title {
             color: $menu-text;
             background: $menu-back;
         }
-        > li.current-menu-item a, > li a:hover {
+        > li.current-menu-item a, >li.current-page-ancestor a, > li a:hover {
             color: $menu-text;
             background: $menu-front;
         }
@@ -280,7 +280,7 @@ ul.page-thumbs {
             overflow: hidden;
             padding-left: 8px;
 
-            .post {
+            .post, .page {
                 img.wp-post-image {
                     float: left;
                     padding:12px 0px;
@@ -325,12 +325,6 @@ ul.page-thumbs {
                     clear:both;
                 }
             }
-            .post.hentry {
-                padding: 0 0 0px 0;
-                border-top: 1px solid #CCC;
-                clear: both;
-            }
-            
         }
     }
 
@@ -338,6 +332,13 @@ ul.page-thumbs {
         width:271px;
         margin-right: 12px;
         float:right;
+    }
+}
+.home, .blog, .search, .archive {
+    .hentry {
+        padding: 0 0 0px 0;
+        border-top: 1px solid #CCC;
+        clear: both;
     }
 }
 
@@ -354,7 +355,6 @@ ul.page-thumbs {
     .nav-next {
         float:right;
         width: 300px;
-
     }
 }
 

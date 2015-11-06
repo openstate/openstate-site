@@ -325,12 +325,6 @@ ul.page-thumbs {
                     clear:both;
                 }
             }
-            .post.hentry, .page.hentry {
-                padding: 0 0 0px 0;
-                border-top: 1px solid #CCC;
-                clear: both;
-            }
-            
         }
     }
 
@@ -338,6 +332,13 @@ ul.page-thumbs {
         width:271px;
         margin-right: 12px;
         float:right;
+    }
+}
+.home, .blog, .search, .archive {
+    .hentry {
+        padding: 0 0 0px 0;
+        border-top: 1px solid #CCC;
+        clear: both;
     }
 }
 
@@ -354,7 +355,6 @@ ul.page-thumbs {
     .nav-next {
         float:right;
         width: 300px;
-
     }
 }
 

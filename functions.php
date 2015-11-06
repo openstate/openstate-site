@@ -122,10 +122,10 @@ function add_taxonomies_to_pages() {
   register_taxonomy_for_object_type( 'category', 'page' );
 }
 add_action( 'init', 'add_taxonomies_to_pages' );
-add_theme_support( 'post-thumbnails', array( 'post', 'movie' ) );
+add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
 if ( ! is_admin() ) {
   function category_and_tag_archives( $wp_query ) {
-    $my_post_array = array('post','page');
+    $my_post_array = $wp_query->get( 'post_type' );
     if ( $wp_query->get( 'category_name' ) || $wp_query->get( 'cat' ) ) {
       $wp_query->set( 'post_type', $my_post_array );
     }
@@ -149,7 +149,7 @@ function openstate_page_list($cat, $parent=null, $limit=5) {
     'meta_query' => array(array('key' => '_thumbnail_id')),
     'posts_per_page' => $limit,
     'post_parent' => $parent,
-    ) );
+  ) );
   // The Loop
   if ( $the_query->have_posts() ) {
     echo '<ul class="page-thumbs">';
@@ -168,7 +168,7 @@ function openstate_page_list($cat, $parent=null, $limit=5) {
         $this_parent = wp_get_post_parent_id( get_the_ID() );
         echo '<div class="title">';
         if ($this_parent != $parent) {
-          echo '<a href="'.get_permalink($parent).'">'.get_the_title($parent).'</a>';
+          echo '<a href="'.get_permalink($this_parent).'">'.get_the_title($this_parent).'</a>';
         } else {
           echo '<div>&nbsp;</div>';
         }
@@ -209,9 +209,24 @@ function openstate_thematic_belowheader() {
       ?>
     </div>
     <?php
+    remove_action('thematic_navigation_above','thematic_nav_above', 2);
+
+    global $query_string;
+    query_posts( $query_string . '&posts_per_page=4' );
   }
 }
 add_action('thematic_belowheader', 'openstate_thematic_belowheader');
+
+function openstate_thematic_navigation_below() {
+  if (is_home() || is_front_page()) {
+    ?>
+    <div id="home-allposts">
+      <a href="/search/+/"><?=__('All posts', 'thematic')?> ≫</a>
+    </div>
+    <?php
+  }
+}
+add_action('thematic_navigation_below', 'openstate_thematic_navigation_below');
 
 // Show excerpt instead of full posts on front page
 function openstate_thematic_content($post) {
@@ -311,6 +326,27 @@ function childtheme_override_index_loop() {
 
 function childtheme_override_category_loop() {
   childtheme_override_index_loop();
+
+  add_action('thematic_navigation_below','thematic_nav_below');
+}
+// SEARCH PAGE //
+function openstate_change_search_url_rewrite() {
+  if ( is_search() && isset( $_GET['s'] ) ) {
+    $s = empty( $_GET['s'] )? "%20/" : urlencode( get_query_var( 's' ) );
+    wp_redirect( home_url( "/search/" ) . $s );
+    exit();
+  } 
+}
+add_action( 'template_redirect', 'openstate_change_search_url_rewrite' );
+function childtheme_override_search_loop() {
+  $_GET['s'] = get_search_query();
+  $_GET['s'] = $_GET['s']=='%20'? "" : $_GET['s'];
+
+  thematic_search_form();
+
+  childtheme_override_index_loop();
+
+  add_action('thematic_navigation_below','thematic_nav_below');
 }
 
 // Remove thumbnail from within post content
@@ -318,80 +354,6 @@ function nope() { return false; }
 add_filter('thematic_post_thumbs', 'nope'); 
 
 // POST NAVIGATION //
-function openstate_next_post_link_args() {
-  $args = array ( 
-    'format'              => '%link',
-    'link'                => '<span class="meta-nav">Next >></span>',
-    'in_same_cat'         => FALSE,
-    'excluded_categories' => ''
-    );
-  return $args;
-}
-add_filter('thematic_next_post_link_args', 'openstate_next_post_link_args');
-
-function openstate_previous_post_link_args() {
-  $args = array ( 
-    'format'              => '%link',
-    'link'                => '<span class="meta-nav"><< Previous</span>',
-    'in_same_cat'         => FALSE,
-    'excluded_categories' => ''
-    );
-  return $args;
-}
-add_filter('thematic_previous_post_link_args', 'openstate_previous_post_link_args');  
-
-function childtheme_override_nav_below() {
-  if (is_single()) {
-
-    wp_reset_postdata();
-    wp_reset_query();
-    rewind_posts();
-
-    $nextPost = get_next_post(false);
-    $nextThumb = get_the_post_thumbnail($nextPost->ID, array(100,100));
-    $prevPost = get_previous_post(false);
-    $prevThumb = get_the_post_thumbnail($prevPost->ID, array(100,100));
-
-    ?>
-
-    <div id="nav-below" class="navigation">
-      <div class="nav-previous"><?php
-      thematic_previous_post_link(); 
-      echo '<p>' . get_the_title($prevPost->ID) . '</p>';
-      echo $prevThumb;
-      ?></div>
-      <div class="nav-next"><?php 
-      thematic_next_post_link();
-      echo '<p>' . get_the_title($nextPost->ID) . '</p>';
-      echo $nextThumb;
-      ?></div>
-    </div>
-
-    <?php
-  } else { ?>
-    <div id="nav-below" class="navigation">
-      <?php if(function_exists('wp_pagenavi')) { ?>
-      <?php wp_pagenavi(); ?>
-      <?php } else { ?>  
-
-      <div class="nav-previous"><?php next_posts_link(sprintf('<span class="meta-nav">&laquo;</span> %s', __('Older posts', 'thematic') ) ) ?></div>
-
-      <div class="nav-next"><?php previous_posts_link(sprintf('%s <span class="meta-nav">&raquo;</span>',__( 'Newer posts', 'thematic') ) ) ?></div>
-
-      <?php } ?>
-    </div>  
-    
-    <?php
-  }
-}
-add_action('thematic_abovefooter','thematic_nav_below');
-
-function childtheme_override_nav_above() { 
-  ?>
-  <div id="nav-above"></div>
-  <?php 
-}
-
 function openstate_page_title($content) {
   if (is_category()) {
     $content = '';
@@ -403,12 +365,15 @@ function openstate_page_title($content) {
     $content .= '</div>';
   }
 
-  return $content;
+  global $wp_query;
+  if ((($pagenr = $wp_query->get("paged")) || ($pagenr = $wp_query->get("page"))) && $pagenr > 1) {
+    $content = '<h1 class="page-title" style="float:right">(page ' . $pagenr . ')</h1>' . $content;
+  }
 
+  return apply_filters('openstate_page_title',$content); 
 }
 add_filter('thematic_page_title', 'openstate_page_title');  
 
-//
 function wpcodex_hide_email_shortcode( $atts , $content = null ) {
   if ( ! is_email( $content ) ) {
     return;

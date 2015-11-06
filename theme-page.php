@@ -127,18 +127,20 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
         print_the_author();
 
         function print_the_author(){
-            echo '<p class="author"><br>'.
-                    get_wp_user_avatar( $user_id, 'thumbnail');
+            if (function_exists('get_wp_user_avatar')) {
+                echo '<p class="author"><br>'.
+                        get_wp_user_avatar( $user_id, 'thumbnail');
 
-                    echo __('contact', 'thematic-openstate')
-            ?>
-            <br>
-            <a href="<?= get_the_author_meta( 'user_url' ) ?>"> <?= the_author_meta( 'first_name' )?>  <?= the_author_meta( 'last_name' ) ?> </a>
-            <?php
-            
-            echo    '<span class="contactlink">'.
-                '</p>';
+                        echo __('contact', 'thematic-openstate')
+                ?>
+                <br>
+                <a href="<?= get_the_author_meta( 'user_url' ) ?>"> <?= the_author_meta( 'first_name' )?>  <?= the_author_meta( 'last_name' ) ?> </a>
+                <?php            
+                echo    '<span class="contactlink">'.
+                    '</p>';
+            }
         }?>
+
     </div>
         <?php
         $facts = get_post_meta($post->ID, 'fact', false);

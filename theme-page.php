@@ -129,6 +129,9 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
             echo '</div>';
         }
         
+        ?>
+        <div id="author-box" class="case-page-box">
+        <?php
         print_the_author();
 
         function print_the_author(){
@@ -136,14 +139,14 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
                     __('contact', 'thematic-openstate').
                     '<br>'.
                     get_wp_user_avatar( $user_id, 'thumbnail');
-
-            the_author_posts_link();
+            ?>
+            <a href="<?= get_the_author_meta( 'user_url' ) ?>"> <?= the_author_meta( 'first_name' )?>  <?= the_author_meta( 'last_name' ) ?> </a>
+            <?php
+            
             echo    '<span class="contactlink">'.
                 '</p>';
-        }
-
-    ?>
-
+        }?>
+    </div>
 </div>
 
 

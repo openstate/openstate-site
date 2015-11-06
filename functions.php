@@ -408,4 +408,12 @@ function openstate_page_title($content) {
 }
 add_filter('thematic_page_title', 'openstate_page_title');  
 
+function wpcodex_hide_email_shortcode( $atts , $content = null ) {
+  if ( ! is_email( $content ) ) {
+    return;
+  }
+
+  return '<a href="mailto:' . antispambot( $content ) . '">' . antispambot( $content ) . '</a>';
+}
+add_shortcode( 'email', 'wpcodex_hide_email_shortcode' );
 ?>

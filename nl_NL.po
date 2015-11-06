@@ -20,3 +20,6 @@ msgstr "Nieuws"
 
 msgid "contact"
 msgstr "Neem contact op met"
+
+msgid "News"
+msgstr "Nieuws"

@@ -22,3 +22,19 @@
     background-position: center;
     background-size: cover;
 }
+
+.case-page-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid $light-grey;
+}
+
+#newscontainer {
+    padding: 1em;
+}
+
+.newslist li {
+    list-style-type: none;
+    margin: 5px 0;
+    padding-left: 1.5em;
+    text-indent:-1.5em;
+}

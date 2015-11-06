@@ -104,6 +104,70 @@ add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');
 			
 		</div><!-- #container -->
 
+	<div id="primary" class="aside main-aside">
+		<div id="author-box" class="case-page-box">
+	    <?php
+            print_the_author();
+
+	        function print_the_author(){
+	            echo '<p class="author">'.
+	                    __('contact', 'thematic-openstate').
+	                    '<br>'.
+	                    get_wp_user_avatar( $user_id, 'thumbnail');
+	            ?>
+	            <a href="<?= get_the_author_meta( 'user_url' ) ?>"> <?= the_author_meta( 'first_name' )?>  <?= the_author_meta( 'last_name' ) ?> </a>
+	            <?php
+	            
+	            echo    '<span class="contactlink">'.
+	                '</p>';
+	        }?>
+	    </div>
+	    <br>
+	    <div id="newscontainer" class="case-page-box">
+	    <h1><?= __('news', 'thematic-openstate') ?>:</h1>
+	    <?php
+	    	$categories = get_the_category();
+			$category_slug = $categories[0]->slug;
+
+	    	query_posts(array(
+	    		'post_type' => 'post',
+	    		'tax_query' => array(
+				    array(
+				        'taxonomy' => 'category',
+				        'terms' => array('news' ),
+				        'field' => 'slug',
+				    ),
+				    array(
+				        'taxonomy' => 'category',
+				        'terms' => array( $category_slug ),
+				        'field' => 'slug',
+				    )
+				)
+			));
+
+			?>
+			<ul class="newslist">
+				<?php
+				while ( have_posts() ) : the_post(); ?>
+			
+				<li>
+					
+					<?php 
+					  echo '<span class="entry-date"><abbr class="published" title="'.
+						  get_the_time(thematic_time_title()) . '">'.
+					  	  get_the_time(thematic_time_display()).
+					      '</abbr></span>';
+					?>
+					<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> 
+
+				</li>
+				
+				<?php endwhile; 
+			?>
+			</ul>
+	    </div>
+	</div>		
+
 <?php 
     // action hook for placing content below #container
     thematic_belowcontainer();
@@ -113,7 +177,7 @@ add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');
 
 
     
-    widget_area_primary_aside();
+    //widget_area_primary_aside();
     
     // calling footer.php
     get_footer();

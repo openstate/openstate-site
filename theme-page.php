@@ -56,7 +56,7 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
     thematic_abovecontainer();
 ?>
 
-        <div id="container">
+        <div id="container" class="os-top-div">
         
             <?php
                 // action hook for placing content above #content
@@ -121,7 +121,26 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
         </div><!-- #container -->
 
 <div id="primary" class="aside main-aside">
-    <?php
+
+    <div id="author-box">
+        <?php
+        print_the_author();
+
+        function print_the_author(){
+            echo '<p class="author"><br>'.
+                    get_wp_user_avatar( $user_id, 'thumbnail');
+
+                    echo __('contact', 'thematic-openstate')
+            ?>
+            <br>
+            <a href="<?= get_the_author_meta( 'user_url' ) ?>"> <?= the_author_meta( 'first_name' )?>  <?= the_author_meta( 'last_name' ) ?> </a>
+            <?php
+            
+            echo    '<span class="contactlink">'.
+                '</p>';
+        }?>
+    </div>
+        <?php
         $facts = get_post_meta($post->ID, 'fact', false);
         foreach ($facts as $fact){
             echo '<div class="fact-container">';
@@ -130,23 +149,6 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
         }
         
         ?>
-        <div id="author-box" class="case-page-box">
-        <?php
-        print_the_author();
-
-        function print_the_author(){
-            echo '<p class="author">'.
-                    __('contact', 'thematic-openstate').
-                    '<br>'.
-                    get_wp_user_avatar( $user_id, 'thumbnail');
-            ?>
-            <a href="<?= get_the_author_meta( 'user_url' ) ?>"> <?= the_author_meta( 'first_name' )?>  <?= the_author_meta( 'last_name' ) ?> </a>
-            <?php
-            
-            echo    '<span class="contactlink">'.
-                '</p>';
-        }?>
-    </div>
 </div>
 
 

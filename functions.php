@@ -149,7 +149,7 @@ function openstate_page_list($cat, $parent=null, $limit=5) {
     'meta_query' => array(array('key' => '_thumbnail_id')),
     'posts_per_page' => $limit,
     'post_parent' => $parent,
-  ) );
+    ) );
   // The Loop
   if ( $the_query->have_posts() ) {
     echo '<ul class="page-thumbs">';
@@ -310,19 +310,6 @@ function childtheme_override_index_loop() {
 }
 
 function childtheme_override_category_loop() {
-  global $query_string;
-  query_posts( $query_string . '&posts_per_page=10' );
-  childtheme_override_index_loop();
-}
-
-// SEARCH PAGE //
-function childtheme_override_search_loop() {
-  global $query_string;
-  query_posts( $query_string . '&posts_per_page=10' );
-  $_GET['s'] = get_search_query();
-  echo "<p>";
-  thematic_search_form();
-  echo "</p>";
   childtheme_override_index_loop();
 }
 
@@ -421,6 +408,7 @@ function openstate_page_title($content) {
 }
 add_filter('thematic_page_title', 'openstate_page_title');  
 
+//
 function wpcodex_hide_email_shortcode( $atts , $content = null ) {
   if ( ! is_email( $content ) ) {
     return;

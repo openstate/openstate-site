@@ -37,8 +37,7 @@ add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');
     // action hook for placing content above #container
     thematic_abovecontainer();
 ?>
-		<div class="opacity-mask"></div>
-		<div id="container">
+		<div id="container" class="os-top-div">
 
 
 		
@@ -105,25 +104,24 @@ add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');
 		</div><!-- #container -->
 
 	<div id="primary" class="aside main-aside">
-		<div id="author-box" class="case-page-box">
+		<div id="author-box">
 	    <?php
             print_the_author();
 
-	        function print_the_author(){
-	            echo '<p class="author">'.
-	                    __('contact', 'thematic-openstate').
-	                    '<br>'.
-	                    get_wp_user_avatar( $user_id, 'thumbnail');
-	            ?>
-	            <a href="<?= get_the_author_meta( 'user_url' ) ?>"> <?= the_author_meta( 'first_name' )?>  <?= the_author_meta( 'last_name' ) ?> </a>
-	            <?php
-	            
-	            echo    '<span class="contactlink">'.
-	                '</p>';
-	        }?>
+        function print_the_author(){
+            echo '<p class="author"><br>'.
+                    get_wp_user_avatar( $user_id, 'thumbnail');
+
+                    echo __('contact', 'thematic-openstate')
+            ?>
+            <br>
+            <a href="<?= get_the_author_meta( 'user_url' ) ?>"> <?= the_author_meta( 'first_name' )?>  <?= the_author_meta( 'last_name' ) ?> </a>
+            <?php            
+            echo    '<span class="contactlink">'.
+                '</p>';
+        }?>
 	    </div>
-	    <br>
-	    <div id="newscontainer" class="case-page-box">
+	    <div id="newscontainer" >
 	    <h1><?= __('news', 'thematic-openstate') ?>:</h1>
 	    <?php
 	    	$categories = get_the_category();

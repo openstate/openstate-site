@@ -125,7 +125,7 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
         $facts = get_post_meta($post->ID, 'fact', false);
         foreach ($facts as $fact){
             echo '<div class="fact-container">';
-            echo __($fact);
+            echo apply_filters('thematic_post', apply_filters('the_content', $fact));
             echo '</div>';
         }
         
@@ -133,7 +133,8 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
 
         function print_the_author(){
             echo '<p class="author">'.
-                    'Neem contact op met:<br>'.
+                    __('contact', 'thematic-openstate').
+                    '<br>'.
                     get_wp_user_avatar( $user_id, 'thumbnail');
 
             the_author_posts_link();

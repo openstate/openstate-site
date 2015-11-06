@@ -11,6 +11,11 @@
  * @link http://codex.wordpress.org/Author_Templates Codex:Author Templates
  */
 
+$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+$ID = $curauth->ID;
+
+
+
 	// calling the header.php
 	get_header();
 
@@ -28,13 +33,10 @@
 
     	    	<?php
     	    		// displays the page title
-    	    		thematic_page_title();		
+    	    		//thematic_page_title();		
 
     	    		// create the navigation above the content
     	    		thematic_navigation_above();
-
-    	    		// display microformatted vCard if selected in Theme Options and display only on the first page of the archive's pagination  
-    	    		if ( thematic_get_theme_opt( 'author_info' ) == 1 & !is_paged() ) :
 
 						// setup the first post to acess the Author's metadata
 						the_post();
@@ -42,7 +44,7 @@
 
     	            <div id="author-info" class="vcard">
     	            
-    	                <h2 class="entry-title"><?php the_author_meta( 'first_name' ); ?> <?php the_author_meta( 'last_name' ); ?></h2> 
+    	                <h2 class="entry-title"><?php the_author_meta( 'first_name', $ID  ); ?> <?php the_author_meta( 'last_name', $ID  ); ?></h2> 
 
     	                <?php
     	               		// display the author's avatar
@@ -53,32 +55,31 @@
 
     	                    <?php    	                    		
     	                    	// Display Author's discription if it exists
-    	                    	if ( get_the_author_meta( 'user_description' ) )
+    	                    	if ( get_the_author_meta( 'user_description', $ID ) )
     	                    		// Filterable use the_author_user_description *or* get_the_author_user_description
-    	                    		the_author_meta( 'user_description' );
+    	                    		echo apply_filters('thematic_post', apply_filters('the_content', get_the_author_meta( 'user_description', $ID )));
     	                    ?>
 
     	                </div>
 
     				<div id="author-email">
     				
-    	                <a class="email" title="<?php echo antispambot( get_the_author_meta( 'user_email' ) ); ?>" href="mailto:<?php echo antispambot( get_the_author_meta( 'user_email' ) ); ?>">
+    	                <a class="email" title="<?php echo antispambot( get_the_author_meta( 'user_email', $ID ) ); ?>" href="mailto:<?php echo antispambot( get_the_author_meta( 'user_email', $ID ) ); ?>">
     	                	<?php _e( 'Email ', 'thematic' ) ?>
     	                	<span class="fn n">
-    	                		<span class="given-name"><?php the_author_meta( 'first_name' ); ?></span> 
-    	                		<span class="family-name"><?php the_author_meta( 'last_name' ); ?></span>
+    	                		<span class="given-name"><?php the_author_meta( 'first_name', $ID ); ?></span> 
+    	                		<span class="family-name"><?php the_author_meta( 'last_name', $ID ); ?></span>
     	                	</span>
     	                </a>
     	                
-    	                <a class="url"  style="display:none;" href="<?php echo home_url() ?>/"><?php bloginfo('name') ?></a>
+    	                <a class="url"  style="display:none;" href="<?php echo home_url() ?>/"><?php bloginfo('name', $ID) ?></a>
     	                 
     	            </div>
 
 				</div><!-- #author-info -->
 
 				<?php
-					//end microformmatted vCard
-					endif;
+
 					// Return to the beginning of the loop
 					rewind_posts();
 				?>

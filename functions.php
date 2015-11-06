@@ -122,10 +122,10 @@ function add_taxonomies_to_pages() {
   register_taxonomy_for_object_type( 'category', 'page' );
 }
 add_action( 'init', 'add_taxonomies_to_pages' );
-add_theme_support( 'post-thumbnails', array( 'post', 'movie' ) );
+add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
 if ( ! is_admin() ) {
   function category_and_tag_archives( $wp_query ) {
-    $my_post_array = array('post','page');
+    $my_post_array = $wp_query->get( 'post_type' );
     if ( $wp_query->get( 'category_name' ) || $wp_query->get( 'cat' ) ) {
       $wp_query->set( 'post_type', $my_post_array );
     }
@@ -168,7 +168,7 @@ function openstate_page_list($cat, $parent=null, $limit=5) {
         $this_parent = wp_get_post_parent_id( get_the_ID() );
         echo '<div class="title">';
         if ($this_parent != $parent) {
-          echo '<a href="'.get_permalink($parent).'">'.get_the_title($parent).'</a>';
+          echo '<a href="'.get_permalink($this_parent).'">'.get_the_title($this_parent).'</a>';
         } else {
           echo '<div>&nbsp;</div>';
         }

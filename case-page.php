@@ -113,7 +113,7 @@ add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');
 	            echo '<p class="author"><br>'.
 	                    get_wp_user_avatar( $user_id, 'thumbnail');
 
-	                    echo __('contact', 'thematic-openstate')
+	                    echo __('Get in contact with', 'thematic-openstate')
 	            ?>
 	            <br>
 	            <a href="<?= get_the_author_meta( 'user_url' ) ?>"> <?= the_author_meta( 'first_name' )?>  <?= the_author_meta( 'last_name' ) ?> </a>

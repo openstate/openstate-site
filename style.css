@@ -217,7 +217,8 @@ blockquote.twitter-tweet .gray {
 
 .page-template-case-page-php #container {
   margin-left: 20px;
-  width: 630px !important; }
+  width: 630px !important;
+  min-height: 150px; }
 
 .os-top-div {
   margin-top: -150px;
@@ -256,7 +257,8 @@ blockquote.twitter-tweet .gray {
 
 .page-template-theme-page-php #container {
   margin-left: 20px;
-  width: 630px !important; }
+  width: 630px !important;
+  min-height: 150px; }
 
 .page-template-theme-page-php #content {
   width: 592px !important; }

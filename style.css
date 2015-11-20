@@ -93,7 +93,7 @@ li.widgetcontainer.widget_mailchimpsf_widget {
     margin-bottom: 0px !important; }
   li.widgetcontainer.widget_mailchimpsf_widget .mc_signup_submit input.button {
     text-align: center;
-    background: url("images/submit_button.png") no-repeat scroll center;
+    background: url("images/submit_button.svg") no-repeat scroll center;
     height: 46px;
     width: 100px !important;
     /* sorry, mailchimp page css */

@@ -18,7 +18,7 @@ msgstr "Laatste Berichten"
 msgid "Announcements"
 msgstr "Nieuws"
 
-msgid "Get in contact with"
+msgid "Get in touch with"
 msgstr "Neem contact op met"
 
 msgid "News"

@@ -2,6 +2,7 @@ $mc-back: $lighter-blue;
 $mc-front: $dark-blue;
 
 li.widgetcontainer.widget_mailchimpsf_widget {
+    margin: 10px 5px;
 
     h3.widgettitle {
         background: url("images/envelope_icon.png") no-repeat scroll left;
@@ -18,7 +19,7 @@ li.widgetcontainer.widget_mailchimpsf_widget {
 
     #mc_signup {
         border-bottom: 1px solid $mc-front;
-        width: 270px;
+        width: 260px;
     }
 
     .mc_merge_var {
@@ -52,7 +53,7 @@ li.widgetcontainer.widget_mailchimpsf_widget {
         border-style: solid;
         color: #555;
         background-color: $mc-back;
-        width: 271px;
+        width: 260px;
         margin-bottom:0px;
         padding-bottom: 12px;
 

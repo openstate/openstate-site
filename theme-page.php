@@ -2,6 +2,7 @@
 /*
 Template Name: theme-page
 */
+include 'case_and_theme_function.php';
 
 function widget_area_primary_aside_theme(){
     echo get_post_meta($post->ID, 'tweet', true);
@@ -9,14 +10,7 @@ function widget_area_primary_aside_theme(){
 
 add_action('widget_area_primary_aside', 'widget_area_primary_aside_theme');
 
-function openstate_thematic_theme_belowheader() {
-    if ( has_post_thumbnail() ) {
-        echo '<div class="case-header-img" style="background-image:url(\''.
-            wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0].
-        '\')"></div>';
-    }
-}
-add_action('thematic_belowheader', 'openstate_thematic_theme_belowheader');
+add_action('thematic_belowheader', 'openstate_thematic_case_theme_belowheader');
 
 function openstate_thematic_belowcontainer() {
     ?>
@@ -56,7 +50,7 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
     thematic_abovecontainer();
 ?>
 
-        <div id="container" class="os-top-div">
+        <div id="container">
         
             <?php
                 // action hook for placing content above #content
@@ -124,22 +118,8 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
 
     <div id="author-box">
         <?php
-        print_the_author();
-
-        function print_the_author(){
-            if (function_exists('get_wp_user_avatar')) {
-                echo '<p class="author"><br>'.
-                        get_wp_user_avatar( $user_id, 'thumbnail');
-
-                        echo __('Get in contact with', 'thematic-openstate')
-                ?>
-                <br>
-                <a href="<?= get_the_author_meta( 'user_url' ) ?>"> <?= the_author_meta( 'first_name' )?>  <?= the_author_meta( 'last_name' ) ?> </a>
-                <?php            
-                echo    '<span class="contactlink">'.
-                    '</p>';
-            }
-        }?>
+            print_the_author();
+        ?>
 
     </div>
         <?php

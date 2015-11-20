@@ -3,21 +3,15 @@
 Template Name: case-page
 */
 
+include 'case_and_theme_function.php';
+
 function widget_area_primary_aside_case(){
 	echo get_post_meta($post->ID, 'tweet', true);
 }
 
 add_action('widget_area_primary_aside', 'widget_area_primary_aside_case');
 
-	function openstate_thematic_case_belowheader() {
-	  if ( has_post_thumbnail() ) {
-	  		echo '<div class="case-header-img" style="background-image:url(\''.
-      			wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0].
-      		'\')"></div>';
-      }
-	}
-
-add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');	
+add_action('thematic_belowheader', 'openstate_thematic_case_theme_belowheader');	
 
 ?>
 
@@ -36,12 +30,25 @@ add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');
 
     // action hook for placing content above #container
     thematic_abovecontainer();
-?>
-		<div id="container" class="os-top-div">
+    ?>
+    	<div id="parentlink"><h1>
+    	<?php 
+
+			if ( $post->post_parent ) { ?>
+			    <a href="<?php echo get_permalink( $post->post_parent ); ?>" >
+			        <?php echo '≪' . get_the_title( $post->post_parent ); ?>
+			    </a>
+			<?php } ?>
+
+		</h1></div>
+		<div id="container">
 
 
 		
 			<?php
+
+
+
 				// action hook for placing content above #content
 				thematic_abovecontent();
  
@@ -107,25 +114,11 @@ add_action('thematic_belowheader', 'openstate_thematic_case_belowheader');
 		<div id="author-box">
 	    <?php
             print_the_author();
-
-        function print_the_author(){
-        	if (function_exists('get_wp_user_avatar')) {
-	            echo '<p class="author"><br>'.
-	                    get_wp_user_avatar( $user_id, 'thumbnail');
-
-	                    echo __('Get in contact with', 'thematic-openstate')
-	            ?>
-	            <br>
-	            <a href="<?= get_the_author_meta( 'user_url' ) ?>"> <?= the_author_meta( 'first_name' )?>  <?= the_author_meta( 'last_name' ) ?> </a>
-	            <?php            
-	            echo    '<span class="contactlink">'.
-	                '</p>';
-        	}
-        }?>
+		?>
 
 	    </div>
 	    <div id="newscontainer" >
-	    <h1><?= __('news', 'thematic-openstate') ?>:</h1>
+	    <h1><?= __('News', 'thematic-openstate') ?>:</h1>
 	    <?php
 	    	$categories = get_the_category();
 			$category_slug = $categories[0]->slug;

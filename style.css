@@ -72,63 +72,65 @@ li.widgetcontainer.widget_twitter-profile-tracker div.msg {
 li.widgetcontainer.widget_twitter-profile-tracker .clearleft {
   clear: both; }
 
-li.widgetcontainer.widget_mailchimpsf_widget h3.widgettitle {
-  background: url("images/envelope_icon.png") no-repeat scroll left; }
-li.widgetcontainer.widget_mailchimpsf_widget #mc-indicates-required {
-  width: 100%;
-  display: none; }
-li.widgetcontainer.widget_mailchimpsf_widget div.mergeRow {
-  display: none; }
-li.widgetcontainer.widget_mailchimpsf_widget #mc_signup {
-  border-bottom: 1px solid #076776;
-  width: 270px; }
-li.widgetcontainer.widget_mailchimpsf_widget .mc_merge_var {
-  padding: 0;
-  margin: 0;
-  width: 148px;
-  padding-left: 20px;
-  padding-top: 10px;
-  margin-bottom: 0px !important; }
-li.widgetcontainer.widget_mailchimpsf_widget .mc_signup_submit input.button {
-  text-align: center;
-  background: url("images/submit_button.png") no-repeat scroll center;
-  height: 46px;
-  width: 100px !important;
-  /* sorry, mailchimp page css */
-  color: transparent;
-  border: none;
-  cursor: pointer; }
-li.widgetcontainer.widget_mailchimpsf_widget .mc_signup_submit {
-  width: 100%;
-  float: left;
-  margin-top: -70px;
-  text-align: right !important;
-  /* sorry, mailchimp page css */ }
-li.widgetcontainer.widget_mailchimpsf_widget #mc_signup_form {
-  padding: 1px;
-  border-width: 0px;
-  border-style: solid;
-  color: #555;
-  background-color: #E8F8FC;
-  width: 271px;
-  margin-bottom: 0px;
-  padding-bottom: 12px; }
-  li.widgetcontainer.widget_mailchimpsf_widget #mc_signup_form .mc_var_label {
+li.widgetcontainer.widget_mailchimpsf_widget {
+  margin: 10px 5px; }
+  li.widgetcontainer.widget_mailchimpsf_widget h3.widgettitle {
+    background: url("images/envelope_icon.png") no-repeat scroll left; }
+  li.widgetcontainer.widget_mailchimpsf_widget #mc-indicates-required {
+    width: 100%;
     display: none; }
-  li.widgetcontainer.widget_mailchimpsf_widget #mc_signup_form .mc_input {
+  li.widgetcontainer.widget_mailchimpsf_widget div.mergeRow {
+    display: none; }
+  li.widgetcontainer.widget_mailchimpsf_widget #mc_signup {
+    border-bottom: 1px solid #076776;
+    width: 260px; }
+  li.widgetcontainer.widget_mailchimpsf_widget .mc_merge_var {
+    padding: 0;
+    margin: 0;
+    width: 148px;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin-bottom: 0px !important; }
+  li.widgetcontainer.widget_mailchimpsf_widget .mc_signup_submit input.button {
+    text-align: center;
+    background: url("images/submit_button.png") no-repeat scroll center;
+    height: 46px;
+    width: 100px !important;
+    /* sorry, mailchimp page css */
+    color: transparent;
     border: none;
-    border-top: 1px solid #076776;
+    cursor: pointer; }
+  li.widgetcontainer.widget_mailchimpsf_widget .mc_signup_submit {
+    width: 100%;
+    float: left;
+    margin-top: -70px;
+    text-align: right !important;
+    /* sorry, mailchimp page css */ }
+  li.widgetcontainer.widget_mailchimpsf_widget #mc_signup_form {
+    padding: 1px;
+    border-width: 0px;
+    border-style: solid;
+    color: #555;
+    background-color: #E8F8FC;
+    width: 260px;
+    margin-bottom: 0px;
+    padding-bottom: 12px; }
+    li.widgetcontainer.widget_mailchimpsf_widget #mc_signup_form .mc_var_label {
+      display: none; }
+    li.widgetcontainer.widget_mailchimpsf_widget #mc_signup_form .mc_input {
+      border: none;
+      border-top: 1px solid #076776;
+      font-family: Helvetica, Verdana, Arial, Sans-Serif;
+      font-size: 13px;
+      line-height: 19px;
+      color: #666; }
+  li.widgetcontainer.widget_mailchimpsf_widget .mc_error_msg,
+  li.widgetcontainer.widget_mailchimpsf_widget .mc_success_msg {
+    color: #666;
+    position: absolute;
+    margin-top: 100px;
     font-family: Helvetica, Verdana, Arial, Sans-Serif;
-    font-size: 13px;
-    line-height: 19px;
-    color: #666; }
-li.widgetcontainer.widget_mailchimpsf_widget .mc_error_msg,
-li.widgetcontainer.widget_mailchimpsf_widget .mc_success_msg {
-  color: #666;
-  position: absolute;
-  margin-top: 100px;
-  font-family: Helvetica, Verdana, Arial, Sans-Serif;
-  font-weight: normal; }
+    font-weight: normal; }
 
 /* team pagina */
 p.team {
@@ -215,24 +217,25 @@ blockquote.twitter-tweet a:focus {
 blockquote.twitter-tweet .gray {
   color: #868484; }
 
+.page-template-case-page-php #content,
+.page-template-theme-page-php #content {
+  width: 592px !important; }
+
+.page-template-case-page-php .main-aside,
+.page-template-theme-page-php .main-aside {
+  margin-top: -175px; }
+
+.page-template-theme-page-php #container,
 .page-template-case-page-php #container {
   margin-left: 20px;
   width: 630px !important;
-  min-height: 150px; }
-
-.os-top-div {
+  min-height: 150px;
   margin-top: -150px;
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.8) 0%, white 145px);
   background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.8) 0%, white 145px);
   background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.8) 0%, white 145px);
   background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.8) 0%, white 145px);
   background-image: linear-gradient(top, rgba(255, 255, 255, 0.8) 0%, white 145px); }
-
-.page-template-case-page-php #content {
-  width: 592px !important; }
-
-.page-template-case-page-php .main-aside {
-  margin-top: -175px; }
 
 .case-header-img {
   width: 100%;
@@ -241,6 +244,21 @@ blockquote.twitter-tweet .gray {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; }
+
+#parentlink {
+  margin-top: -311px;
+  position: absolute;
+  padding: 10px;
+  padding: 15px 12px;
+  margin-left: 20px;
+  background-image: -webkit-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.7) 45px);
+  background-image: -moz-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.7) 45px);
+  background-image: -ms-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.7) 45px);
+  background-image: -o-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.7) 45px);
+  background-image: linear-gradient(top, white 0%, rgba(255, 255, 255, 0.7) 45px); }
+
+#parentlink a {
+  color: rgba(102, 102, 102, 0.9); }
 
 .case-page-box {
   background-color: rgba(255, 255, 255, 0.9);
@@ -254,17 +272,6 @@ blockquote.twitter-tweet .gray {
   margin: 5px 0;
   padding-left: 1.5em;
   text-indent: -1.5em; }
-
-.page-template-theme-page-php #container {
-  margin-left: 20px;
-  width: 630px !important;
-  min-height: 150px; }
-
-.page-template-theme-page-php #content {
-  width: 592px !important; }
-
-.page-template-theme-page-php .main-aside {
-  margin-top: -175px; }
 
 .fact-container {
   padding: 20px 30px;

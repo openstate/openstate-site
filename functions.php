@@ -61,6 +61,7 @@ function openstate_get_option($opt_key) {
 // Unhook default Thematic functions //
 function unhook_thematic_functions() {
   remove_action('thematic_navigation_below', 'thematic_nav_below', 2);
+  remove_action('thematic_navigation_above', 'thematic_nav_above', 2);
 }
 add_action('init','unhook_thematic_functions');
 

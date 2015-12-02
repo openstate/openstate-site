@@ -8,25 +8,75 @@ load_child_theme_textdomain('thematic-openstate');
   }
   add_action('init','unhook_thematic_functions');
 
-  function openstate_enqueue_scripts() {
-      wp_enqueue_script(
-        'slidejs',
-        get_stylesheet_directory_uri() . '/scripts/slides.min.jquery.js',
-        array('jquery')
-      );
-      wp_enqueue_script(
-        'openstatejs',
-        get_stylesheet_directory_uri() . '/scripts/openstate.js',
-        array('slidejs'),
-        false,
-        true
-      );
-      wp_enqueue_style(
-        'fontawesome',
-        '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'
-      );                 
-  }    
-  add_action('wp_enqueue_scripts', 'openstate_enqueue_scripts');
+
+function openstate_enqueue_scripts() {
+  wp_enqueue_script(
+    'openstatejs',
+    get_stylesheet_directory_uri() . '/scripts/openstate.js',
+    false,
+    true
+    );
+  wp_enqueue_style(
+    'fontawesome',
+    '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'
+    );                 
+}    
+add_action('wp_enqueue_scripts', 'openstate_enqueue_scripts');
+
+// Themes Menu //
+function register_themes_menu() {
+  register_nav_menu( 'themes-menu', __( 'Themes Menu', 'theme-slug' ) );
+}
+add_action( 'after_setup_theme', 'register_themes_menu' );
+
+function openstate_thematic_nav_menu_args($args) {
+  $args['depth'] = 1;
+  return apply_filters('openstate_thematic_nav_menu_args', $args);
+}
+add_filter('thematic_nav_menu_args', 'openstate_thematic_nav_menu_args');
+
+// Multilingual choice dropdown //
+if (function_exists('qts_language_menu')) {
+  function openstate_header() {
+    ?>
+    <!-- qTranslate slug dropdown -->
+    <div style="position:absolute; top:0px; right:0px; margin: 7px 15px 0 0;">
+      <?=qts_language_menu('dropdown'); // qTranslate Slug plugin ?>
+    </div>
+    <style type="text/css">
+    .qtrans_language_chooser { list-style-type: none; }
+    .qtrans_language_chooser li { padding:2px; }
+    </style>
+    <?php
+  }
+  add_action('thematic_header','openstate_header');
+}
+
+// Case and Tool pages //
+// This means pages get categories and featured images!
+function add_taxonomies_to_pages() {
+  register_taxonomy_for_object_type( 'post_tag', 'page' );
+  register_taxonomy_for_object_type( 'category', 'page' );
+}
+add_action( 'init', 'add_taxonomies_to_pages' );
+add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+if ( ! is_admin() ) {
+  function category_and_tag_archives( $wp_query ) {
+    $my_post_array = $wp_query->get( 'post_type' );
+    if ( $wp_query->get( 'category_name' ) || $wp_query->get( 'cat' ) ) {
+      $wp_query->set( 'post_type', $my_post_array );
+    }
+    if ( $wp_query->get( 'tag' ) ) {
+      $wp_query->set( 'post_type', $my_post_array );
+    }
+  }
+  add_action( 'pre_get_posts', 'category_and_tag_archives' );
+}
+function add_extra_thumbnail_support() {
+  // Featured images for pages
+  add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+}
+add_action( 'after_setup_theme', 'add_extra_thumbnail_support' );
 
   
   // Add custom post type for announcements
@@ -52,23 +102,6 @@ load_child_theme_textdomain('thematic-openstate');
       )
     );
   }
-
-// Multilingual choice dropdown
-if (function_exists('qts_language_menu')) {
-  function openstate_header() {
-    ?>
-      <!-- qTranslate slug dropdown -->
-      <div style="position:absolute; top:0px; right:0px; margin: 7px 15px 0 0;">
-          <?=qts_language_menu('dropdown'); // qTranslate Slug plugin ?>
-      </div>
-      <style type="text/css">
-        .qtrans_language_chooser { list-style-type: none; }
-        .qtrans_language_chooser li { padding:2px; }
-      </style>
-    <?php
-  }
-  add_action('thematic_header','openstate_header');
-}
 
 // Use tagline (blog description) as mission statement
 function childtheme_override_blogdescription() {

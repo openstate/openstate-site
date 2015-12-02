@@ -15,16 +15,15 @@ add_action('thematic_belowheader', 'openstate_thematic_case_theme_belowheader');
 function openstate_thematic_belowcontainer() {
     ?>
     <div class="theme-subs">
-        <h1>Cases</h1>
+        
         <?php
             $cases_category_id = openstate_get_option('openstate_cases_catid');
-            openstate_page_list($cases_category_id, get_the_ID(), 4);
-        ?>
-        
-        <h1>Tools</h1>
+            openstate_page_list($cases_category_id, get_the_ID(), 4, 'Cases');
+        ?> 
+
         <?php
             $tools_category_id = openstate_get_option('openstate_tools_catid');
-            openstate_page_list($tools_category_id, get_the_ID(), 4);
+            openstate_page_list($tools_category_id, get_the_ID(), 4, 'Tools');
         ?>
     </div>
     <?php

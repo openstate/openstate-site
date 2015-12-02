@@ -142,7 +142,9 @@ function add_extra_thumbnail_support() {
 }
 add_action( 'after_setup_theme', 'add_extra_thumbnail_support' );
 
-function openstate_page_list($cat, $parent=null, $limit=5) {
+//thumbnails for Cases and Tools
+function openstate_page_list($cat, $parent=null, $limit=5, $title=null) {
+ 
   // Print a list of pages with thumbnails based on category
   $the_query = new WP_Query( array(
     'cat' => $cat, 
@@ -153,6 +155,10 @@ function openstate_page_list($cat, $parent=null, $limit=5) {
   ) );
   // The Loop
   if ( $the_query->have_posts() ) {
+    if($title){
+      echo "<h1>$title</h1>";
+    }
+
     echo '<ul class="page-thumbs">';
     while ( $the_query->have_posts() ) {
       $the_query->the_post();

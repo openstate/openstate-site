@@ -1,6 +1,62 @@
 <?php
-// Translate, if applicable
+// Translate, if applicable //
 load_child_theme_textdomain('thematic-openstate');
+
+// Global ID Settings //
+function openstate_opt_init() {
+  /* Register childtheme setting separate from thematic */
+  register_setting('thematic_opt_group', 'openstate_options', 'openstate_options_validate');
+  /* Add a settings section for our openstate */
+  add_settings_section('openstate_section', '', 'openstate_section_html', 'thematic_theme_opt');
+  /* Add settings fields to the settings section */
+  add_settings_field('openstate_home_id', __('Mission Statement Page', 'thematic-openstate'), 'openstate_do_home_id', 'thematic_theme_opt', 'openstate_section');
+  add_settings_field('openstate_cases_catid', __('Cases Category', 'thematic-openstate'), 'openstate_do_cases_catid', 'thematic_theme_opt', 'openstate_section');
+  add_settings_field('openstate_tools_catid', __('Tools Category', 'thematic-openstate'), 'openstate_do_tools_catid', 'thematic_theme_opt', 'openstate_section');
+}
+add_action ('admin_init', 'openstate_opt_init');
+
+function openstate_section_html() {}
+function openstate_options_validate( $input ) { return $input;}
+function openstate_default_opt() {
+  $openstate_default_opt = array(
+    'openstate_home_id'   => 142,
+    'openstate_cases_catid'   => 110,
+    'openstate_tools_catid'   => 111
+  );
+  return $openstate_default_opt;
+}
+
+function openstate_do_home_id() {
+  $opt = thematic_get_wp_opt( 'openstate_options', openstate_default_opt() );
+  wp_dropdown_pages(array(
+    'selected' => $opt['openstate_home_id'],
+    'name' => 'openstate_options[openstate_home_id]'
+  ));
+}
+function openstate_do_cases_catid() {
+  $opt = thematic_get_wp_opt( 'openstate_options', openstate_default_opt() );
+  wp_dropdown_categories(array(
+    'selected' => $opt['openstate_cases_catid'],
+    'name' => 'openstate_options[openstate_cases_catid]',
+    'hierarchical'=>1
+  ));
+}
+function openstate_do_tools_catid() {
+  $opt = thematic_get_wp_opt( 'openstate_options', openstate_default_opt() );
+  wp_dropdown_categories(array(
+    'selected' => $opt['openstate_tools_catid'],
+    'name' => 'openstate_options[openstate_tools_catid]',
+    'hierarchical'=>1
+  ));
+}
+function openstate_get_option($opt_key) {
+  $theme_opt = thematic_get_wp_opt( 'openstate_options', openstate_default_opt() );
+  if (isset( $theme_opt[$opt_key] )) {
+    return $theme_opt[$opt_key];
+  } else {
+    return null;
+  }
+}
 
   // Unhook default Thematic functions
   function unhook_thematic_functions() {

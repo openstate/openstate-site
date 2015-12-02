@@ -199,6 +199,9 @@ blockquote.twitter-tweet .identity-name {
   blockquote.twitter-tweet .identity-name a {
     color: inherit; }
 
+blockquote.twitter-tweet img {
+  width: 100%; }
+
 blockquote.twitter-tweet p {
   font-size: 15px;
   font-weight: normal;

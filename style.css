@@ -1,7 +1,7 @@
 /*
   Theme Name: Open State Foundation
   Theme URI: http://github.com/openstate/thematic-openstate
-  Author: Benno Kruit
+  Author: Benno Kruit, Tim Meerhof
   Template: thematic
   Description: Theme for openstate main site.
 */
@@ -607,5 +607,3 @@ ul.page-thumbs {
         background: transparent; }
         #footer .btn-social-list > div a.btn-social .fa-fw {
           line-height: 45px; }
-
-/*# sourceMappingURL=style.css.map */

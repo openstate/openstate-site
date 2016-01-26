@@ -1,3 +1,4 @@
+jQuery(function() {
 var noThumbPosts;
 
 noThumbPosts = jQuery(".home .post, .category .post").filter(function(post) {
@@ -11,3 +12,4 @@ jQuery(".entry-date", noThumbPosts).css('margin-left', '0px');
 jQuery('input[name="mc_mv_EMAIL"]').attr("placeholder", "Email Address");
 jQuery('input[name="mc_mv_FNAME"]').attr("placeholder", "Name");
 
+});

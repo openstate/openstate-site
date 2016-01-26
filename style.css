@@ -83,11 +83,11 @@ li.widgetcontainer.widget_mailchimpsf_widget {
     display: none; }
   li.widgetcontainer.widget_mailchimpsf_widget #mc_signup {
     border-bottom: 1px solid #076776;
-    width: 260px; }
+    width: 230px; }
   li.widgetcontainer.widget_mailchimpsf_widget .mc_merge_var {
     padding: 0;
     margin: 0;
-    width: 148px;
+    width: 118px;
     padding-left: 20px;
     padding-top: 10px;
     margin-bottom: 0px !important; }
@@ -95,7 +95,7 @@ li.widgetcontainer.widget_mailchimpsf_widget {
     text-align: center;
     background: url("images/submit_button.svg") no-repeat scroll center;
     height: 46px;
-    width: 100px !important;
+    width: 80px !important;
     /* sorry, mailchimp page css */
     color: transparent;
     border: none;
@@ -112,7 +112,7 @@ li.widgetcontainer.widget_mailchimpsf_widget {
     border-style: solid;
     color: #555;
     background-color: #E8F8FC;
-    width: 260px;
+    width: 230px;
     margin-bottom: 0px;
     padding-bottom: 12px; }
     li.widgetcontainer.widget_mailchimpsf_widget #mc_signup_form .mc_var_label {
@@ -220,18 +220,12 @@ blockquote.twitter-tweet a:focus {
 blockquote.twitter-tweet .gray {
   color: #868484; }
 
-.page-template-case-page-php #content,
-.page-template-theme-page-php #content {
-  width: 592px !important; }
-
 .page-template-case-page-php .main-aside,
 .page-template-theme-page-php .main-aside {
   margin-top: -175px; }
 
 .page-template-theme-page-php #container,
 .page-template-case-page-php #container {
-  margin-left: 20px;
-  width: 630px !important;
   min-height: 150px;
   margin-top: -150px;
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.8) 0%, white 145px);
@@ -253,7 +247,6 @@ blockquote.twitter-tweet .gray {
   position: absolute;
   padding: 10px;
   padding: 15px 12px;
-  margin-left: 20px;
   background-image: -webkit-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.7) 45px);
   background-image: -moz-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.7) 45px);
   background-image: -ms-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.7) 45px);
@@ -313,17 +306,16 @@ p.author a {
   clear: both; }
 
 .theme-subs {
+  padding-left: 40px;
   width: 620px;
   float: left;
-  margin: 20px 0px 0px 10px;
-  padding-left: 28px; }
+  margin: 20px 0px 0px 0px; }
   .theme-subs > h1 {
-    margin-left: 10px;
     line-height: 1.6em; }
   .theme-subs ul.page-thumbs {
     margin-bottom: 30px; }
     .theme-subs ul.page-thumbs > li {
-      margin: 10px 10px; }
+      margin: 10px 20px 0px 0px; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
@@ -366,7 +358,6 @@ body.page h1.entry-title, h1.page-title {
 #header {
   background: white;
   height: 96px;
-  font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
   padding-top: 0px; }
   #header #branding {
     float: left;
@@ -381,40 +372,51 @@ body.page h1.entry-title, h1.page-title {
       width: 142px;
       height: 81px;
       line-height: 1em; }
-  #header #access {
-    font-size: 14px; }
-    #header #access .skip-link {
-      display: none; }
-  #header ul.menu, #header ul.sf-menu {
-    padding: 0; }
-    #header ul.menu li, #header ul.sf-menu li {
-      list-style-type: none;
-      display: inline; }
-      #header ul.menu li a, #header ul.sf-menu li a {
-        padding: 9px 13px;
-        text-decoration: none; }
+  #header #access .skip-link {
+    display: none; }
   #header #access > div.menu > ul {
     float: right;
-    margin: 9px 120px 0px 0px; }
+    margin: 10px 165px 0px 0px; }
     #header #access > div.menu > ul > li a:hover {
       text-decoration: underline; }
-  #header div.themes-menu > ul {
-    clear: right;
-    padding-top: 24px;
-    margin: 0px 0px 0px 240px; }
-    #header div.themes-menu > ul li a {
-      color: #076776;
-      background: white; }
-    #header div.themes-menu > ul > li.current-menu-item a, #header div.themes-menu > ul > li.current-page-ancestor a, #header div.themes-menu > ul > li a:hover {
-      color: #076776;
-      background: #ccc; }
   #header #blog-description {
     display: none; }
+
+#qtranslate_dropdown {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 7px 60px 0 0; }
+
+ul.menu, ul.sf-menu {
+  font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
+  font-size: 13px;
+  padding: 0; }
+  ul.menu li, ul.sf-menu li {
+    list-style-type: none;
+    display: inline; }
+    ul.menu li a, ul.sf-menu li a {
+      padding: 9px 13px;
+      text-decoration: none; }
+
+div.themes-menu > ul {
+  clear: right;
+  width: auto;
+  background: white;
+  margin-left: 48px;
+  line-height: 32px;
+  padding-bottom: 4px; }
+  div.themes-menu > ul li a {
+    color: #076776;
+    background: white; }
+  div.themes-menu > ul > li.current-menu-item a, div.themes-menu > ul > li.current-page-ancestor a, div.themes-menu > ul > li a:hover {
+    color: #076776;
+    background: #ccc; }
 
 #home-statement {
   font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
   width: 75%;
-  margin: 30px auto; }
+  margin: 0px auto 30px; }
   #home-statement h1 {
     color: #666;
     font-size: 20px;
@@ -434,9 +436,9 @@ body.page h1.entry-title, h1.page-title {
     float: right; }
 
 #home-cases {
-  margin: 10px auto; }
+  margin: 10px 60px 0px; }
   #home-cases ul.page-thumbs > li {
-    margin: 0px 30px; }
+    margin: 0px 30px 0px 0px; }
 
 #home-allposts {
   font-family: "Avenir", "Lucida Grande", Verdana, Arial, Sans-Serif;
@@ -470,7 +472,8 @@ ul.page-thumbs {
 #main {
   clear: both;
   padding-top: 11px;
-  padding-bottom: 0px; }
+  padding-bottom: 0px;
+  padding-left: 20px; }
   #main li.widgetcontainer {
     clear: both;
     position: relative;
@@ -481,14 +484,13 @@ ul.page-thumbs {
       padding-left: 36px;
       border-bottom: 1px solid #CCC; }
   #main #container {
-    width: 651px;
     float: left;
-    padding-left: 8px; }
+    padding-left: 40px; }
     #main #container #content {
-      margin: 16px 0 0 14px;
-      width: 622px;
-      overflow: hidden;
-      padding-left: 8px; }
+      margin: 16px 0 0 0;
+      width: 540px;
+      padding-right: 40px;
+      overflow: hidden; }
       #main #container #content .post img.wp-post-image, #main #container #content .page img.wp-post-image {
         float: left;
         padding: 12px 0px;
@@ -511,7 +513,7 @@ ul.page-thumbs {
           text-decoration: underline; }
       #main #container #content .post .entry-excerpt, #main #container #content .page .entry-excerpt {
         float: right;
-        width: 530px; }
+        width: 450px; }
       #main #container #content .post .entry-title, #main #container #content .page .entry-title {
         color: #666;
         text-decoration: none;
@@ -525,8 +527,8 @@ ul.page-thumbs {
         display: none;
         clear: both; }
   #main #primary {
-    width: 271px;
-    margin-right: 12px;
+    width: 240px;
+    margin-right: 60px;
     float: right; }
 
 #main:after {

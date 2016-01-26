@@ -91,8 +91,7 @@ function openstate_theme_navigation() {
     'container_class'=>'themes-menu'
   ));
 }
-
-add_action('thematic_header','openstate_theme_navigation');
+add_action('thematic_belowheader','openstate_theme_navigation');
 function openstate_thematic_nav_menu_args($args) {
   $args['depth'] = 1;
   return apply_filters('openstate_thematic_nav_menu_args', $args);
@@ -104,7 +103,7 @@ if (function_exists('qts_language_menu')) {
   function openstate_header() {
     ?>
     <!-- qTranslate slug dropdown -->
-    <div style="position:absolute; top:0px; right:0px; margin: 7px 15px 0 0;">
+    <div id="qtranslate_dropdown">
       <?=qts_language_menu('dropdown'); // qTranslate Slug plugin ?>
     </div>
     <style type="text/css">
@@ -160,11 +159,17 @@ function openstate_page_list($cat, $parent=null, $limit=5, $title=null) {
     }
 
     echo '<ul class="page-thumbs">';
+    $first = true;
     while ( $the_query->have_posts() ) {
       $the_query->the_post();
       if ( has_post_thumbnail() ) {
         $thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium' );
-        $ratio = $thumb_url[1] / ($thumb_url[2]+1);
+        if (first) {
+          $ratio = 1;
+          $first = false;
+        } else {
+          $ratio = $thumb_url[1] / ($thumb_url[2]+1);
+        }
         $height = 160;
         echo sprintf('<li style="height:%spx; min-width:%spx;">', 
           $height, min(max(160 * $ratio, $height),240));

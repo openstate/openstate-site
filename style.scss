@@ -13,6 +13,12 @@ $dark-blue: #076776;
 $light-grey: #ccc;
 $dark-grey: #666;
 
+$content-width: 640px;
+$sidebar-width: 240px;
+$inside-margin: 60px;
+$container-margin: 40px;
+$thumb-size: 70px;
+
 $title-font: 'Avenir','Lucida Grande', Verdana, Arial, Sans-Serif;
 $title-small-size: 15px;
 $body-font: Helvetica, Verdana, Arial, Sans-Serif;
@@ -124,13 +130,12 @@ body.page h1.entry-title, h1.page-title {
 #header {
     background: $menu-back;
     height: 96px;
-    font-family: $title-font;
     padding-top: 0px;
 
     #branding {
         float:left;
         width:142px;
-        padding: 5px 10px 0px 60px;
+        padding: 5px 10px 0px $inside-margin;
         overflow:hidden;
 
         #blog-title a {
@@ -146,50 +151,63 @@ body.page h1.entry-title, h1.page-title {
     }
 
     #access {
-        font-size: 14px;
         .skip-link { display:none; }
     }
-    ul.menu, ul.sf-menu {
-        padding:0;
-        li {
-            list-style-type: none;
-            display: inline; 
-            a {
-                padding:9px 13px;
-                text-decoration: none;
-            }
-        }
-    }
+    
     #access > div.menu > ul {
         float: right;
-        margin: 9px 120px 0px 0px;
+        margin: 10px $inside-margin+105px 0px 0px;
         > li a:hover {
             text-decoration: underline;
         }
     }
-    div.themes-menu > ul {
-        clear:right;
-        padding-top: 24px;
-        margin: 0px 0px 0px 240px;
-        li a {
-            color: $menu-text;
-            background: $menu-back;
-        }
-        > li.current-menu-item a, >li.current-page-ancestor a, > li a:hover {
-            color: $menu-text;
-            background: $menu-front;
-        }
-    }
+    
 
     #blog-description {
         display: none;
+    }
+}
+#qtranslate_dropdown {
+    position:absolute; 
+    top:0px; right:0px; 
+    margin: 7px $inside-margin 0 0;
+}
+
+ul.menu, ul.sf-menu {
+    font-family: $title-font;
+    font-size: $body-font-size;
+    padding:0;
+    li {
+        list-style-type: none;
+        display: inline; 
+        a {
+            padding:9px 13px;
+            text-decoration: none;
+        }
+    }
+}
+
+div.themes-menu > ul {
+    clear:right;
+    width: auto;
+    background: white;
+    margin-left: $inside-margin - 12px;
+    line-height: 32px;
+    padding-bottom: 4px;
+    li a {
+        color: $menu-text;
+        background: $menu-back;
+    }
+    > li.current-menu-item a, >li.current-page-ancestor a, > li a:hover {
+        color: $menu-text;
+        background: $menu-front;
     }
 }
 
 #home-statement {
     font-family: $title-font;
     width: 75%;
-    margin: 30px auto;
+    margin: 0px auto 30px;
     h1 {
         color: $dark-grey;
         font-size: 20px;
@@ -214,9 +232,9 @@ body.page h1.entry-title, h1.page-title {
 }
 
 #home-cases {
-    margin: 10px auto;
+    margin: 10px $inside-margin 0px;
     ul.page-thumbs > li {
-        margin: 0px 30px;
+        margin: 0px 30px 0px 0px;
     }
 }
 
@@ -262,6 +280,7 @@ ul.page-thumbs {
     clear:both;
     padding-top: 11px;
     padding-bottom: 0px;
+    padding-left: $inside-margin - $container-margin;
 
     li.widgetcontainer {
         clear:both;
@@ -276,15 +295,14 @@ ul.page-thumbs {
     }
 
     #container {
-        width: 651px;
         float: left;
-        padding-left: 8px;
+        padding-left: $container-margin;
 
         #content {
-            margin: 16px 0 0 14px;
-            width: 622px;
+            margin: 16px 0 0 0;
+            width: $content-width - ($inside-margin + $container-margin);
+            padding-right: $container-margin;
             overflow: hidden;
-            padding-left: 8px;
 
             .post, .page {
                 img.wp-post-image {
@@ -313,7 +331,7 @@ ul.page-thumbs {
                 }
                 .entry-excerpt {
                     float: right;
-                    width: 530px;
+                    width: $content-width - ($inside-margin + $container-margin) - $thumb-size - 20px;
                 }
                 .entry-title {
                     color: #666;
@@ -335,8 +353,8 @@ ul.page-thumbs {
     }
 
     #primary {
-        width:271px;
-        margin-right: 12px;
+        width: $sidebar-width;
+        margin-right: $inside-margin;
         float:right;
     }
 }

@@ -118,7 +118,6 @@ add_action('thematic_belowheader', 'openstate_thematic_case_theme_belowheader');
 
 	    </div>
 	    <div id="newscontainer" >
-	    <h1><?= __('News', 'thematic-openstate') ?>:</h1>
 	    <?php
 	    	$categories = get_the_category();
 			$category_slug = $categories[0]->slug;
@@ -128,18 +127,14 @@ add_action('thematic_belowheader', 'openstate_thematic_case_theme_belowheader');
 	    		'tax_query' => array(
 				    array(
 				        'taxonomy' => 'category',
-				        'terms' => array('news' ),
-				        'field' => 'slug',
-				    ),
-				    array(
-				        'taxonomy' => 'category',
 				        'terms' => array( $category_slug ),
 				        'field' => 'slug',
 				    )
 				)
 			));
-
+			if (have_posts()):
 			?>
+		    <h1><?= __('News', 'thematic-openstate') ?></h1>
 			<ul class="newslist">
 				<?php
 				while ( have_posts() ) : the_post(); ?>
@@ -159,6 +154,7 @@ add_action('thematic_belowheader', 'openstate_thematic_case_theme_belowheader');
 				<?php endwhile; 
 			?>
 			</ul>
+			<?php endif; ?>
 	    </div>
 	</div>		
 

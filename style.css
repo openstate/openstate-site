@@ -523,6 +523,8 @@ ul.page-thumbs {
         padding-bottom: 7px; }
       #main #container #content .post .entry-content, #main #container #content .page .entry-content {
         padding-top: 5px; }
+        #main #container #content .post .entry-content h1, #main #container #content .post .entry-content h2, #main #container #content .post .entry-content h3, #main #container #content .post .entry-content h4, #main #container #content .post .entry-content h5, #main #container #content .post .entry-content h6, #main #container #content .page .entry-content h1, #main #container #content .page .entry-content h2, #main #container #content .page .entry-content h3, #main #container #content .page .entry-content h4, #main #container #content .page .entry-content h5, #main #container #content .page .entry-content h6 {
+          line-height: 1em; }
       #main #container #content .post .entry-utility, #main #container #content .page .entry-utility {
         display: none;
         clear: both; }
@@ -609,3 +611,5 @@ ul.page-thumbs {
         background: transparent; }
         #footer .btn-social-list > div a.btn-social .fa-fw {
           line-height: 45px; }
+
+/*# sourceMappingURL=style.css.map */

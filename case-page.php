@@ -154,6 +154,7 @@ add_action('thematic_belowheader', 'openstate_thematic_case_theme_belowheader');
 				<?php endwhile; 
 			?>
 			</ul>
+			<a href="/category/<?=$category_slug ?>"><?=__('All posts', 'thematic')?> ≫</a>
 			<?php endif; ?>
 	    </div>
 	</div>		

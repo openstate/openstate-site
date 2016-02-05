@@ -121,6 +121,46 @@ add_action('thematic_belowcontainer', 'openstate_thematic_belowcontainer');
         ?>
 
     </div>
+    <div id="newscontainer" >
+        <?php
+            $categories = get_the_category();
+            $category_slug = $categories[0]->slug;
+
+            query_posts(array(
+                'post_type' => 'post',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'category',
+                        'terms' => array( $category_slug ),
+                        'field' => 'slug',
+                    )
+                )
+            ));
+            if (have_posts()):
+            ?>
+            <h1><?= __('News', 'thematic-openstate') ?></h1>
+            <ul class="newslist">
+                <?php
+                while ( have_posts() ) : the_post(); ?>
+            
+                <li>
+                    
+                    <?php 
+                      echo '<span class="entry-date"><abbr class="published" title="'.
+                          get_the_time(thematic_time_title()) . '">'.
+                          get_the_time(thematic_time_display()).
+                          '</abbr></span>';
+                    ?>
+                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> 
+
+                </li>
+                
+                <?php endwhile; 
+            ?>
+            </ul>
+            <a href="/category/<?=$category_slug ?>"><?=__('All posts', 'thematic')?> ≫</a>
+        <?php endif; ?>
+    </div>
         <?php
         $facts = get_post_meta($post->ID, 'fact', false);
         foreach ($facts as $fact){
